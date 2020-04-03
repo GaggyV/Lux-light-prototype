@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class ClaraBehavior : MonoBehaviour
 {
     [SerializeField] private float movementSpeed;
@@ -31,6 +31,16 @@ public class ClaraBehavior : MonoBehaviour
     {
         if (collision.collider.CompareTag("Ground"))
             onGround = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        print("hi");
+        if (other.CompareTag("Goal"))
+        {
+            print("hey");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)

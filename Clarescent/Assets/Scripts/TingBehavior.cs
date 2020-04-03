@@ -11,4 +11,5 @@ public class TingBehavior : MonoBehaviour
     {
         transform.position += new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;
     }
+   
 }
