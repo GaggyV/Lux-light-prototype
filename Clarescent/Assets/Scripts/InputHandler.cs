@@ -2,74 +2,65 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeftHandDigitalInput
+public struct DigitalInput
 {
-    public bool upEnter = false;
-    public bool leftEnter = false;
-    public bool downEnter = false;
-    public bool rightEnter = false;
-    public bool upPressed = false;
-    public bool leftPressed = false;
-    public bool downPressed = false;
-    public bool rightPressed = false;
-    public bool upExit = false;
-    public bool leftExit = false;
-    public bool downExit = false;
-    public bool rightExit = false;
+    public bool enter;
+    public bool held;
+    public bool exit;
 }
 
-public class LeftHandAnalogInput
+public struct AnalogOneDimensionalInput
 {
-    public float x = 0f;
-    public float y = 0f;
+    public float axis;
 }
 
-public class RightHandAnalogInput
+public struct AnalogTwoDimensionalInput
 {
-    public float x = 0f;
-    public float y = 0f;
+    public float x_axis;
+    public float y_axis;
 }
 
-public class JumpButtonDigitalInput
-{
-    public bool enter = false;
-    public bool pressed = false;
-    public bool exit = false;
-}
-
+public enum Controller { Keyboard, Controller }
 public class InputHandler : MonoBehaviour
 {
-    public LeftHandDigitalInput leftHandDigital;
-    public LeftHandAnalogInput leftHandAnalog;
-    public RightHandAnalogInput rightHandAnalog;
-    public JumpButtonDigitalInput jumpDigital;
+    [SerializeField] Controller currentController;
+    public AnalogTwoDimensionalInput leftStick;
+    public AnalogTwoDimensionalInput rightStick;
+    public AnalogOneDimensionalInput leftTriggerAnalog;
+    public AnalogOneDimensionalInput rightTriggerAnalog;
+    public DigitalInput leftTriggerDigital;
+    public DigitalInput rightTriggerDigital;
         
     void Update()
     {
-        leftHandDigital.upEnter = Input.GetKeyDown(KeyCode.Keypad8);
-        leftHandDigital.upPressed = Input.GetKey(KeyCode.Keypad8);
-        leftHandDigital.upExit = Input.GetKeyUp(KeyCode.Keypad8);
-        leftHandDigital.leftEnter = Input.GetKeyDown(KeyCode.Keypad4);
-        leftHandDigital.leftPressed = Input.GetKey(KeyCode.Keypad4);
-        leftHandDigital.leftExit = Input.GetKeyUp(KeyCode.Keypad4);
-        leftHandDigital.downEnter = Input.GetKeyDown(KeyCode.Keypad2);
-        leftHandDigital.downPressed = Input.GetKey(KeyCode.Keypad2);
-        leftHandDigital.downExit = Input.GetKeyUp(KeyCode.Keypad2);
-        leftHandDigital.rightEnter = Input.GetKeyDown(KeyCode.Keypad6);
-        leftHandDigital.rightPressed = Input.GetKey(KeyCode.Keypad6);
-        leftHandDigital.rightExit = Input.GetKeyUp(KeyCode.Keypad6);
+        switch (currentController)
+        {
+            case Controller.Keyboard:
+                leftStick.x_axis = Input.GetKey(KeyCode.D) ? 1f : 0f;
+                leftStick.x_axis = Input.GetKey(KeyCode.A) ? leftStick.x_axis - 1f : leftStick.x_axis;
+                leftStick.y_axis = Input.GetKey(KeyCode.W) ? 1f : 0f;
+                leftStick.y_axis = Input.GetKey(KeyCode.S) ? leftStick.y_axis - 1f : leftStick.y_axis;
 
-        leftHandAnalog.y = leftHandAnalog.y += Input.GetKey(KeyCode.W) && leftHandAnalog.y < 1f ? 1f : 0f;
-        leftHandAnalog.y = leftHandAnalog.y += Input.GetKey(KeyCode.S) && leftHandAnalog.y > -1f ? -1f : 0f;
-        leftHandAnalog.x = leftHandAnalog.x += Input.GetKey(KeyCode.A) && leftHandAnalog.y > -1f ? -1f : 0f;
-        leftHandAnalog.x = leftHandAnalog.y += Input.GetKey(KeyCode.D) && leftHandAnalog.y < 1f ? 1f : 0f;
-        rightHandAnalog.y = rightHandAnalog.y += Input.GetKey(KeyCode.UpArrow) && rightHandAnalog.y < 1f ? 1f : 0f;
-        rightHandAnalog.y = rightHandAnalog.y += Input.GetKey(KeyCode.DownArrow) && rightHandAnalog.y > -1f ? -1f : 0f;
-        rightHandAnalog.x = rightHandAnalog.x += Input.GetKey(KeyCode.LeftArrow) && rightHandAnalog.y > -1f ? -1f : 0f;
-        rightHandAnalog.x = rightHandAnalog.y += Input.GetKey(KeyCode.RightArrow) && rightHandAnalog.y < 1f ? 1f : 0f;
+                rightStick.x_axis = Input.GetKey(KeyCode.RightArrow) ? 1f : 0f;
+                rightStick.x_axis = Input.GetKey(KeyCode.LeftArrow) ? rightStick.x_axis - 1f : rightStick.x_axis;
+                rightStick.y_axis = Input.GetKey(KeyCode.UpArrow) ? 1f : 0f;
+                rightStick.y_axis = Input.GetKey(KeyCode.DownArrow) ? rightStick.y_axis - 1f : rightStick.y_axis;
 
-        jumpDigital.enter = Input.GetKeyDown(KeyCode.Space);
-        jumpDigital.pressed = Input.GetKey(KeyCode.Space);
-        jumpDigital.exit = Input.GetKeyUp(KeyCode.Space);
+                leftTriggerAnalog.axis = Input.GetKey(KeyCode.LeftShift) ? 1f : -1f;
+
+                rightTriggerAnalog.axis = Input.GetKey(KeyCode.RightShift) ? 1f : -1f;
+
+                leftTriggerDigital.enter = Input.GetKeyDown(KeyCode.LeftControl);
+                leftTriggerDigital.held = Input.GetKey(KeyCode.LeftControl);
+                leftTriggerDigital.exit = Input.GetKeyUp(KeyCode.LeftControl);
+
+                rightTriggerDigital.enter = Input.GetKeyDown(KeyCode.RightControl);
+                rightTriggerDigital.held = Input.GetKey(KeyCode.RightControl);
+                rightTriggerDigital.exit = Input.GetKeyUp(KeyCode.RightControl);
+                break;
+            default:
+                break;
+        }
+        
     }
 }
