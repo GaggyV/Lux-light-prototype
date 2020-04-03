@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Puzzle1.unity
     guid: e57aeb885a75e7b47bf69a29e30d56fc
   - enabled: 1
-    path: Assets/Scenes/Puzzle2.unity
+    path: Assets/Scenes/DuplicateMe.unity
     guid: 46fca4be97b494e4fa0d3102a3544e36
   - enabled: 1
     path: Assets/Scenes/End.unity
