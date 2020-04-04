@@ -35,10 +35,8 @@ public class ClaraBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        print("hi");
         if (other.CompareTag("Goal"))
         {
-            print("hey");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
