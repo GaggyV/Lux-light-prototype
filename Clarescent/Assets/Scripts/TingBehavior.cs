@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class TingBehavior : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
     [SerializeField] private InputHandler inputHandler;
-    [SerializeField] private Sprite levitationSprite, negentropySprite, illuminationSprite, notShiningSprite;
-    private Sprite currentIfShine;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private Color levitationColor, negentropyColor, illuminationColor, shineDifference;
+    private Color currentColor;
     public enum Ability { levitation, negentropy, illumination, goBack }
     [SerializeField] Ability currentAbility;
-    private bool shine;
+
+    void Start()
+    {
+        currentColor = levitationColor;
+    }
 
     void Update()
     {
@@ -24,15 +28,21 @@ public class TingBehavior : MonoBehaviour
             switch (currentAbility)
             {
                 case Ability.illumination:
-                    currentIfShine = illuminationSprite;
+                    currentColor = illuminationColor;
                     break;
                 case Ability.levitation:
-                    currentIfShine = levitationSprite;
-                    break;
-                case Ability.negentropy:
-                    currentIfShine = negentropySprite;
+                    currentColor = levitationColor;
+                    break;                     
+                case Ability.negentropy:       
+                    currentColor = negentropyColor;
                     break;
             }
         }
+        if (inputHandler.rightTriggerAnalog.axis != -1f)
+            GetComponent<SpriteRenderer>().color = currentColor;
+        else
+            GetComponent<SpriteRenderer>().color = currentColor - shineDifference;
     }
+
+
 }
