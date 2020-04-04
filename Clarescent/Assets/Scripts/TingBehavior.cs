@@ -6,6 +6,8 @@ public class TingBehavior : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;
     [SerializeField] private InputHandler inputHandler;
+    [SerializeField] private Sprite levitationSprite, negentropySprite, illuminationSprite, notShiningSprite;
+    private Sprite currentIfShine;
     public enum Ability { levitation, negentropy, illumination, goBack }
     [SerializeField] Ability currentAbility;
     private bool shine;
@@ -19,6 +21,18 @@ public class TingBehavior : MonoBehaviour
             currentAbility++;
             if (currentAbility == Ability.goBack)
                 currentAbility = 0;
+            switch (currentAbility)
+            {
+                case Ability.illumination:
+                    currentIfShine = illuminationSprite;
+                    break;
+                case Ability.levitation:
+                    currentIfShine = levitationSprite;
+                    break;
+                case Ability.negentropy:
+                    currentIfShine = negentropySprite;
+                    break;
+            }
         }
     }
 }
