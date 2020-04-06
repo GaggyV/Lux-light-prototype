@@ -12,6 +12,7 @@ public class TingInteraction : MonoBehaviour
     public Rigidbody2D body;
     public bool broken;
     public bool scared;
+    private float currentVelocity;
 
     [SerializeField] Sprite restoredSprite, brokenSprite;
     private SpriteRenderer spriteRenderer;
@@ -24,6 +25,7 @@ public class TingInteraction : MonoBehaviour
 
     private void Update()
     {
+        currentVelocity = body.velocity.magnitude;
         if (broken && spriteRenderer.sprite != brokenSprite)
             spriteRenderer.sprite = brokenSprite;
         if (!broken && spriteRenderer.sprite != restoredSprite)
@@ -32,7 +34,8 @@ public class TingInteraction : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (body.velocity.magnitude >= breakSpeed)
+        print(currentVelocity);
+        if (currentVelocity >= breakSpeed)
         {
             broken = true;
         }

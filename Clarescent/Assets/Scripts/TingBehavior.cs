@@ -14,6 +14,7 @@ public class TingBehavior : MonoBehaviour
     [Header("Don't touch me Victor D:")]
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private List<TingInteraction> interactors;
+    [SerializeField] private TextMesh text;
     void Start()
     {
         currentColor = levitationColor;
@@ -21,6 +22,9 @@ public class TingBehavior : MonoBehaviour
 
     void Update()
     {
+        
+        
+        
         if (inputHandler.rightStick.x_axis != 0f || inputHandler.rightStick.y_axis != 0f)
             transform.position += new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;
         if (inputHandler.rightTriggerDigital.enter)
@@ -32,12 +36,15 @@ public class TingBehavior : MonoBehaviour
             {
                 case Ability.illumination:
                     currentColor = illuminationColor;
+                    text.text = "Illumination";
                     break;
                 case Ability.levitation:
                     currentColor = levitationColor;
+                    text.text = "Levitation";
                     break;                     
                 case Ability.negentropy:       
                     currentColor = negentropyColor;
+                    text.text = "Negentropy";
                     break;
             }
         }
@@ -77,26 +84,5 @@ public class TingBehavior : MonoBehaviour
         if (other.GetComponent<TingInteraction>() == null) return;
         interactors.Remove(other.GetComponent<TingInteraction>());
     }
-    /*void OnTriggerStay2D(Collider2D other)
-    {
-        //if (inputHandler.rightTriggerAnalog == -1f) return; This line caused issues, so we're doing it differently
-        TingInteraction interactor = other.GetComponent<TingInteraction>();
-        if (interactor == null) return;
-        switch (currentAbility)
-        {
-            case Ability.levitation:
-                if (interactor.canLevitate)
-                    interactor.body.velocity += Vector2.up * levitationStrength * Time.deltaTime * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f);
-                break;
-            case Ability.negentropy:
-                if (inputHandler.rightTriggerAnalog.axis > 0f)
-                    interactor.broken = false; 
-                break;
-            case Ability.illumination:
-                if (inputHandler.rightTriggerAnalog.axis > 0f && interactor.canBeScared)
-                    interactor.body.velocity += new Vector2(other.transform.position.x - transform.position.x, 0).normalized * interactor.scareSpeed * inputHandler.rightTriggerAnalog.axis * Time.deltaTime;
-                break;
-        }
-        return;
-    }*/
+    
 }
