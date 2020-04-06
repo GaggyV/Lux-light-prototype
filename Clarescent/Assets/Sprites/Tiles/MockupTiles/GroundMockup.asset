@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: bottomLeftCorner
+  m_Name: GroundMockup
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 21300000, guid: 867cebb2a0688c84d96d7f3f87e46519, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6e0347cd77c4f604198c63872f98249d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
