@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TingBehavior : MonoBehaviour
 {
-    [SerializeField] private InputHandler inputHandler;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float levitationStrength;
     [SerializeField] private Color levitationColor, negentropyColor, illuminationColor, shineDifference;
@@ -12,6 +11,10 @@ public class TingBehavior : MonoBehaviour
     public enum Ability { levitation, negentropy, illumination, goBack }
     [SerializeField] Ability currentAbility;
 
+    [Header("Don't touch me Victor D:")]
+    [SerializeField] private InputHandler inputHandler;
+    [SerializeField] private List<TingInteraction> interactors;
+    [SerializeField] private TextMesh text;
     void Start()
     {
         currentColor = levitationColor;
@@ -19,6 +22,9 @@ public class TingBehavior : MonoBehaviour
 
     void Update()
     {
+        
+        
+        
         if (inputHandler.rightStick.x_axis != 0f || inputHandler.rightStick.y_axis != 0f)
             transform.position += new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;
         if (inputHandler.rightTriggerDigital.enter)
@@ -30,12 +36,15 @@ public class TingBehavior : MonoBehaviour
             {
                 case Ability.illumination:
                     currentColor = illuminationColor;
+                    text.text = "Illumination";
                     break;
                 case Ability.levitation:
                     currentColor = levitationColor;
+                    text.text = "Levitation";
                     break;                     
                 case Ability.negentropy:       
                     currentColor = negentropyColor;
+                    text.text = "Negentropy";
                     break;
             }
         }
@@ -43,31 +52,37 @@ public class TingBehavior : MonoBehaviour
             GetComponent<SpriteRenderer>().color = currentColor;
         else
             GetComponent<SpriteRenderer>().color = currentColor - shineDifference;
-    }
-
-    void OnTriggerStay2D(Collider2D other)
-    {
-
-        print(inputHandler.rightTriggerAnalog.axis);
-
-        print("1");
-        TingInteraction interactor = other.GetComponent<TingInteraction>();
-        if (interactor == null) return;
-        switch (currentAbility)
+        foreach (var interactor in interactors)
         {
-            case Ability.levitation:
-                if (interactor.canLevitate)
-                    interactor.body.velocity += Vector2.up * levitationStrength * Time.deltaTime * inputHandler.rightTriggerAnalog.axis;
-                return;
-            case Ability.negentropy:
-                print("2");
-                interactor.broken = false;
-                return;
-            case Ability.illumination:
-                if (interactor.canBeScared)
-                    other.transform.position += (other.transform.position - transform.position).normalized;
-                return;
+            switch (currentAbility)
+            {
+                case Ability.levitation:
+                    if (interactor.canLevitate)
+                        interactor.body.velocity += Vector2.up * levitationStrength * Time.deltaTime * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f);
+                    break;
+                case Ability.negentropy:
+                    if (inputHandler.rightTriggerAnalog.axis > 0f)
+                        interactor.broken = false;
+                    break;
+                case Ability.illumination:
+                    if (inputHandler.rightTriggerAnalog.axis > 0f && interactor.canBeScared)
+                        interactor.body.velocity += new Vector2(interactor.transform.position.x - transform.position.x, 0).normalized * interactor.scareSpeed * inputHandler.rightTriggerAnalog.axis * Time.deltaTime;
+                    break;
+            }
         }
-
     }
+
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.GetComponent<TingInteraction>() == null) return;
+        interactors.Add(other.GetComponent<TingInteraction>());
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.GetComponent<TingInteraction>() == null) return;
+        interactors.Remove(other.GetComponent<TingInteraction>());
+    }
+    
 }
