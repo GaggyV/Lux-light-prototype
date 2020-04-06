@@ -4,12 +4,50 @@ using UnityEngine;
 
 public class TingBehavior : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
     [SerializeField] private InputHandler inputHandler;
-    
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float levitationStrength;
+    [SerializeField] private Color levitationColor, negentropyColor, illuminationColor, shineDifference;
+    private Color currentColor;
+    public enum Ability { levitation, negentropy, illumination, goBack }
+    [SerializeField] Ability currentAbility;
+
+    void Start()
+    {
+        currentColor = levitationColor;
+    }
+
     void Update()
     {
-        transform.position += new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;
+        if (inputHandler.rightStick.x_axis != 0f || inputHandler.rightStick.y_axis != 0f)
+            transform.position += new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;
+        if (inputHandler.rightTriggerDigital.enter)
+        {
+            currentAbility++;
+            if (currentAbility == Ability.goBack)
+                currentAbility = 0;
+            switch (currentAbility)
+            {
+                case Ability.illumination:
+                    currentColor = illuminationColor;
+                    break;
+                case Ability.levitation:
+                    currentColor = levitationColor;
+                    break;                     
+                case Ability.negentropy:       
+                    currentColor = negentropyColor;
+                    break;
+            }
+        }
+        if (inputHandler.rightTriggerAnalog.axis != -1f)
+            GetComponent<SpriteRenderer>().color = currentColor;
+        else
+            GetComponent<SpriteRenderer>().color = currentColor - shineDifference;
     }
-   
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.GetComponent<AffectedByLevitation>() != null)
+            other.GetComponent<Rigidbody2D>().velocity += Vector2.up * levitationStrength;
+    }
 }

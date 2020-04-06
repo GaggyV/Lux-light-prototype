@@ -43,3 +43,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3475604261
+    locked: 0
+  - name: Clara
+    uniqueID: 2614155899
+    locked: 0
+  - name: Tiles
+    uniqueID: 3839475623
+    locked: 0
