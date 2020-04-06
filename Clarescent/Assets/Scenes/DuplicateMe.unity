@@ -159,7 +159,7 @@ MonoBehaviour:
   body: {fileID: 0}
   broken: 0
   scared: 0
-  scareSpeed: 1
+  scareSpeed: 10
 --- !u!212 &66221755
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -661,7 +661,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d257e14d1bb5bd4ba17149901427969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputHandler: {fileID: 1890244094}
   moveSpeed: 5
   levitationStrength: 15
   levitationColor: {r: 0.59607846, g: 0.81960785, b: 0.8745098, a: 1}
@@ -669,6 +668,8 @@ MonoBehaviour:
   illuminationColor: {r: 0.96862745, g: 0.8235294, b: 0.5764706, a: 1}
   shineDifference: {r: 0.3137255, g: 0.3137255, b: 0.3137255, a: 0}
   currentAbility: 0
+  inputHandler: {fileID: 1890244094}
+  interactors: []
 --- !u!212 &1547294711
 SpriteRenderer:
   m_ObjectHideFlags: 0

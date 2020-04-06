@@ -45,7 +45,24 @@ public class TingBehavior : MonoBehaviour
             GetComponent<SpriteRenderer>().color = currentColor;
         else
             GetComponent<SpriteRenderer>().color = currentColor - shineDifference;
-        if (Input.GetKeyDown(KeyCode.Space)) print(interactors);
+        foreach (var interactor in interactors)
+        {
+            switch (currentAbility)
+            {
+                case Ability.levitation:
+                    if (interactor.canLevitate)
+                        interactor.body.velocity += Vector2.up * levitationStrength * Time.deltaTime * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f);
+                    break;
+                case Ability.negentropy:
+                    if (inputHandler.rightTriggerAnalog.axis > 0f)
+                        interactor.broken = false;
+                    break;
+                case Ability.illumination:
+                    if (inputHandler.rightTriggerAnalog.axis > 0f && interactor.canBeScared)
+                        interactor.body.velocity += new Vector2(interactor.transform.position.x - transform.position.x, 0).normalized * interactor.scareSpeed * inputHandler.rightTriggerAnalog.axis * Time.deltaTime;
+                    break;
+            }
+        }
     }
 
 
