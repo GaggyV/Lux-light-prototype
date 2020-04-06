@@ -49,7 +49,6 @@ public class TingBehavior : MonoBehaviour
     {
 
         print(inputHandler.rightTriggerAnalog.axis);
-        if (inputHandler.rightTriggerAnalog.axis == -1f) return;
 
         print("1");
         TingInteraction interactor = other.GetComponent<TingInteraction>();
@@ -69,7 +68,6 @@ public class TingBehavior : MonoBehaviour
                     other.transform.position += (other.transform.position - transform.position).normalized;
                 return;
         }
-
 
     }
 }

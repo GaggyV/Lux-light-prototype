@@ -153,6 +153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4638daf487940f345b7f4dbb499c7545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canLevitate: 1
+  canBreak: 1
+  canBeScared: 1
+  body: {fileID: 0}
+  broken: 0
+  scared: 0
 --- !u!212 &66221755
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -656,7 +662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputHandler: {fileID: 1890244094}
   moveSpeed: 5
-  levitationStrength: 3
+  levitationStrength: 15
   levitationColor: {r: 0.59607846, g: 0.81960785, b: 0.8745098, a: 1}
   negentropyColor: {r: 0.9607843, g: 0.63529414, b: 0.85490197, a: 1}
   illuminationColor: {r: 0.96862745, g: 0.8235294, b: 0.5764706, a: 1}
