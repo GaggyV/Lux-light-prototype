@@ -6,6 +6,7 @@ public class TingBehavior : MonoBehaviour
 {
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float levitationStrength;
     [SerializeField] private Color levitationColor, negentropyColor, illuminationColor, shineDifference;
     private Color currentColor;
     public enum Ability { levitation, negentropy, illumination, goBack }
@@ -44,5 +45,9 @@ public class TingBehavior : MonoBehaviour
             GetComponent<SpriteRenderer>().color = currentColor - shineDifference;
     }
 
-
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.GetComponent<AffectedByLevitation>() != null)
+            other.GetComponent<Rigidbody2D>().velocity += Vector2.up * levitationStrength;
+    }
 }
