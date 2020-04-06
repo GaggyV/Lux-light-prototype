@@ -159,6 +159,7 @@ MonoBehaviour:
   body: {fileID: 0}
   broken: 0
   scared: 0
+  scareSpeed: 1
 --- !u!212 &66221755
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class TingInteraction : MonoBehaviour
     public Rigidbody2D body;
     public bool broken;
     public bool scared;
+    public float scareSpeed;
 
     private void Start()
     {

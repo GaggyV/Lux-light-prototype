@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TingBehavior : MonoBehaviour
 {
-    [SerializeField] private InputHandler inputHandler;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float levitationStrength;
     [SerializeField] private Color levitationColor, negentropyColor, illuminationColor, shineDifference;
@@ -12,6 +11,9 @@ public class TingBehavior : MonoBehaviour
     public enum Ability { levitation, negentropy, illumination, goBack }
     [SerializeField] Ability currentAbility;
 
+    [Header("Don't touch me Victor D:")]
+    [SerializeField] private InputHandler inputHandler;
+    [SerializeField] private List<TingInteraction> interactors;
     void Start()
     {
         currentColor = levitationColor;
@@ -43,31 +45,41 @@ public class TingBehavior : MonoBehaviour
             GetComponent<SpriteRenderer>().color = currentColor;
         else
             GetComponent<SpriteRenderer>().color = currentColor - shineDifference;
+        if (Input.GetKeyDown(KeyCode.Space)) print(interactors);
     }
 
-    void OnTriggerStay2D(Collider2D other)
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.GetComponent<TingInteraction>() == null) return;
+        interactors.Add(other.GetComponent<TingInteraction>());
+    }
 
-        print(inputHandler.rightTriggerAnalog.axis);
-
-        print("1");
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.GetComponent<TingInteraction>() == null) return;
+        interactors.Remove(other.GetComponent<TingInteraction>());
+    }
+    /*void OnTriggerStay2D(Collider2D other)
+    {
+        //if (inputHandler.rightTriggerAnalog == -1f) return; This line caused issues, so we're doing it differently
         TingInteraction interactor = other.GetComponent<TingInteraction>();
         if (interactor == null) return;
         switch (currentAbility)
         {
             case Ability.levitation:
                 if (interactor.canLevitate)
-                    interactor.body.velocity += Vector2.up * levitationStrength * Time.deltaTime * inputHandler.rightTriggerAnalog.axis;
-                return;
+                    interactor.body.velocity += Vector2.up * levitationStrength * Time.deltaTime * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f);
+                break;
             case Ability.negentropy:
-                print("2");
-                interactor.broken = false;
-                return;
+                if (inputHandler.rightTriggerAnalog.axis > 0f)
+                    interactor.broken = false; 
+                break;
             case Ability.illumination:
-                if (interactor.canBeScared)
-                    other.transform.position += (other.transform.position - transform.position).normalized;
-                return;
+                if (inputHandler.rightTriggerAnalog.axis > 0f && interactor.canBeScared)
+                    interactor.body.velocity += new Vector2(other.transform.position.x - transform.position.x, 0).normalized * interactor.scareSpeed * inputHandler.rightTriggerAnalog.axis * Time.deltaTime;
+                break;
         }
-
-    }
+        return;
+    }*/
 }
