@@ -45,9 +45,29 @@ public class TingBehavior : MonoBehaviour
             GetComponent<SpriteRenderer>().color = currentColor - shineDifference;
     }
 
-    private void OnTriggerStay(Collider other)
+    void OnTriggerStay2D(Collider2D other)
     {
-        if (other.GetComponent<AffectedByLevitation>() != null)
-            other.GetComponent<Rigidbody2D>().velocity += Vector2.up * levitationStrength;
+
+        print(inputHandler.rightTriggerAnalog.axis);
+
+        print("1");
+        TingInteraction interactor = other.GetComponent<TingInteraction>();
+        if (interactor == null) return;
+        switch (currentAbility)
+        {
+            case Ability.levitation:
+                if (interactor.canLevitate)
+                    interactor.body.velocity += Vector2.up * levitationStrength * Time.deltaTime * inputHandler.rightTriggerAnalog.axis;
+                return;
+            case Ability.negentropy:
+                print("2");
+                interactor.broken = false;
+                return;
+            case Ability.illumination:
+                if (interactor.canBeScared)
+                    other.transform.position += (other.transform.position - transform.position).normalized;
+                return;
+        }
+
     }
 }
