@@ -20,7 +20,7 @@ public struct AnalogTwoDimensionalInput
     public float y_axis;
 }
 
-public enum Controller { Keyboard, Controller }
+public enum Controller { Keyboard, Controller, Unique }
 public class InputHandler : MonoBehaviour
 {
     [SerializeField] Controller currentController;
@@ -57,6 +57,8 @@ public class InputHandler : MonoBehaviour
                 rightTriggerDigital.enter = Input.GetKeyDown(KeyCode.RightControl);
                 rightTriggerDigital.held = Input.GetKey(KeyCode.RightControl);
                 rightTriggerDigital.exit = Input.GetKeyUp(KeyCode.RightControl);
+                break;
+            case Controller.Controller:
                 break;
             default:
                 break;

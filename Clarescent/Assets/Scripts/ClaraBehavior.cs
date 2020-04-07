@@ -10,6 +10,9 @@ public class ClaraBehavior : MonoBehaviour
     [SerializeField] private InputHandler inputHandler;
     private bool onGround;
     private Rigidbody2D rb;
+    [SerializeField] private float currentVelocity;
+    [SerializeField] private float deathSpeed;
+    private bool dead;
 
     void Start()
     {
@@ -18,6 +21,7 @@ public class ClaraBehavior : MonoBehaviour
 
     void Update()
     {
+        if (dead) return;
         if (inputHandler.leftStick.x_axis != 0f || inputHandler.leftStick.y_axis != 0f)
             rb.velocity += new Vector2(inputHandler.leftStick.x_axis * movementSpeed * Time.deltaTime, 0f);
         if (rb.velocity.x > speedCap) rb.velocity = new Vector2(speedCap, rb.velocity.y);
@@ -29,6 +33,8 @@ public class ClaraBehavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (currentVelocity >= deathSpeed)
+            dead = true;
         if (collision.collider.CompareTag("Ground"))
             onGround = true;
     }
