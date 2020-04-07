@@ -46,6 +46,9 @@ TagManager:
   - name: Background
     uniqueID: 3475604261
     locked: 0
+  - name: Enemies
+    uniqueID: 3121296163
+    locked: 0
   - name: Clara
     uniqueID: 2614155899
     locked: 0
