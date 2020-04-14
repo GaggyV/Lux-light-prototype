@@ -720,8 +720,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ab517efadfd5a4c83f58ae99ab34f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAcceleration: 0
-  maximumHorizontalSpeed: 0
+  horizontalAcceleration: 10
+  maximumHorizontalSpeed: 1
   horizontalFriction: 0
   drag: 0
   minInputForJump: 0

@@ -4667,7 +4667,7 @@ MonoBehaviour:
   maxInputForJump: 5
   maxJumpHeight: 5
   currentVelocity: 5
-  deathSpeed: 10
+  deathSpeed: 100
   inputHandler: {fileID: 1890244094}
 --- !u!212 &1871170447
 SpriteRenderer:
