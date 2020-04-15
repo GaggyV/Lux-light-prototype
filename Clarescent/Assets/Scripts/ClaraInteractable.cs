@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class ClaraInteractable : MonoBehaviour
 {
+    public Rigidbody2D body;
 
-    void Start()
+    private void Start()
     {
-        
+        body = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
-    {
-        
-    }
 }

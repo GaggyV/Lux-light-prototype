@@ -34,7 +34,6 @@ public class TingInteraction : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print(currentVelocity);
         if (currentVelocity >= breakSpeed)
         {
             broken = true;
