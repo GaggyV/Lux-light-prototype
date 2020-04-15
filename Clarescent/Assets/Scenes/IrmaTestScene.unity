@@ -4643,8 +4643,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ab517efadfd5a4c83f58ae99ab34f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAcceleration: 6
-  maximumHorizontalSpeed: 3
+  horizontalAcceleration: 10
+  maximumHorizontalSpeed: 10
   horizontalFriction: 0
   drag: 0
   minInputForJump: 5
@@ -4652,7 +4652,7 @@ MonoBehaviour:
   maxInputForJump: 5
   maxJumpHeight: 5
   currentVelocity: 5
-  deathSpeed: 10
+  deathSpeed: 100
   inputHandler: {fileID: 1890244094}
 --- !u!212 &1871170447
 SpriteRenderer:

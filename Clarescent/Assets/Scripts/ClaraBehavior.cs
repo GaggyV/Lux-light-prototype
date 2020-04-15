@@ -30,7 +30,7 @@ public class ClaraBehavior : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         //rb.sharedMaterial.friction = horizontalFriction;
-        rb.drag = drag;
+        //rb.drag = drag;
         minJumpSqrt = Mathf.Sqrt(minJumpHeight);
         maxJumpSqrt = Mathf.Sqrt(maxJumpHeight);
         gravityCoEf = Mathf.Sqrt(Physics2D.gravity.magnitude) * Mathf.Sqrt(2f);
@@ -38,10 +38,13 @@ public class ClaraBehavior : MonoBehaviour
     void Update()
     {
         if (dead) return;
-        if (inputHandler.leftStick.x_axis != 0f || inputHandler.leftStick.y_axis != 0f)
+        if (inputHandler.leftStick.x_axis != 0f)
+        {
             rb.velocity += new Vector2(inputHandler.leftStick.x_axis * horizontalAcceleration * Time.deltaTime, 0f);
+        }
         if (rb.velocity.x > maximumHorizontalSpeed) rb.velocity = new Vector2(maximumHorizontalSpeed, rb.velocity.y);
         if (rb.velocity.x < -maximumHorizontalSpeed) rb.velocity = new Vector2(-maximumHorizontalSpeed, rb.velocity.y);
+
 
         if (inputHandler.leftTriggerAnalog.axis >= maxInputForJump && onGround)
         {
