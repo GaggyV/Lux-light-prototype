@@ -37,7 +37,7 @@ public class ScaredEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if  (collision.gameObject)
+        if  (collision.gameObject.name == "Clara")
         {
             Destroy(enemy);
             animator.SetBool("isdead", true);
