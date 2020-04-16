@@ -5,12 +5,10 @@ using UnityEngine;
 public class ScaredEnemy : MonoBehaviour
 {
     Vector2 direction;
-    Vector2 run;
     [SerializeField] float detectionRange;
     [SerializeField] float speed;
-    public GameObject enemy;
     public GameObject clara;
-    public Animator animator;
+    //public Animator animator;
     Rigidbody2D rb;
 
 
@@ -19,19 +17,18 @@ public class ScaredEnemy : MonoBehaviour
     {
         //clara = GameObject.FindGameObjectWithTag("Clara");
         rb = GetComponent<Rigidbody2D>();
-        run = transform.position; 
     }
 
     // Update is called once per frame
     void Update()
     {
-        detectionRange = ((clara.transform.position) - (transform.position)).magnitude;
-        direction = ((transform.position) - (enemy.transform.position)).normalized * speed;
+        detectionRange = (clara.transform.position - transform.position).magnitude;
+        direction = (transform.position - clara.transform.position).normalized * speed;
 
-        if (detectionRange > 20)
+        if (detectionRange < 3)
         {
-            enemy.GetComponent<Rigidbody2D>().velocity = (new Vector2(direction.x , direction.y));
-            animator.SetFloat("speed", Mathf.Abs(speed)); 
+            rb.velocity += new Vector2(direction.x, 0);
+            //animator.SetFloat("speed", Mathf.Abs(speed)); 
         }
     }
 
@@ -39,8 +36,8 @@ public class ScaredEnemy : MonoBehaviour
     {
         if  (collision.gameObject.name == "Clara")
         {
-            Destroy(enemy);
-            animator.SetBool("isdead", true);
+            Destroy(this);
+            //animator.SetBool("isdead", true);
         }
     }
 }
