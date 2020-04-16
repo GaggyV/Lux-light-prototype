@@ -2210,6 +2210,7 @@ MonoBehaviour:
   currentVelocity: 0
   deathSpeed: 50
   inputHandler: {fileID: 1890244094}
+  GodMode: 0
 --- !u!212 &1871170447
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2337,7 +2338,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5a73d68766dc4af4ebde56cabaa2aa53, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -2358,9 +2359,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRange: 1.22
   speed: 1.6
-  enemy: {fileID: 2000458544}
   clara: {fileID: 1871170442}
-  animator: {fileID: 2000458545}
 --- !u!70 &2000458547
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2397,7 +2396,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &2000458549
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2456,7 +2455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000458544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: -2.497, z: -0.11}
+  m_LocalPosition: {x: -1, y: -2.37, z: -0.11}
   m_LocalScale: {x: 0.31659076, y: 0.22750889, z: 1.11456}
   m_Children: []
   m_Father: {fileID: 0}
