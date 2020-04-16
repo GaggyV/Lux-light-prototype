@@ -30,6 +30,7 @@ public class InputHandler : MonoBehaviour
     public AnalogOneDimensionalInput rightTriggerAnalog;
     public DigitalInput leftTriggerDigital;
     public DigitalInput rightTriggerDigital;
+    public DigitalInput Start;
         
     void Update()
     {
@@ -57,6 +58,8 @@ public class InputHandler : MonoBehaviour
                 rightTriggerDigital.enter = Input.GetKeyDown(KeyCode.RightControl);
                 rightTriggerDigital.held = Input.GetKey(KeyCode.RightControl);
                 rightTriggerDigital.exit = Input.GetKeyUp(KeyCode.RightControl);
+
+                
                 break;
             case Controller.Controller:
                 break;

@@ -25,10 +25,12 @@ public class ClaraBehavior : MonoBehaviour
     private bool dead;
     [Header("Super secret programming magic")]
     [SerializeField] private InputHandler inputHandler;
+    [SerializeField] private bool GodMode;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        //TODO
         //rb.sharedMaterial.friction = horizontalFriction;
         //rb.drag = drag;
         minJumpSqrt = Mathf.Sqrt(minJumpHeight);
