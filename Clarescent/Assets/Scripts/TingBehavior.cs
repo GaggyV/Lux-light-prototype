@@ -62,7 +62,10 @@ public class TingBehavior : MonoBehaviour
                     break;
                 case Ability.negentropy:
                     if (inputHandler.rightTriggerAnalog.axis > 0f)
+                    {
                         interactor.broken = false;
+                        //interactor.GetComponent<BoxCollider2D>().isTrigger = false;
+                    }
                     break;
                 case Ability.illumination:
                     if (inputHandler.rightTriggerAnalog.axis > 0f && interactor.canBeScared)

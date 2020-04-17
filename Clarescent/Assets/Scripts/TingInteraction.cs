@@ -37,6 +37,7 @@ public class TingInteraction : MonoBehaviour
         if (currentVelocity >= breakSpeed)
         {
             broken = true;
+            //GetComponent<BoxCollider2D>().isTrigger = true;
         }
     }
 
