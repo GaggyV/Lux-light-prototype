@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-/*Boar breaks boxes when charging into them, and then stops charging (becomes dazed)
-Boar will patrol when not charging*/
 
 public class BoarEnemy : MonoBehaviour
 {
@@ -12,10 +10,10 @@ public class BoarEnemy : MonoBehaviour
     [SerializeField] float detectionRange;
     [SerializeField] float patrollingSpeed;
     [SerializeField] float waitForSeconds;
-    //public GameObject crushedBox;
+
     public GameObject boar;
     public GameObject clara;
-    //public GameObject box1;
+
     Vector2 direction;
     Rigidbody2D rb;
     bool FaceRight;
@@ -24,8 +22,6 @@ public class BoarEnemy : MonoBehaviour
     public Sprite RedExclamationAlert;
     public Sprite Charge;
     public Sprite Dizzy;
-    public Sprite brokenSprite;
-    bool spriteChange = false;
 
     // Start is called before the first frame update
     void Start()
@@ -42,26 +38,20 @@ public class BoarEnemy : MonoBehaviour
         if (detectionRange < 2)
         {
             StartCoroutine(myRoutine());
-
-            //StopCoroutine(myRoutine());
-
         }
-
 
         else
         {
-            boar.gameObject.GetComponent<SpriteRenderer>().sprite = normalWalking;
-            if (IsFaceRight())
-            {
-                rb.velocity = new Vector2(patrollingSpeed, rb.velocity.y);
-            }
-            else
-            {
-                rb.velocity = new Vector2(-patrollingSpeed, rb.velocity.y);
-            }
+            StartCoroutine(patrolling());
         }
-    }
 
+        if(patrollingSpeed == 0)
+        {
+            Destroy(GameObject.Find("Crate"));
+            StartCoroutine(dizziness());
+        }
+        
+    }
 
     IEnumerator myRoutine()
     {
@@ -72,34 +62,49 @@ public class BoarEnemy : MonoBehaviour
         boar.gameObject.GetComponent<SpriteRenderer>().sprite = Charge;
 
         rb.velocity -= new Vector2(-direction.x, 0);
-
-        //yield return new WaitForSeconds(1/2);
-        //rb.velocity = new Vector2(0, 0);
     }
 
+    IEnumerator patrolling()
+    {
+        boar.gameObject.GetComponent<SpriteRenderer>().sprite = normalWalking;
+        if (IsFaceRight())
+        {
+            rb.velocity = new Vector2(patrollingSpeed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(-patrollingSpeed, rb.velocity.y);
+        }
+        yield return null;
+    }
 
     bool IsFaceRight()
     {
         return transform.localScale.x > 0;
     }
 
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         transform.localScale *= new Vector2(-1f, 1f);
     }
+
+
+    IEnumerator dizziness()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = Dizzy;
+        rb.velocity = new Vector2(0, 0);
+        yield return new WaitForSeconds(2);
+        transform.position = new Vector2(0, -20);
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Crate"))
         {
             collision.gameObject.GetComponent<TingInteraction>().broken = true;
+            patrollingSpeed = 0;
             //collision.collider.isTrigger = true;
-            if (gameObject.GetComponent<SpriteRenderer>().sprite = brokenSprite)
-            {
-                boar.gameObject.GetComponent<SpriteRenderer>().sprite = Dizzy;
-            }
-                
         }
     }
 

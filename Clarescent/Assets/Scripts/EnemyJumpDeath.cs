@@ -8,12 +8,11 @@ public class EnemyJumpDeath : ScaredEnemy
     {
         if (other.gameObject.Equals(clara))
         {
-            Debug.Log("nani box");
             enemy.gameObject.GetComponent<SpriteRenderer>().sprite = Dead;
-            enemy.transform.position = new Vector2(0, -200).normalized;
-            this.GetComponent<BoxCollider>().enabled = false;
-            Destroy(enemy.GetComponent<Rigidbody2D>());
-            Destroy(this.gameObject);
+            //enemy.transform.position = new Vector2(0, -200).normalized;
+            // this.GetComponent<BoxCollider>().enabled = false;
+            //Destroy(enemy.GetComponent<Rigidbody2D>());
+            // Destroy(this.gameObject);
         }
     }
 
