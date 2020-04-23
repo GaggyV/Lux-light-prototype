@@ -2,33 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Timer
+/*public class Timer
 {
     private bool timedelay;
 
     void Start(float WaitforSec)
-    {
+    {   
         WaitforSec = Time.deltaTime;
     }
     bool IsDone()
     {
         return timedelay;
     }
-}
+}*/
 
 public class BoarEnemy : MonoBehaviour
 {
-    public enum BoarState
-    {
-        Idle,
-        Charging,
-        patrolling,
-        Dead
-    }
     [SerializeField] float boarSpeed;
     [SerializeField] float detectionRange;
     [SerializeField] float patrollingSpeed;
-    [SerializeField] float waitForSeconds;
+
 
     public GameObject boar;
     public GameObject clara;
@@ -42,9 +35,17 @@ public class BoarEnemy : MonoBehaviour
     public Sprite Charge;
     public Sprite Dizzy;
 
+
+    public enum BoarState
+    {
+        Idle,
+        Charging,
+        patrolling,
+        Dead
+    }
+
     BoarState currentState = BoarState.Idle;
-
-
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +53,24 @@ public class BoarEnemy : MonoBehaviour
     }
 
     // Update is called once per frame
+    void Update()
+    {
+        direction = (transform.position + clara.transform.position).normalized * boarSpeed;
+
+        // Finite State Machines (FSM)
+        switch (currentState)
+        {
+            case BoarState.Idle: IdleState(); break;
+            
+            case BoarState.Charging: ChargingState(); break;
+
+            //case BoarState.patrolling: PatrollingState(); break;
+
+            default: break;
+          
+        }
+
+    }
     void IdleState()
     {
         detectionRange = (clara.transform.position - transform.position).magnitude;
@@ -59,15 +78,22 @@ public class BoarEnemy : MonoBehaviour
         {
             currentState = BoarState.Charging;
         }
+       else
+        {
+            currentState = BoarState.patrolling;
+        }
     }
 
     void ChargingState()
     {
-        boar.gameObject.GetComponent<SpriteRenderer>().sprite = RedExclamationAlert;
-        Invoke("p", 1.0f);
-        //(waitForSeconds);
-        boar.gameObject.GetComponent<SpriteRenderer>().sprite = Charge;
-        rb.velocity -= new Vector2(-direction.x, 0);
+            boar.gameObject.GetComponent<SpriteRenderer>().sprite = RedExclamationAlert;
+            Invoke("Charges", 1.0f);
+    }
+
+    void Charges()
+    {
+            boar.gameObject.GetComponent<SpriteRenderer>().sprite = Charge;
+            rb.velocity -= new Vector2(-direction.x, 0);
     }
 
     void PatrollingState()
@@ -95,24 +121,6 @@ public class BoarEnemy : MonoBehaviour
         transform.position = new Vector2(0, -20);
     }
 
-    void Update()
-    {
-        direction = (transform.position + clara.transform.position).normalized * boarSpeed;
-
-        // Finite State Machines (FSM)
-        switch (currentState)
-        {
-            case BoarState.Idle: IdleState(); break;
-            
-            case BoarState.Charging: ChargingState(); break;
-
-            case BoarState.patrolling: PatrollingState(); break;
-
-            default: break;
-          
-        }
-
-    }
 
     bool IsFaceRight()
     {
