@@ -15,6 +15,7 @@ public class TingBehavior : MonoBehaviour
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private List<TingInteraction> interactors;
     [SerializeField] private TextMesh text;
+
     void Start()
     {
         currentColor = levitationColor;
@@ -25,8 +26,8 @@ public class TingBehavior : MonoBehaviour
         
         
         
-        if (inputHandler.rightStick.x_axis != 0f || inputHandler.rightStick.y_axis != 0f)
-            transform.position += new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;
+        /*if (inputHandler.rightStick.x_axis != 0f || inputHandler.rightStick.y_axis != 0f)
+            transform.position += new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;*/
         if (inputHandler.rightTriggerDigital.enter)
         {
             currentAbility++;
