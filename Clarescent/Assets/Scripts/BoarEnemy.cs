@@ -2,10 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class Timer
+{
+    private bool timedelay;
 
+    void Start(float WaitforSec)
+    {
+        WaitforSec = Time.deltaTime;
+    }
+    bool IsDone()
+    {
+        return timedelay;
+    }
+}
 
 public class BoarEnemy : MonoBehaviour
 {
+    public enum BoarState
+    {
+        Idle,
+        Charging,
+        patrolling,
+        Dead
+    }
     [SerializeField] float boarSpeed;
     [SerializeField] float detectionRange;
     [SerializeField] float patrollingSpeed;
@@ -23,6 +42,9 @@ public class BoarEnemy : MonoBehaviour
     public Sprite Charge;
     public Sprite Dizzy;
 
+    BoarState currentState = BoarState.Idle;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,41 +52,25 @@ public class BoarEnemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void IdleState()
     {
         detectionRange = (clara.transform.position - transform.position).magnitude;
-        direction = (transform.position + clara.transform.position).normalized * boarSpeed;
-
         if (detectionRange < 2)
         {
-            StartCoroutine(myRoutine());
+            currentState = BoarState.Charging;
         }
-
-        else
-        {
-            StartCoroutine(patrolling());
-        }
-
-        if(patrollingSpeed == 0)
-        {
-            Destroy(GameObject.Find("Crate"));
-            StartCoroutine(dizziness());
-        }
-        
     }
 
-    IEnumerator myRoutine()
+    void ChargingState()
     {
         boar.gameObject.GetComponent<SpriteRenderer>().sprite = RedExclamationAlert;
-
-        yield return new WaitForSeconds(waitForSeconds);
-
+        Invoke("p", 1.0f);
+        //(waitForSeconds);
         boar.gameObject.GetComponent<SpriteRenderer>().sprite = Charge;
-
         rb.velocity -= new Vector2(-direction.x, 0);
     }
 
-    IEnumerator patrolling()
+    void PatrollingState()
     {
         boar.gameObject.GetComponent<SpriteRenderer>().sprite = normalWalking;
         if (IsFaceRight())
@@ -75,7 +81,37 @@ public class BoarEnemy : MonoBehaviour
         {
             rb.velocity = new Vector2(-patrollingSpeed, rb.velocity.y);
         }
-        yield return null;
+    }
+
+
+    void DizzyState()
+    {
+        //(patrollingSpeed == 0)
+        Destroy(GameObject.Find("Crate"));
+        //sphere cast
+        gameObject.GetComponent<SpriteRenderer>().sprite = Dizzy;
+        rb.velocity = new Vector2(0, 0);
+        //yield return new WaitForSeconds(2);
+        transform.position = new Vector2(0, -20);
+    }
+
+    void Update()
+    {
+        direction = (transform.position + clara.transform.position).normalized * boarSpeed;
+
+        // Finite State Machines (FSM)
+        switch (currentState)
+        {
+            case BoarState.Idle: IdleState(); break;
+            
+            case BoarState.Charging: ChargingState(); break;
+
+            case BoarState.patrolling: PatrollingState(); break;
+
+            default: break;
+          
+        }
+
     }
 
     bool IsFaceRight()
@@ -86,15 +122,6 @@ public class BoarEnemy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         transform.localScale *= new Vector2(-1f, 1f);
-    }
-
-
-    IEnumerator dizziness()
-    {
-        gameObject.GetComponent<SpriteRenderer>().sprite = Dizzy;
-        rb.velocity = new Vector2(0, 0);
-        yield return new WaitForSeconds(2);
-        transform.position = new Vector2(0, -20);
     }
 
 
