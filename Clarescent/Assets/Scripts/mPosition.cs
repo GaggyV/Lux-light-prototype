@@ -22,4 +22,14 @@ public class mPosition : MonoBehaviour
         direction = (mPositiion - transform.position).normalized;
         rb.velocity = new Vector2(direction.x * movespeed, direction.y * movespeed);
     }
+
+    /*private void OnMouseOver()
+    {
+        if (this.gameObject == CompareTag("Ground"))
+        {
+            movespeed = 0;
+        }
+    }*/
+
+
 }

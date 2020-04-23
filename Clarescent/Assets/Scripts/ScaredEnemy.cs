@@ -16,7 +16,6 @@ public class ScaredEnemy : MonoBehaviour
     public Vector2 yoRB;
     public Vector3 scale;
 
-
     bool sheAboveya;
     //public Animator animator;
     Rigidbody2D rb;
@@ -43,7 +42,11 @@ public class ScaredEnemy : MonoBehaviour
         {
             enemy.gameObject.GetComponent<SpriteRenderer>().sprite = Sleeping;
         }
+       
+            
     }
+
+   
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -60,10 +63,22 @@ public class ScaredEnemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Clara")
         {
-            enemy.gameObject.GetComponent<SpriteRenderer>().sprite = Dead;
-            Destroy(gameObject);
-           //transform.position = new Vector2(0, -200).normalized;
+            transform.position = new Vector2(0, -10).normalized;
+            IsDead();
+            Invoke("Death", 1f);
+            
         }
     }
+
+    bool IsDead()
+    {
+        return enemy.gameObject.GetComponent<SpriteRenderer>().sprite = Dead;
+    }
+
+    void Death()
+    {
+        Destroy(gameObject);
+    }
+       
 }
   
