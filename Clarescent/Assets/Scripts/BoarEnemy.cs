@@ -100,7 +100,7 @@ public class BoarEnemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Crate"))
+        if (collision.gameObject.CompareTag("Ground"))
         {
             collision.gameObject.GetComponent<TingInteraction>().broken = true;
             patrollingSpeed = 0;
