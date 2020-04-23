@@ -50,11 +50,12 @@ public class InputHandler : MonoBehaviour
                 leftTriggerAnalog.axis = Input.GetKey(KeyCode.LeftShift) ? 1f : -1f;
 
                 rightTriggerAnalog.axis = Input.GetKey(KeyCode.Mouse0  /*RightShift*/) ? 1f : -1f;
-                Cursor.visible = false;
+                Cursor.visible = false; /*remove later on*/
 
                 leftTriggerDigital.enter = Input.GetKeyDown(KeyCode.LeftControl);
                 leftTriggerDigital.held = Input.GetKey(KeyCode.LeftControl);
                 leftTriggerDigital.exit = Input.GetKeyUp(KeyCode.LeftControl);
+
 
                 rightTriggerDigital.enter = Input.GetKeyDown(KeyCode.RightControl);
                 rightTriggerDigital.held = Input.GetKey(KeyCode.RightControl);

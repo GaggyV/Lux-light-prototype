@@ -23,9 +23,6 @@ public class TingBehavior : MonoBehaviour
 
     void Update()
     {
-        
-        
-        
         /*if (inputHandler.rightStick.x_axis != 0f || inputHandler.rightStick.y_axis != 0f)
             transform.position += new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;*/
         if (inputHandler.rightTriggerDigital.enter)

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ParallaxScript : MonoBehaviour {
+public class ParallaxScript : MonoBehaviour
+{
 
     private float length, startpos;
     public GameObject cam;
