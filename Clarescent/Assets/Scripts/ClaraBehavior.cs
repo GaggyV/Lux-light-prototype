@@ -82,4 +82,6 @@ public class ClaraBehavior : MonoBehaviour
         if (collision.collider.CompareTag("Ground"))
             onGround = false;
     }
+
+
 }

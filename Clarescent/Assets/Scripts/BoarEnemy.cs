@@ -2,14 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class Timer
+{
+    private bool timedelay;
 
+    void Start(float WaitforSec)
+    {   
+        WaitforSec = Time.deltaTime;
+    }
+    bool IsDone()
+    {
+        return timedelay;
+    }
+}
 
 public class BoarEnemy : MonoBehaviour
 {
     [SerializeField] float boarSpeed;
     [SerializeField] float detectionRange;
     [SerializeField] float patrollingSpeed;
-    [SerializeField] float waitForSeconds;
+
 
     public GameObject boar;
     public GameObject clara;
@@ -23,6 +35,17 @@ public class BoarEnemy : MonoBehaviour
     public Sprite Charge;
     public Sprite Dizzy;
 
+
+    public enum BoarState
+    {
+        Idle,
+        Charging,
+        patrolling,
+        Dead
+    }
+
+    BoarState currentState = BoarState.Idle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,39 +55,63 @@ public class BoarEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        detectionRange = (clara.transform.position - transform.position).magnitude;
         direction = (transform.position + clara.transform.position).normalized * boarSpeed;
+        detectionRange = (clara.transform.position - transform.position).magnitude;
 
-        if (detectionRange < 2)
+        // Finite State Machines (FSM)
+        switch (currentState)
         {
-            StartCoroutine(myRoutine());
-        }
+            case BoarState.Idle: IdleState(); break;
 
-        else
-        {
-            StartCoroutine(patrolling());
-        }
+            case BoarState.Charging: ChargingState();
+                break;
 
-        if (patrollingSpeed == 0)
-        {
-            Destroy(GameObject.Find("Crate"));
-            StartCoroutine(dizziness());
+            case BoarState.Dead: DizzyState();
+                    gameObject.GetComponent<SpriteRenderer>().sprite = Dizzy;
+                break;
+
+            case BoarState.patrolling:
+                if (patrollingSpeed == 0)
+                {
+                    currentState = BoarState.Dead;
+                }
+                else
+                {
+                    PatrollingState();
+                }
+                break;
+
+
+            default: break;
+
         }
 
     }
-
-    IEnumerator myRoutine()
+    void IdleState()
     {
-        boar.gameObject.GetComponent<SpriteRenderer>().sprite = RedExclamationAlert;
-
-        yield return new WaitForSeconds(2);
-
-        boar.gameObject.GetComponent<SpriteRenderer>().sprite = Charge;
-
-        rb.velocity -= new Vector2( -direction.x, 0);
+        if (detectionRange < 2)
+            {
+                boar.gameObject.GetComponent<SpriteRenderer>().sprite = RedExclamationAlert;
+                currentState = BoarState.Charging;
+            }
+            else
+            {
+                currentState = BoarState.patrolling;
+            }
     }
 
-    IEnumerator patrolling()
+    void ChargingState()
+    {
+        Invoke("Charges", 1.0f);
+    }
+
+    void Charges()
+    {
+        boar.gameObject.GetComponent<SpriteRenderer>().sprite = Charge;
+        rb.velocity -= new Vector2(-direction.x, 0);
+    }
+
+    void PatrollingState()
     {
         boar.gameObject.GetComponent<SpriteRenderer>().sprite = normalWalking;
         if (IsFaceRight())
@@ -75,8 +122,16 @@ public class BoarEnemy : MonoBehaviour
         {
             rb.velocity = new Vector2(-patrollingSpeed, rb.velocity.y);
         }
-        yield return null;
     }
+
+
+    void DizzyState()
+    {
+        //sphere cast
+        rb.velocity = new Vector2(0, 0);
+        //transform.position = new Vector2(0, -20);
+    }
+
 
     bool IsFaceRight()
     {
@@ -89,18 +144,9 @@ public class BoarEnemy : MonoBehaviour
     }
 
 
-    IEnumerator dizziness()
-    {
-        gameObject.GetComponent<SpriteRenderer>().sprite = Dizzy;
-        rb.velocity = new Vector2(0, 0);
-        yield return new WaitForSeconds(2);
-        transform.position = new Vector2(0, -20);
-    }
-
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Crate"))
         {
             collision.gameObject.GetComponent<TingInteraction>().broken = true;
             patrollingSpeed = 0;
@@ -109,4 +155,5 @@ public class BoarEnemy : MonoBehaviour
     }
 
 }
+
 
