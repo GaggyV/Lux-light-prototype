@@ -16,7 +16,6 @@ public class ScaredEnemy : MonoBehaviour
     public Vector2 yoRB;
     public Vector3 scale;
 
-    bool sheAboveya;
     //public Animator animator;
     Rigidbody2D rb;
 
@@ -42,12 +41,15 @@ public class ScaredEnemy : MonoBehaviour
         {
             enemy.gameObject.GetComponent<SpriteRenderer>().sprite = Sleeping;
         }
-       
+        if (detectionRange <1)
+        {
+            rb.velocity = new Vector2(0, 0);
+        }
             
+
     }
 
    
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Ground")

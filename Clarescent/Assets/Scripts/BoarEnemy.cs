@@ -5,10 +5,11 @@ using UnityEngine;
 public class Timer
 {
     private bool timedelay;
+    float pauseTime = 1f;
 
     void Start(float WaitforSec)
-    {   
-        WaitforSec = Time.deltaTime;
+    {
+        WaitforSec = Time.deltaTime + pauseTime;
     }
     bool IsDone()
     {
