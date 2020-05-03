@@ -7,46 +7,39 @@ public class ScaredEnemy : MonoBehaviour
     Vector2 direction;
     [SerializeField] float detectionRange;
     [SerializeField] float speed;
-    //[SerializeField] float runAwayDistance;
     public GameObject clara;
-    public GameObject enemy;
-    public Sprite ScarednRunning;
-    public Sprite Sleeping;
-    public Sprite Dead;
-    public Vector2 yoRB;
+
     public Vector3 scale;
 
-    //public Animator animator;
     Rigidbody2D rb;
+    bool facingLeft = true;
 
-    Bounds collisionBounds = new Bounds();
 
     void Start()
     {
-        rb = enemy.GetComponent<Rigidbody2D>();
+        rb =GetComponent<Rigidbody2D>();
     }
     void Update()
     {
-        detectionRange = (clara.transform.position - transform.position).magnitude;
+        //detectionRange = (clara.transform.position - transform.position).magnitude;
         direction = (transform.position - clara.transform.position).normalized * speed;
-        yoRB = GetComponent<Rigidbody2D>().velocity;
 
-        if (detectionRange < 2)
+        if ((clara.transform.position - transform.position).magnitude < detectionRange)
         {
             rb.velocity += new Vector2(direction.x, 0);
-            enemy.gameObject.GetComponent<SpriteRenderer>().sprite = ScarednRunning;
-            //animator.SetFloat("speed", Mathf.Abs(speed)); 
+            if(facingLeft )
+            {
+            facingLeft = false;
+            transform.localScale *= new Vector2(-1f, 1f);
+            }
+
         }
+    
         else
-        {
-            enemy.gameObject.GetComponent<SpriteRenderer>().sprite = Sleeping;
-        }
-        if (detectionRange <1)
         {
             rb.velocity = new Vector2(0, 0);
         }
             
-
     }
 
    
@@ -65,16 +58,9 @@ public class ScaredEnemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Clara")
         {
-            transform.position = new Vector2(0, -10).normalized;
-            IsDead();
-            Invoke("Death", 1f);
+            Invoke("Death", 0.5f);
             
         }
-    }
-
-    bool IsDead()
-    {
-        return enemy.gameObject.GetComponent<SpriteRenderer>().sprite = Dead;
     }
 
     void Death()
