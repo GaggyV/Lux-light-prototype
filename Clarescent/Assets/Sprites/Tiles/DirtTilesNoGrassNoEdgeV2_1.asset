@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: DirtTilesNoGrassNoEdge_1
+  m_Name: DirtTilesNoGrassNoEdgeV2_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -8303289271891804592, guid: 8f51f2637d087ce4cbd7c3be4b89163b,
+  m_Sprite: {fileID: -5084066112807557175, guid: d5280ce0e17a60946b8f80bf27a29859,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:

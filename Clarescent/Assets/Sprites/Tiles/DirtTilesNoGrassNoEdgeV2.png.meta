@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 252a4221149405c4c96fe7f1e15a3c82
+guid: d5280ce0e17a60946b8f80bf27a29859
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8418626593133359505
-    second: DirtTilleEdgeNoGrass_0
+      213: -4497741801866677768
+    second: DirtTilesNoGrassNoEdgeV2_0
   - first:
-      213: 1489254586595283907
-    second: DirtTilleEdgeNoGrass_1
+      213: -5084066112807557175
+    second: DirtTilesNoGrassNoEdgeV2_1
   - first:
-      213: -5111480166650533227
-    second: DirtTilleEdgeNoGrass_2
+      213: 2016180557986720000
+    second: DirtTilesNoGrassNoEdgeV2_2
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -95,64 +95,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: DirtTilleEdgeNoGrass_0
+      name: DirtTilesNoGrassNoEdgeV2_0
       rect:
         serializedVersion: 2
-        x: 47
-        y: 42
-        width: 394
-        height: 394
+        x: 110
+        y: 44
+        width: 383
+        height: 423
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 191fe5c5848f4d470800000000000000
-      internalID: 8418626593133359505
+      spriteID: 8f1bf4849afc491c0800000000000000
+      internalID: -4497741801866677768
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DirtTilleEdgeNoGrass_1
+      name: DirtTilesNoGrassNoEdgeV2_1
       rect:
         serializedVersion: 2
-        x: 441
-        y: 42
+        x: 494
+        y: 44
         width: 394
-        height: 394
+        height: 424
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c31226f725eaa410800000000000000
-      internalID: 1489254586595283907
+      spriteID: 9c721839ec4c179b0800000000000000
+      internalID: -5084066112807557175
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: DirtTilleEdgeNoGrass_2
+      name: DirtTilesNoGrassNoEdgeV2_2
       rect:
         serializedVersion: 2
-        x: 835
-        y: 42
-        width: 394
-        height: 394
+        x: 889
+        y: 43
+        width: 390
+        height: 426
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59a2756cedf5019b0800000000000000
-      internalID: -5111480166650533227
+      spriteID: 009e8d90989eafb10800000000000000
+      internalID: 2016180557986720000
       vertices: []
       indices: 
       edges: []
