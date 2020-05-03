@@ -119,18 +119,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05ab517efadfd5a4c83f58ae99ab34f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalAcceleration: 10
-  maximumHorizontalSpeed: 1
-  horizontalFriction: 0
+  horizontalAcceleration: 14
+  maximumHorizontalSpeed: 2.2
+  horizontalFriction: 20.31
   drag: 0
   minInputForJump: 0
   minJumpHeight: 0
   maxInputForJump: 0
-  maxJumpHeight: 3
+  maxJumpHeight: 1.6
   currentVelocity: 0
   deathSpeed: 50
-  inputHandler: {fileID: 5232856906072941800}
-  feet: {fileID: 5232856907546813064}
+  inputHandler: {fileID: 0}
+  feet: {fileID: 0}
   GodMode: 0
 --- !u!212 &5232856905851894425
 SpriteRenderer:
