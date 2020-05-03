@@ -25,6 +25,7 @@ public class ClaraBehavior : MonoBehaviour
     private bool dead;
     [Header("Super secret programming magic")]
     [SerializeField] private InputHandler inputHandler;
+    [SerializeField] private Feet feet;
     [SerializeField] private bool GodMode;
     private bool onGroundLastFrame;
 
@@ -49,18 +50,17 @@ public class ClaraBehavior : MonoBehaviour
         if (rb.velocity.x < -maximumHorizontalSpeed) rb.velocity = new Vector2(-maximumHorizontalSpeed, rb.velocity.y);
 
 
-        if (inputHandler.leftTriggerAnalog.axis >= maxInputForJump && onGround && onGroundLastFrame)
+        if (inputHandler.leftTriggerAnalog.axis >= maxInputForJump && feet.onGround)
         {
             rb.velocity = new Vector2(rb.velocity.x, gravityCoEf * maxJumpSqrt);
-            onGround = false;
+            feet.onGround = false;
         }
-        else if (inputHandler.leftTriggerAnalog.axis >= minInputForJump && onGround && onGroundLastFrame)
+        else if (inputHandler.leftTriggerAnalog.axis >= minInputForJump && feet.onGround)
         {
             rb.velocity = new Vector2(rb.velocity.x, gravityCoEf * minJumpSqrt + gravityCoEf * ((maxJumpSqrt - minJumpSqrt) / maxJumpSqrt) * ((inputHandler.leftTriggerAnalog.axis - minInputForJump) / (maxInputForJump - minInputForJump)));
-            onGround = false;
+            feet.onGround = false;
         }
 
-        onGroundLastFrame = rb.velocity.y == 0f;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
