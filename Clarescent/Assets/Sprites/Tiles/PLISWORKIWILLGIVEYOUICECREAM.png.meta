@@ -1,0 +1,472 @@
+fileFormatVersion: 2
+guid: 3ff15d293d59e124c9c81eddcb546eba
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1095256662361821957
+    second: PLISWORKIWILLGIVEYOUICECREAM_0
+  - first:
+      213: 7608711798163769445
+    second: PLISWORKIWILLGIVEYOUICECREAM_1
+  - first:
+      213: 1871353372211411898
+    second: PLISWORKIWILLGIVEYOUICECREAM_2
+  - first:
+      213: -8399682859660038828
+    second: PLISWORKIWILLGIVEYOUICECREAM_3
+  - first:
+      213: -1929586393521224082
+    second: PLISWORKIWILLGIVEYOUICECREAM_4
+  - first:
+      213: 6995953853629320466
+    second: PLISWORKIWILLGIVEYOUICECREAM_5
+  - first:
+      213: 8654182603155199702
+    second: PLISWORKIWILLGIVEYOUICECREAM_6
+  - first:
+      213: -580839491335862407
+    second: PLISWORKIWILLGIVEYOUICECREAM_7
+  - first:
+      213: -6013848385651804874
+    second: PLISWORKIWILLGIVEYOUICECREAM_8
+  - first:
+      213: -7693035228608764052
+    second: PLISWORKIWILLGIVEYOUICECREAM_9
+  - first:
+      213: -400188441707146531
+    second: PLISWORKIWILLGIVEYOUICECREAM_10
+  - first:
+      213: -1434249984492461154
+    second: PLISWORKIWILLGIVEYOUICECREAM_11
+  - first:
+      213: 3456346645877425883
+    second: PLISWORKIWILLGIVEYOUICECREAM_12
+  - first:
+      213: -8647389170903077359
+    second: PLISWORKIWILLGIVEYOUICECREAM_13
+  - first:
+      213: -1817881741424277558
+    second: PLISWORKIWILLGIVEYOUICECREAM_14
+  - first:
+      213: 2356593675376958425
+    second: PLISWORKIWILLGIVEYOUICECREAM_15
+  - first:
+      213: -1141768006680476797
+    second: PLISWORKIWILLGIVEYOUICECREAM_16
+  - first:
+      213: 570638180594673263
+    second: PLISWORKIWILLGIVEYOUICECREAM_17
+  - first:
+      213: 5153024969726226354
+    second: PLISWORKIWILLGIVEYOUICECREAM_18
+  - first:
+      213: -1246454461190397718
+    second: PLISWORKIWILLGIVEYOUICECREAM_19
+  - first:
+      213: -5351342154893614001
+    second: PLISWORKIWILLGIVEYOUICECREAM_20
+  - first:
+      213: 5848061217007309947
+    second: PLISWORKIWILLGIVEYOUICECREAM_21
+  - first:
+      213: -8395905147748410464
+    second: PLISWORKIWILLGIVEYOUICECREAM_22
+  - first:
+      213: -6181523305375485907
+    second: PLISWORKIWILLGIVEYOUICECREAM_23
+  - first:
+      213: 8576995557426542564
+    second: PLISWORKIWILLGIVEYOUICECREAM_24
+  - first:
+      213: -864369513689161971
+    second: PLISWORKIWILLGIVEYOUICECREAM_25
+  - first:
+      213: -2282315526539385155
+    second: PLISWORKIWILLGIVEYOUICECREAM_26
+  - first:
+      213: -7232861501078514602
+    second: PLISWORKIWILLGIVEYOUICECREAM_27
+  - first:
+      213: 7823746280053869927
+    second: PLISWORKIWILLGIVEYOUICECREAM_28
+  - first:
+      213: -1867930344135216754
+    second: PLISWORKIWILLGIVEYOUICECREAM_29
+  - first:
+      213: -2637278003129910188
+    second: PLISWORKIWILLGIVEYOUICECREAM_30
+  - first:
+      213: 7589188337676068611
+    second: PLISWORKIWILLGIVEYOUICECREAM_31
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 400
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PLISWORKIWILLGIVEYOUICECREAM_0
+      rect:
+        serializedVersion: 2
+        x: 1485
+        y: 2547
+        width: 390
+        height: 469
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfc2b065edddcc0f0800000000000000
+      internalID: -1095256662361821957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLISWORKIWILLGIVEYOUICECREAM_1
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 2545
+        width: 393
+        height: 469
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56800e75113979960800000000000000
+      internalID: 7608711798163769445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLISWORKIWILLGIVEYOUICECREAM_2
+      rect:
+        serializedVersion: 2
+        x: 1875
+        y: 2545
+        width: 395
+        height: 469
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abbf3e72af168f910800000000000000
+      internalID: 1871353372211411898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLISWORKIWILLGIVEYOUICECREAM_3
+      rect:
+        serializedVersion: 2
+        x: 1097
+        y: 1978
+        width: 390
+        height: 469
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45da60c41f45e6b80800000000000000
+      internalID: -8399682859660038828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLISWORKIWILLGIVEYOUICECREAM_4
+      rect:
+        serializedVersion: 2
+        x: 2660
+        y: 1978
+        width: 388
+        height: 469
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e668db2066bb835e0800000000000000
+      internalID: -1929586393521224082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLISWORKIWILLGIVEYOUICECREAM_5
+      rect:
+        serializedVersion: 2
+        x: 2270
+        y: 1976
+        width: 390
+        height: 426
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21dc996b6fe961160800000000000000
+      internalID: 6995953853629320466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLISWORKIWILLGIVEYOUICECREAM_6
+      rect:
+        serializedVersion: 2
+        x: 1877
+        y: 1976
+        width: 399
+        height: 426
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d65e6ac935d91870800000000000000
+      internalID: 8654182603155199702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLISWORKIWILLGIVEYOUICECREAM_7
+      rect:
+        serializedVersion: 2
+        x: 1487
+        y: 1977
+        width: 400
+        height: 423
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 977486f5f8170f7f0800000000000000
+      internalID: -580839491335862407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLISWORKIWILLGIVEYOUICECREAM_8
+      rect:
+        serializedVersion: 2
+        x: 1877
+        y: 1383
+        width: 389
+        height: 469
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 635fa2881c48a8ca0800000000000000
+      internalID: -6013848385651804874
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLISWORKIWILLGIVEYOUICECREAM_9
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 1385
+        width: 541
+        height: 469
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6765321839dc3590800000000000000
+      internalID: -7693035228608764052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLISWORKIWILLGIVEYOUICECREAM_10
+      rect:
+        serializedVersion: 2
+        x: 2271
+        y: 1381
+        width: 540
+        height: 469
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd214d88bbe327af0800000000000000
+      internalID: -400188441707146531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLISWORKIWILLGIVEYOUICECREAM_11
+      rect:
+        serializedVersion: 2
+        x: 1697
+        y: 813
+        width: 392
+        height: 469
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e93a733fc35881ce0800000000000000
+      internalID: -1434249984492461154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLISWORKIWILLGIVEYOUICECREAM_12
+      rect:
+        serializedVersion: 2
+        x: 2089
+        y: 814
+        width: 392
+        height: 469
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd6032046f867ff20800000000000000
+      internalID: 3456346645877425883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
