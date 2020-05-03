@@ -21,13 +21,13 @@ public class BoarEnemy : MonoBehaviour
 {
     [SerializeField] float boarSpeed;
     [SerializeField] float detectionRange;
-    [SerializeField] float patrollingSpeed;
+    [SerializeField] float patrollingSpeed, chargingSpeed;
 
 
     public GameObject boar;
     public GameObject clara;
 
-    Vector2 direction;
+    float direction;
     Rigidbody2D rb;
     bool FaceRight;
 
@@ -39,13 +39,12 @@ public class BoarEnemy : MonoBehaviour
 
     public enum BoarState
     {
-        Idle,
         Charging,
         patrolling,
         Dead
     }
 
-    BoarState currentState = BoarState.Idle;
+    BoarState currentState = BoarState.patrolling;
 
     // Start is called before the first frame update
     void Start()
@@ -56,19 +55,23 @@ public class BoarEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        direction = (transform.position + clara.transform.position).normalized * boarSpeed;
-        detectionRange = (clara.transform.position - transform.position).magnitude;
+        //direction = (transform.position + clara.transform.position).normalized * boarSpeed;
+
+        //direction = clara.transform.position.x > transform.position.x ? Vector2.right : -Vector2.right;
+        //direction *= boarSpeed;
+
+        //detectionRange = (clara.transform.position - transform.position).magnitude;
 
         // Finite State Machines (FSM)
         switch (currentState)
         {
-            case BoarState.Idle: IdleState(); break;
-
-            case BoarState.Charging: ChargingState();
+            case BoarState.Charging:
+                ChargingState();
                 break;
 
-            case BoarState.Dead: DizzyState();
-                    gameObject.GetComponent<SpriteRenderer>().sprite = Dizzy;
+            case BoarState.Dead:
+                DizzyState();
+                gameObject.GetComponent<SpriteRenderer>().sprite = Dizzy;
                 break;
 
             case BoarState.patrolling:
@@ -81,24 +84,21 @@ public class BoarEnemy : MonoBehaviour
                     PatrollingState();
                 }
                 break;
-
-
-            default: break;
-
+            default:
+                break;
         }
-
     }
     void IdleState()
     {
         if (detectionRange < 2)
-            {
-                boar.gameObject.GetComponent<SpriteRenderer>().sprite = RedExclamationAlert;
-                currentState = BoarState.Charging;
-            }
-            else
-            {
-                currentState = BoarState.patrolling;
-            }
+        {
+            boar.gameObject.GetComponent<SpriteRenderer>().sprite = RedExclamationAlert;
+            currentState = BoarState.Charging;
+        }
+        else
+        {
+            currentState = BoarState.patrolling;
+        }
     }
 
     void ChargingState()
@@ -109,7 +109,7 @@ public class BoarEnemy : MonoBehaviour
     void Charges()
     {
         boar.gameObject.GetComponent<SpriteRenderer>().sprite = Charge;
-        rb.velocity -= new Vector2(-direction.x, 0);
+        rb.velocity -= new Vector2(-direction, 0);
     }
 
     void PatrollingState()
@@ -129,7 +129,7 @@ public class BoarEnemy : MonoBehaviour
     void DizzyState()
     {
         //sphere cast
-        rb.velocity = new Vector2(0, 0);
+        rb.velocity = Vector2.zero;
         //transform.position = new Vector2(0, -20);
     }
 
@@ -141,18 +141,22 @@ public class BoarEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        transform.localScale *= new Vector2(-1f, 1f);
     }
 
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+       
+
         if (collision.gameObject.CompareTag("Crate"))
         {
             collision.gameObject.GetComponent<TingInteraction>().broken = true;
             patrollingSpeed = 0;
             //collision.collider.isTrigger = true;
+            return;
         }
+        if(Mathf.Abs(collision.contacts[0].normal.x) > 0.9)
+            transform.localScale *= new Vector2(-1f, 1f);
     }
 
 }
