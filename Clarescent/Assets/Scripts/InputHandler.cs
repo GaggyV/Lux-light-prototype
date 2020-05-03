@@ -47,7 +47,7 @@ public class InputHandler : MonoBehaviour
                 rightStick.y_axis = Input.GetKey(KeyCode.UpArrow) ? 1f : 0f;
                 rightStick.y_axis = Input.GetKey(KeyCode.DownArrow) ? rightStick.y_axis - 1f : rightStick.y_axis;
 
-                leftTriggerAnalog.axis = Input.GetKey(KeyCode.LeftShift) ? 1f : -1f;
+                leftTriggerAnalog.axis = Input.GetKey(KeyCode.Space) ? 1f : -1f;
 
                 rightTriggerAnalog.axis = Input.GetKey(KeyCode.Mouse0  /*RightShift*/) ? 1f : -1f;
                 Cursor.visible = false; /*remove later on*/
