@@ -27,7 +27,6 @@ public class ClaraBehavior : MonoBehaviour
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private Feet feet;
     [SerializeField] private bool GodMode;
-    private bool onGroundLastFrame;
 
     void Start()
     {
