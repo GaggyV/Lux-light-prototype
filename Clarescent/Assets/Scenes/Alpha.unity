@@ -31942,6 +31942,7 @@ MonoBehaviour:
   boarSpeed: 1.17
   detectionRange: 2.02
   patrollingSpeed: 1.09
+  chargingSpeed: 0
   boar: {fileID: 1160499146}
   clara: {fileID: 1871170442}
   normalWalking: {fileID: 1234044909421100181, guid: f4c76dc34c6f37c4ebe698a97fe3cb52,
@@ -32588,7 +32589,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1871170442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.73, y: -2.98, z: 0}
+  m_LocalPosition: {x: -3.07, y: -0.94, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2001358493}
@@ -32634,6 +32635,7 @@ MonoBehaviour:
   currentVelocity: 0
   deathSpeed: 50
   inputHandler: {fileID: 1890244094}
+  feet: {fileID: 0}
   GodMode: 0
 --- !u!212 &1871170447
 SpriteRenderer:
@@ -32674,7 +32676,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 542542bcf37b494449b04beedc4422f1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4a62c001b76c65e4da4f407aea8288fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
