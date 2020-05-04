@@ -19,8 +19,11 @@ public class mPosition : MonoBehaviour
     void Update()
     {
         mPositiion = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        direction = (mPositiion - transform.position).normalized;
-        rb.velocity = new Vector2(direction.x * movespeed, direction.y * movespeed);
+
+        transform.position = Vector2.Lerp(transform.position, mPositiion, 7f * Time.deltaTime);
+
+        //direction = (mPositiion - transform.position).normalized;
+        //rb.velocity = new Vector2(direction.x * movespeed, direction.y * movespeed);
     }
 
     /*private void OnMouseOver()

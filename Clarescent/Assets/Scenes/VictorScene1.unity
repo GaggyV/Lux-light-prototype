@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2284,6 +2284,8 @@ MonoBehaviour:
   currentVelocity: 15.15
   deathSpeed: 24.95
   inputHandler: {fileID: 1890244094}
+  feet: {fileID: 0}
+  GodMode: 0
 --- !u!212 &1871170447
 SpriteRenderer:
   m_ObjectHideFlags: 0
