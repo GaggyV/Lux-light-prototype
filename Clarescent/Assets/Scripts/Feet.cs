@@ -6,9 +6,9 @@ public class Feet : MonoBehaviour
 {
     public bool onGround;
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!other.gameObject.CompareTag("Clara")) onGround = true;
+        if (!collision.gameObject.CompareTag("Clara")) onGround = true;
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
