@@ -48,6 +48,8 @@ public class ClaraBehavior : MonoBehaviour
         if (rb.velocity.x > maximumHorizontalSpeed) rb.velocity = new Vector2(maximumHorizontalSpeed, rb.velocity.y);
         if (rb.velocity.x < -maximumHorizontalSpeed) rb.velocity = new Vector2(-maximumHorizontalSpeed, rb.velocity.y);
 
+        if (rb.velocity.x > 0 && transform.localScale.x < 0 || rb.velocity.x < 0 && transform.localScale.x > 0)
+            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
 
         if (inputHandler.leftTriggerAnalog.axis >= maxInputForJump && feet.onGround)
         {
