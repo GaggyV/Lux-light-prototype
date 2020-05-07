@@ -25,7 +25,7 @@ public class ParallaxScript : MonoBehaviour
         float temp = (cam.transform.position.x * (1 - parallaxEffect));
         float dist = (cam.transform.position.x * parallaxEffect);
 
-      transform.position = new Vector3(startpos + dist, transform.position.y, transform.position.z);
+       transform.position = new Vector3(startpos + dist, transform.position.y, transform.position.z);
 
        //f (temp > startpos + length) startpos += length;
        //lse if (temp < startpos - length) startpos -= length;
