@@ -16,9 +16,13 @@ public class TingBehavior : MonoBehaviour
     [SerializeField] private List<TingInteraction> interactors;
     [SerializeField] private TextMesh text;
 
+    [SerializeField] private Sprite shiningSprite;
+    private Sprite notShiningSprite;
+
     void Start()
     {
         currentColor = levitationColor;
+        //notShiningSprite = 
     }
 
     void Update()
