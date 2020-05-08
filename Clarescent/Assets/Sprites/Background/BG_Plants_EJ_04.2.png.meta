@@ -1,16 +1,25 @@
 fileFormatVersion: 2
-guid: 40c981107e45e43448b36e6352489c6d
+guid: 9dff3a3e4feeba044be4ca2142f3c6c3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4509497136072746713
-    second: GrasstileswithedgesAndnotplatofmrs_0
+      213: -3555761538884418767
+    second: BG_Plants_EJ_04.2_0
   - first:
-      213: -3706056224261674650
-    second: GrasstileswithedgesAndnotplatofmrs_1
+      213: -1765395078943467029
+    second: BG_Plants_EJ_04.2_1
   - first:
-      213: -57456436144336111
-    second: GrasstileswithedgesAndnotplatofmrs_2
+      213: -8584899241633208401
+    second: BG_Plants_EJ_04.2_2
+  - first:
+      213: -4353068674191239503
+    second: BG_Plants_EJ_04.2_3
+  - first:
+      213: -596224616646880200
+    second: BG_Plants_EJ_04.2_4
+  - first:
+      213: -2446330403687784794
+    second: BG_Plants_EJ_04.2_5
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -54,7 +63,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 470
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -95,64 +104,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: GrasstileswithedgesAndnotplatofmrs_0
+      name: BG_Plants_EJ_04.2_0
       rect:
         serializedVersion: 2
-        x: 121
-        y: 89
-        width: 536
-        height: 480
+        x: 100
+        y: 711
+        width: 200
+        height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7291eb04f3c0b61c0800000000000000
-      internalID: -4509497136072746713
+      spriteID: 1334cc838b567aec0800000000000000
+      internalID: -3555761538884418767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GrasstileswithedgesAndnotplatofmrs_1
+      name: BG_Plants_EJ_04.2_1
       rect:
         serializedVersion: 2
-        x: 657
-        y: 93
-        width: 387
-        height: 480
+        x: 512
+        y: 717
+        width: 200
+        height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 669e143ef71719cc0800000000000000
-      internalID: -3706056224261674650
+      spriteID: be91a57778e0087e0800000000000000
+      internalID: -1765395078943467029
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: GrasstileswithedgesAndnotplatofmrs_2
+      name: BG_Plants_EJ_04.2_2
       rect:
         serializedVersion: 2
-        x: 1044
-        y: 87
-        width: 535
-        height: 480
+        x: 908
+        y: 711
+        width: 250
+        height: 250
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1139e8dfcafd33ff0800000000000000
-      internalID: -57456436144336111
+      spriteID: fa7aeeddf9f4cd880800000000000000
+      internalID: -8584899241633208401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_Plants_EJ_04.2_3
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 215
+        width: 236
+        height: 375
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b653f7ba1bc693c0800000000000000
+      internalID: -4353068674191239503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BG_Plants_EJ_04.2_4
+      rect:
+        serializedVersion: 2
+        x: 946
+        y: 319
+        width: 201
+        height: 339
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8345b6ebed8c9b7f0800000000000000
+      internalID: -596224616646880200
       vertices: []
       indices: 
       edges: []
