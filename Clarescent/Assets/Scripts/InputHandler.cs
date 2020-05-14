@@ -64,6 +64,11 @@ public class InputHandler : MonoBehaviour
                 
                 break;
             case Controller.Controller:
+
+                leftStick.x_axis = Input.GetAxis("Horizontal");
+
+                //leftStick.x_axis = Input.GetJoystickNames
+
                 break;
             default:
                 break;
