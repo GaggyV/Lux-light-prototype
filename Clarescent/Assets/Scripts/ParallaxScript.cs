@@ -59,7 +59,7 @@ public class ParallaxScript : MonoBehaviour
 
        transform.position = new Vector3(startpos + dist, transform.position.y, transform.position.z);
 
-        if(temp > startpos + length) startpos += length * 2;
-        else if (temp < startpos - length) startpos -= length * 2;
+        //if(temp > startpos + length) startpos += length * 2;
+        //else if (temp < startpos - length) startpos -= length * 2;
     }
 }
