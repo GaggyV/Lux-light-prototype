@@ -25,6 +25,7 @@ public class ClaraBehavior : MonoBehaviour
     private bool dead;
     [Header("Super secret programming magic")]
     [SerializeField] private InputHandler inputHandler;
+    [SerializeField] private SoundHandler soundHandler;
     [SerializeField] private Feet feet;
     [SerializeField] private bool GodMode;
     [SerializeField] Grid grid;
@@ -62,11 +63,13 @@ public class ClaraBehavior : MonoBehaviour
                 {
                     rb.velocity = new Vector2(rb.velocity.x, gravityCoEf * maxJumpSqrt);
                     feet.onGround = false;
+                    soundHandler.Jump();
                 }
                 else if (inputHandler.leftTriggerAnalog.axis >= minInputForJump && feet.onGround)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, gravityCoEf * minJumpSqrt + gravityCoEf * ((maxJumpSqrt - minJumpSqrt) / maxJumpSqrt) * ((inputHandler.leftTriggerAnalog.axis - minInputForJump) / (maxInputForJump - minInputForJump)));
                     feet.onGround = false;
+                    soundHandler.Jump();
                 }
                 if (inputHandler.leftTriggerDigital.enter && inputHandler.leftStick.x_axis == 0f)
                 {
@@ -89,6 +92,7 @@ public class ClaraBehavior : MonoBehaviour
                 }
                 break;
         }
+        soundHandler.walking = inputHandler.leftStick.x_axis != 0f && onGround;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
