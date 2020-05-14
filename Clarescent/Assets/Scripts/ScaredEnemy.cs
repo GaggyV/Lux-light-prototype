@@ -17,12 +17,13 @@ public class ScaredEnemy : MonoBehaviour
 
     void Start()
     {
-        rb =GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
         //detectionRange = (clara.transform.position - transform.position).magnitude;
-        direction = (transform.position - clara.transform.position).normalized * speed;
+        if (clara == null) return;
+            direction = (transform.position - clara.transform.position).normalized * speed;
 
         if ((clara.transform.position - transform.position).magnitude < detectionRange)
         {

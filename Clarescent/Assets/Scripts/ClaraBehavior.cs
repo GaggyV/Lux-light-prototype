@@ -63,7 +63,7 @@ public class ClaraBehavior : MonoBehaviour
                 {
                     rb.velocity = new Vector2(rb.velocity.x, gravityCoEf * maxJumpSqrt);
                     feet.onGround = false;
-                    soundHandler.Jump();
+                    //soundHandler.Jump();
                 }
                 else if (inputHandler.leftTriggerAnalog.axis >= minInputForJump && feet.onGround)
                 {
@@ -93,10 +93,10 @@ public class ClaraBehavior : MonoBehaviour
                 break;
         }
        //soundHandler.walking = inputHandler.leftStick.x_axis != 0f && onGround;
-                if(inputHandler.leftStick.x_axis != 0f && onGround)
-                {
-                    soundHandler.ClaraWalkSFX();
-                }
+                //if(inputHandler.leftStick.x_axis != 0f && onGround)
+                //{
+                //    soundHandler.ClaraWalkSFX();
+                //}
 
     }
 
