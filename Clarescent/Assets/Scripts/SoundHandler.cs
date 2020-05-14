@@ -9,6 +9,7 @@ public class SoundHandler : MonoBehaviour
     [SerializeField] SoundTrack SFXTrack0;
     [SerializeField] SoundTrack SFXTrack1;
     [SerializeField] SoundTrack LeviTrack;
+    [SerializeField] SoundTrack ClaraWalk;
 
     public bool walking;
     private bool walkingLagger;
@@ -56,5 +57,21 @@ public class SoundHandler : MonoBehaviour
              LeviTrack.Play();
         }
 
+    }
+
+    public void ClaraWalkSFX()
+    {
+        if (ClaraWalk.free)
+        {
+            //source.PlayOneShot(walkingClip, 0.5f);
+            ClaraWalk.Play();
+            Invoke("Fadeout", (1.2f));
+        }
+    }
+
+
+    public void Fadeout()
+    {
+        ClaraWalk.StopPlay();
     }
 }
