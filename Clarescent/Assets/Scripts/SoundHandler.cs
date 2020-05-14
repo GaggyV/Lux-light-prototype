@@ -8,6 +8,7 @@ public class SoundHandler : MonoBehaviour
     [SerializeField] SoundTrack walkingTrack;
     [SerializeField] SoundTrack SFXTrack0;
     [SerializeField] SoundTrack SFXTrack1;
+    [SerializeField] SoundTrack LeviTrack;
 
     public bool walking;
     private bool walkingLagger;
@@ -46,5 +47,12 @@ public class SoundHandler : MonoBehaviour
         {
             SFXTrack1.Play(jumpingClip);
         }
+    }
+
+    public void LevitateSFX()
+    {
+
+        LeviTrack.Play();
+
     }
 }

@@ -15,6 +15,7 @@ public class TingBehavior : MonoBehaviour
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private List<TingInteraction> interactors;
     [SerializeField] private TextMesh text;
+    [SerializeField] private SoundHandler soundHandler;
 
 
     void Start()
@@ -61,13 +62,19 @@ public class TingBehavior : MonoBehaviour
                     {
                         if(Input.GetKey(KeyCode.Mouse0))
                         {
+                            
                          if (interactor.IsFreeToMove() == true)
                          {
                              Vector2 direction = transform.position - interactor.transform.position;
                              direction.Normalize(); // value between 0-1
                              direction.x = 0;
                              interactor.body.velocity = direction  * levitationStrength /* 6* (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f)*/;
+                            if(direction.y != 0)
+                                {
+                                    soundHandler.LevitateSFX();
+                                }
                          }
+                        
 
                         }
 
