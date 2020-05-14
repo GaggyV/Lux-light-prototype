@@ -92,7 +92,12 @@ public class ClaraBehavior : MonoBehaviour
                 }
                 break;
         }
-        soundHandler.walking = inputHandler.leftStick.x_axis != 0f && onGround;
+       //soundHandler.walking = inputHandler.leftStick.x_axis != 0f && onGround;
+                if(inputHandler.leftStick.x_axis != 0f && onGround)
+                {
+                    soundHandler.ClaraWalkSFX();
+                }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

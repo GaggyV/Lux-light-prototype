@@ -34,12 +34,12 @@ public class ScaredEnemy : MonoBehaviour
             }
 
         }
-    
+
         else
         {
-            rb.velocity = new Vector2(0, 0);
+            rb.velocity = new Vector2(rb.velocity.x * 0.8f , rb.velocity.y);
         }
-            
+
     }
 
    
@@ -52,6 +52,7 @@ public class ScaredEnemy : MonoBehaviour
             scale.x *= -1;
             transform.localScale = scale;
         }
+    
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
