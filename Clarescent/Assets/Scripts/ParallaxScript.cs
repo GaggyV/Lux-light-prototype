@@ -4,30 +4,62 @@ using UnityEngine;
 
 public class ParallaxScript : MonoBehaviour
 {
-
+    [SerializeField] private float padding;
     private float length, startpos;
     private GameObject cam;
     public float parallaxEffect;
-    private GameObject player;
+    private Transform player;
+
+    private bool clone = false;
 
     private void Start()
     {
         cam = Camera.main.gameObject;
         startpos = transform.position.x;
-        length = GetComponent<SpriteRenderer>().bounds.size.x;
-        player = FindObjectOfType<ClaraBehavior>().gameObject;
+        player = FindObjectOfType<ClaraBehavior>().transform;
+
+        var sr = GetComponent<SpriteRenderer>();
+
+        {
+            List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
+            if (sr != null) spriteRenderers.Add(sr);
+            var childRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+            for(int i = 0; i < childRenderers.Length; i++)
+            {
+                spriteRenderers.Add(childRenderers[i]);
+            }
+            
+            if(spriteRenderers.Count < 1)
+            {
+                Debug.LogError("You've added a parallax to a thing which has no sprite renderer and has no children with sprite renderes, stupid.");
+                return;
+            }
+            float minx = 1000f, maxx = -1000f;
+            foreach(var sprite in spriteRenderers)
+            {
+                minx = Mathf.Min((sprite.transform.position.x - sprite.bounds.extents.x) - transform.position.x, minx);
+                maxx = Mathf.Max((sprite.transform.position.x + sprite.bounds.extents.x) - transform.position.x, maxx);
+            }
+            length = maxx - minx;
+            print(length);
+            length += padding;
+        }
+        if (clone) return;
+        var cloneObj = Instantiate(this, transform.position + Vector3.right * length, transform.rotation);
+        cloneObj.clone = true;
     }
 
     private void Update()
     {
-        transform.position = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
+        transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
 
         float temp = (cam.transform.position.x * (1 - parallaxEffect));
         float dist = (cam.transform.position.x * parallaxEffect);
 
-      transform.position = new Vector3(startpos + dist, transform.position.y, transform.position.z);
+       transform.position = new Vector3(startpos + dist, transform.position.y, transform.position.z);
 
-       //f (temp > startpos + length) startpos += length;
-       //lse if (temp < startpos - length) startpos -= length;
+        if(temp > startpos + length) startpos += length * 2;
+        else if (temp < startpos - length) startpos -= length * 2;
     }
 }

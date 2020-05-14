@@ -16,9 +16,11 @@ public class TingBehavior : MonoBehaviour
     [SerializeField] private List<TingInteraction> interactors;
     [SerializeField] private TextMesh text;
 
+
     void Start()
     {
         currentColor = levitationColor;
+        //notShiningSprite = 
     }
 
     void Update()
@@ -56,7 +58,20 @@ public class TingBehavior : MonoBehaviour
             {
                 case Ability.levitation:
                     if (interactor.canLevitate)
+                    {
+                       
+                        ////if clara is above thew interactor do not move it up
+                        //if(interactor.IsFreeToMove() == true)
+                        //{
+                        //    Vector2 direction = transform.position - interactor.transform.position;
+                        //    direction.Normalize(); // value between 0-1
+                        //    direction.x = 0;
+                        //    interactor.body.velocity = direction;
+                        //    //  interactor.body.transform.position = transform.position;
+                        //}
+
                         interactor.body.velocity += Vector2.up * levitationStrength * Time.deltaTime * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f);
+                    }
                     break;
                 case Ability.negentropy:
                     if (inputHandler.rightTriggerAnalog.axis > 0f)
@@ -76,13 +91,17 @@ public class TingBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<TingInteraction>() == null) return;
+        if (other.GetComponent<TingInteraction>() == null)
+            return;
+
         interactors.Add(other.GetComponent<TingInteraction>());
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.GetComponent<TingInteraction>() == null) return;
+        if (other.GetComponent<TingInteraction>() == null)
+            return;
+
         interactors.Remove(other.GetComponent<TingInteraction>());
     }
     
