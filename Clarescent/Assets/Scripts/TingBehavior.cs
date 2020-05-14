@@ -59,18 +59,19 @@ public class TingBehavior : MonoBehaviour
                 case Ability.levitation:
                     if (interactor.canLevitate)
                     {
-                       
-                        ////if clara is above thew interactor do not move it up
-                        //if(interactor.IsFreeToMove() == true)
-                        //{
-                        //    Vector2 direction = transform.position - interactor.transform.position;
-                        //    direction.Normalize(); // value between 0-1
-                        //    direction.x = 0;
-                        //    interactor.body.velocity = direction;
-                        //    //  interactor.body.transform.position = transform.position;
-                        //}
+                        if(Input.GetKey(KeyCode.Mouse0))
+                        {
+                         if (interactor.IsFreeToMove() == true)
+                         {
+                             Vector2 direction = transform.position - interactor.transform.position;
+                             direction.Normalize(); // value between 0-1
+                             direction.x = 0;
+                             interactor.body.velocity = direction  * levitationStrength /* 6* (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f)*/;
+                         }
 
-                        interactor.body.velocity += Vector2.up * levitationStrength * Time.deltaTime * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f);
+                        }
+
+                        //interactor.body.velocity += Vector2.up * levitationStrength * Time.deltaTime * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f);
                     }
                     break;
                 case Ability.negentropy:
