@@ -12,7 +12,7 @@ public class ScaredEnemy : MonoBehaviour
     public Vector3 scale;
 
     Rigidbody2D rb;
-    bool facingLeft = true;
+    bool facingLeft = false;
 
 
     void Start()
@@ -29,7 +29,7 @@ public class ScaredEnemy : MonoBehaviour
             rb.velocity += new Vector2(direction.x, 0);
             if(facingLeft )
             {
-            facingLeft = false;
+            facingLeft = true;
             transform.localScale *= new Vector2(-1f, 1f);
             }
 
