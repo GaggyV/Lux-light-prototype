@@ -51,8 +51,10 @@ public class SoundHandler : MonoBehaviour
 
     public void LevitateSFX()
     {
-
-        LeviTrack.Play();
+        if(LeviTrack.free)
+        {
+             LeviTrack.Play();
+        }
 
     }
 }
