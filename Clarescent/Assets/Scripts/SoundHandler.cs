@@ -69,7 +69,6 @@ public class SoundHandler : MonoBehaviour
         }
     }
 
-
     public void Fadeout()
     {
         ClaraWalk.StopPlay();

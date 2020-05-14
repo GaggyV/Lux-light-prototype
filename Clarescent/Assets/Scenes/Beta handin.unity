@@ -14568,7 +14568,7 @@ MonoBehaviour:
   LeviTrack: {fileID: 496788458}
   ClaraWalk: {fileID: 176705027}
   walking: 0
-  walkingClip: {fileID: 8300000, guid: cda00b7458ed1a546bd3df6cd35b016b, type: 3}
+  walkingClip: {fileID: 0}
   jumpingClip: {fileID: 8300000, guid: ceb29b872f450774d989cf47b62600ea, type: 3}
 --- !u!4 &363409439 stripped
 Transform:
@@ -17477,7 +17477,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cda00b7458ed1a546bd3df6cd35b016b, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
