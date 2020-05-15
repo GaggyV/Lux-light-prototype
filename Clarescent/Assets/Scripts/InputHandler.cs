@@ -41,7 +41,7 @@ public class InputHandler : MonoBehaviour
                 leftStick.x_axis = Input.GetKey(KeyCode.A) ? leftStick.x_axis - 1f : leftStick.x_axis;
                 leftStick.y_axis = Input.GetKey(KeyCode.W) ? 1f : 0f;
                 leftStick.y_axis = Input.GetKey(KeyCode.S) ? leftStick.y_axis - 1f : leftStick.y_axis;
-
+    
                 rightStick.x_axis = Input.GetKey(KeyCode.RightArrow) ? 1f : 0f;
                 rightStick.x_axis = Input.GetKey(KeyCode.LeftArrow) ? rightStick.x_axis - 1f : rightStick.x_axis;
                 rightStick.y_axis = Input.GetKey(KeyCode.UpArrow) ? 1f : 0f;
