@@ -13,7 +13,10 @@ public class Shrooms : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("fikidi fak");
+        if(collision.collider.CompareTag("Clara"))
+        {
+            Debug.Log("fikidi fak");
+        }
         var rb = collision.transform.GetComponentInChildren<Rigidbody2D>();
         if(rb != null)
         {
