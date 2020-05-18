@@ -32,6 +32,7 @@ public class ClaraBehavior : MonoBehaviour
     [SerializeField] Grid grid;
     private Vector3 interactorOffset;
     private Vector3 climbingDest;
+    private bool onGroundLagger;
     private enum State { Walking, Climbing, Jumping, Grabbing };
     private State currentState;
     void Start()
@@ -49,6 +50,9 @@ public class ClaraBehavior : MonoBehaviour
     {
 
         if (dead) return;
+        if (feet.onGround && !onGroundLagger && currentVelocity >= deathSpeed)
+            dead = true;
+        onGroundLagger = feet.onGround;
         switch (currentState)
         {
             case State.Walking:
@@ -124,6 +128,7 @@ public class ClaraBehavior : MonoBehaviour
 
                 break;
         }
+        currentVelocity = rb.velocity.magnitude;
         //soundHandler.walking = inputHandler.leftStick.x_axis != 0f && onGround;
                 if (inputHandler.leftStick.x_axis != 0f && onGround)
                 {
@@ -134,8 +139,7 @@ public class ClaraBehavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (currentVelocity >= deathSpeed)
-            dead = true;
+        
         if (collision.collider.CompareTag("Ground"))
             onGround = true;
     }
