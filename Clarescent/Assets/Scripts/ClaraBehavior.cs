@@ -113,7 +113,7 @@ public class ClaraBehavior : MonoBehaviour
 
                 hands.interactor.transform.position = hands.transform.position + interactorOffset;
 
-                if (inputHandler.grab.exit)
+                if (!inputHandler.grab.held)
                 {
                     hands.interactor.body.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
                     currentState = State.Walking;
