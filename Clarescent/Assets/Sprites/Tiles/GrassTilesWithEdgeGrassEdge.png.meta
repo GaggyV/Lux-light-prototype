@@ -126,8 +126,8 @@ TextureImporter:
       name: GrassTilesWithEdgeGrassEdge_1
       rect:
         serializedVersion: 2
-        x: 416
-        y: 42
+        x: 418
+        y: 40
         width: 394
         height: 446
       alignment: 0
@@ -151,19 +151,19 @@ TextureImporter:
       name: GrassTilesWithEdgeGrassEdge_2
       rect:
         serializedVersion: 2
-        x: 810
-        y: 41
-        width: 403
-        height: 446
+        x: 814
+        y: 53
+        width: 399
+        height: 420
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -197, y: -209}
-        - {x: -197, y: 223}
-        - {x: -197, y: 223}
-        - {x: 177, y: -209}
+      - - {x: -199.5, y: -197}
+        - {x: -199.5, y: 210}
+        - {x: -199.5, y: 210}
+        - {x: 192.5, y: -203}
       tessellationDetail: 0
       bones: []
       spriteID: d748684ee5b79ba30800000000000000
