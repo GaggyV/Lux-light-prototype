@@ -28,6 +28,7 @@ public class InputHandler : MonoBehaviour
     public AnalogTwoDimensionalInput rightStick;
     public AnalogOneDimensionalInput leftTriggerAnalog;
     public AnalogOneDimensionalInput rightTriggerAnalog;
+    public DigitalInput grab;
     public DigitalInput leftTriggerDigital;
     public DigitalInput rightTriggerDigital;
     public DigitalInput Start;
@@ -56,12 +57,14 @@ public class InputHandler : MonoBehaviour
                 leftTriggerDigital.held = Input.GetKey(KeyCode.LeftControl);
                 leftTriggerDigital.exit = Input.GetKeyUp(KeyCode.LeftControl);
 
-
                 rightTriggerDigital.enter = Input.GetKeyDown(KeyCode.RightControl);
                 rightTriggerDigital.held = Input.GetKey(KeyCode.RightControl);
                 rightTriggerDigital.exit = Input.GetKeyUp(KeyCode.RightControl);
 
-                
+                grab.enter = Input.GetKeyDown(KeyCode.LeftShift);
+                grab.held = Input.GetKey(KeyCode.LeftShift);
+                grab.exit = Input.GetKeyUp(KeyCode.LeftShift);
+
                 break;
             case Controller.Controller:
 
