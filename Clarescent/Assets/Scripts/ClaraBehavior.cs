@@ -82,9 +82,10 @@ public class ClaraBehavior : MonoBehaviour
                 {
                     if (AbleToClimb())
                     {
+                        rb.velocity = Vector2.zero;
                         currentState = State.Climbing;
                         climbingDest = new Vector3(Mathf.Floor(transform.position.x) + (transform.localScale.x > 0f ? 1.5f : -0.5f),
-                            Mathf.Floor(transform.position.y) + 2.5f) + Vector3.up * 0.2f;
+                            Mathf.Floor(transform.position.y) + 2.5f);
                         rb.isKinematic = true;
                     }
                 }
@@ -99,7 +100,7 @@ public class ClaraBehavior : MonoBehaviour
                 }
                 break;
             case State.Climbing:
-                if ((transform.position - climbingDest).magnitude > 0.1)
+                if ((transform.position - climbingDest).magnitude > 0.6f)
                     transform.position = Vector3.Lerp(transform.position, climbingDest, 0.1f);
                 else
                 {
@@ -140,8 +141,8 @@ public class ClaraBehavior : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
-        if (collision.collider.CompareTag("Ground"))
-            onGround = true;
+        //if (collision.collider.CompareTag("Ground"))
+        //    onGround = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -154,8 +155,8 @@ public class ClaraBehavior : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Ground"))
-            onGround = false;
+        //if (collision.collider.CompareTag("Ground"))
+        //    onGround = false;
     }
 
     private bool AbleToClimb()
