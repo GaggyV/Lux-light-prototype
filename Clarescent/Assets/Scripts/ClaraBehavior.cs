@@ -66,13 +66,13 @@ public class ClaraBehavior : MonoBehaviour
                 {
                     rb.velocity = new Vector2(rb.velocity.x, gravityCoEf * maxJumpSqrt);
                     feet.onGround = false;
-                    soundHandler.Jump();
+                    //soundHandler.Jump();
                 }
                 else if (inputHandler.leftTriggerAnalog.axis >= minInputForJump && feet.onGround)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, gravityCoEf * minJumpSqrt + gravityCoEf * ((maxJumpSqrt - minJumpSqrt) / maxJumpSqrt) * ((inputHandler.leftTriggerAnalog.axis - minInputForJump) / (maxInputForJump - minInputForJump)));
                     feet.onGround = false;
-                    soundHandler.Jump();
+                    //soundHandler.Jump();
                 }
                 if (inputHandler.leftTriggerDigital.enter && inputHandler.leftStick.x_axis == 0f)
                 {
@@ -104,6 +104,13 @@ public class ClaraBehavior : MonoBehaviour
                 }
                 break;
             case State.Grabbing:
+                if (hands.interactor == null)
+                    currentState = State.Walking;
+                if (!inputHandler.grab.held)
+                {
+                    hands.interactor.body.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+                    currentState = State.Walking;
+                }
                 if (inputHandler.leftStick.x_axis != 0f)
                 {
                     rb.velocity += new Vector2(inputHandler.leftStick.x_axis * horizontalAcceleration * Time.deltaTime, 0f);
@@ -111,19 +118,16 @@ public class ClaraBehavior : MonoBehaviour
                 if (rb.velocity.x > maximumHorizontalSpeed) rb.velocity = new Vector2(maximumHorizontalSpeed, rb.velocity.y);
                 if (rb.velocity.x < -maximumHorizontalSpeed) rb.velocity = new Vector2(-maximumHorizontalSpeed, rb.velocity.y);
 
-                hands.interactor.transform.position = hands.transform.position + interactorOffset;
+                if (hands.interactor != null)
+                    hands.interactor.body.velocity = new Vector2(rb.velocity.x, hands.interactor.body.velocity.y);
+               
 
-                if (inputHandler.grab.exit)
-                {
-                    hands.interactor.body.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
-                    currentState = State.Walking;
-                }
                 break;
         }
         //soundHandler.walking = inputHandler.leftStick.x_axis != 0f && onGround;
                 if (inputHandler.leftStick.x_axis != 0f && onGround)
                 {
-                    soundHandler.ClaraWalkSFX();
+                    //soundHandler.ClaraWalkSFX();
                 }
 
     }
