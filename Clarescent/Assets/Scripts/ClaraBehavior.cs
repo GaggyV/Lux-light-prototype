@@ -33,7 +33,7 @@ public class ClaraBehavior : MonoBehaviour
     private Vector3 interactorOffset;
     private Vector3 climbingDest;
     private bool onGroundLagger;
-    private enum State { Walking, Climbing, Jumping, Grabbing };
+    internal enum State { Walking, Climbing, Jumping, Grabbing };
     private State currentState;
     void Start()
     {
@@ -171,6 +171,11 @@ public class ClaraBehavior : MonoBehaviour
         hit = Physics2D.Raycast(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1) + Vector2.up * 2, Vector2.zero);
         if (hit) return false;
         return true;
+    }
+
+    internal State GetState()
+    {
+        return currentState;
     }
 
     private void OnDrawGizmos()
