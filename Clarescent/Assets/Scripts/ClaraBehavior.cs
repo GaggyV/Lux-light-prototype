@@ -104,6 +104,11 @@ public class ClaraBehavior : MonoBehaviour
                 }
                 break;
             case State.Grabbing:
+                if (!inputHandler.grab.held)
+                {
+                    hands.interactor.body.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+                    currentState = State.Walking;
+                }
                 if (inputHandler.leftStick.x_axis != 0f)
                 {
                     rb.velocity += new Vector2(inputHandler.leftStick.x_axis * horizontalAcceleration * Time.deltaTime, 0f);
@@ -111,13 +116,9 @@ public class ClaraBehavior : MonoBehaviour
                 if (rb.velocity.x > maximumHorizontalSpeed) rb.velocity = new Vector2(maximumHorizontalSpeed, rb.velocity.y);
                 if (rb.velocity.x < -maximumHorizontalSpeed) rb.velocity = new Vector2(-maximumHorizontalSpeed, rb.velocity.y);
 
-                hands.interactor.transform.position = hands.transform.position + interactorOffset;
+                hands.interactor.body.velocity = new Vector2(rb.velocity.x, hands.interactor.body.velocity.y);
+               
 
-                if (!inputHandler.grab.held)
-                {
-                    hands.interactor.body.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
-                    currentState = State.Walking;
-                }
                 break;
         }
         //soundHandler.walking = inputHandler.leftStick.x_axis != 0f && onGround;
