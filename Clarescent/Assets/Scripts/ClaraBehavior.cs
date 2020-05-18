@@ -128,6 +128,7 @@ public class ClaraBehavior : MonoBehaviour
 
                 break;
         }
+        currentVelocity = rb.velocity.magnitude;
         //soundHandler.walking = inputHandler.leftStick.x_axis != 0f && onGround;
                 if (inputHandler.leftStick.x_axis != 0f && onGround)
                 {
