@@ -27,10 +27,12 @@ public class ClaraBehavior : MonoBehaviour
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private SoundHandler soundHandler;
     [SerializeField] private Feet feet;
+    [SerializeField] private Hands hands;
     [SerializeField] private bool GodMode;
     [SerializeField] Grid grid;
+    private Vector3 interactorOffset;
     private Vector3 climbingDest;
-    private enum State { walking, climbing, jumping };
+    private enum State { Walking, Climbing, Jumping, Grabbing };
     private State currentState;
     void Start()
     {
@@ -49,7 +51,7 @@ public class ClaraBehavior : MonoBehaviour
         if (dead) return;
         switch (currentState)
         {
-            case State.walking:
+            case State.Walking:
                 if (inputHandler.leftStick.x_axis != 0f)
                 {
                     rb.velocity += new Vector2(inputHandler.leftStick.x_axis * horizontalAcceleration * Time.deltaTime, 0f);
@@ -76,20 +78,45 @@ public class ClaraBehavior : MonoBehaviour
                 {
                     if (AbleToClimb())
                     {
-                        currentState = State.climbing;
+                        currentState = State.Climbing;
                         climbingDest = new Vector3(Mathf.Floor(transform.position.x) + (transform.localScale.x > 0f ? 1.5f : -0.5f),
                             Mathf.Floor(transform.position.y) + 2.5f);
                         rb.isKinematic = true;
                     }
                 }
+                if (inputHandler.grab.enter)
+                {
+                    if (hands.interactor != null)
+                    {
+                        interactorOffset = hands.interactor.transform.position - hands.transform.position;
+                        hands.interactor.body.constraints = RigidbodyConstraints2D.FreezeRotation;
+                        currentState = State.Grabbing;
+                    }
+                }
                 break;
-            case State.climbing:
+            case State.Climbing:
                 if ((transform.position - climbingDest).sqrMagnitude > 0.1)
                     transform.position = Vector3.Lerp(transform.position, climbingDest, 0.1f);
                 else
                 {
                     rb.isKinematic = false;
-                    currentState = State.walking;
+                    currentState = State.Walking;
+                }
+                break;
+            case State.Grabbing:
+                if (inputHandler.leftStick.x_axis != 0f)
+                {
+                    rb.velocity += new Vector2(inputHandler.leftStick.x_axis * horizontalAcceleration * Time.deltaTime, 0f);
+                }
+                if (rb.velocity.x > maximumHorizontalSpeed) rb.velocity = new Vector2(maximumHorizontalSpeed, rb.velocity.y);
+                if (rb.velocity.x < -maximumHorizontalSpeed) rb.velocity = new Vector2(-maximumHorizontalSpeed, rb.velocity.y);
+
+                hands.interactor.transform.position = hands.transform.position + interactorOffset;
+
+                if (inputHandler.grab.exit)
+                {
+                    hands.interactor.body.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+                    currentState = State.Walking;
                 }
                 break;
         }
