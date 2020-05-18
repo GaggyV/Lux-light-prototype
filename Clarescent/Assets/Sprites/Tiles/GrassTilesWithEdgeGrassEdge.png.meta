@@ -154,16 +154,16 @@ TextureImporter:
         x: 814
         y: 53
         width: 399
-        height: 420
+        height: 410
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: -199.5, y: -197}
-        - {x: -199.5, y: 210}
-        - {x: -199.5, y: 210}
-        - {x: 192.5, y: -203}
+      - - {x: -195.5, y: -196}
+        - {x: -197.5, y: 201.5}
+        - {x: -197.5, y: 201.5}
+        - {x: 193.5, y: -196}
       tessellationDetail: 0
       bones: []
       spriteID: d748684ee5b79ba30800000000000000
