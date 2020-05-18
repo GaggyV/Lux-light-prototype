@@ -104,7 +104,7 @@ public class ClaraBehavior : MonoBehaviour
                 }
                 break;
             case State.Grabbing:
-                if (!inputHandler.grab.held)
+                if (!inputHandler.grab.held || hands.interactor == null)
                 {
                     hands.interactor.body.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
                     currentState = State.Walking;
