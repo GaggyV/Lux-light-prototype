@@ -33,7 +33,7 @@ public class ClaraBehavior : MonoBehaviour
     private Vector3 interactorOffset;
     private Vector3 climbingDest;
     private bool onGroundLagger;
-    private enum State { Walking, Climbing, Jumping, Grabbing };
+    internal enum State { Walking, Climbing, Jumping, Grabbing };
     private State currentState;
     void Start()
     {
@@ -82,6 +82,7 @@ public class ClaraBehavior : MonoBehaviour
                 {
                     if (AbleToClimb())
                     {
+                        rb.velocity = Vector2.zero;
                         currentState = State.Climbing;
                         climbingDest = new Vector3(Mathf.Floor(transform.position.x) + (transform.localScale.x > 0f ? 1.5f : -0.5f),
                             Mathf.Floor(transform.position.y) + 2.5f);
@@ -99,7 +100,7 @@ public class ClaraBehavior : MonoBehaviour
                 }
                 break;
             case State.Climbing:
-                if ((transform.position - climbingDest).sqrMagnitude > 0.1)
+                if ((transform.position - climbingDest).magnitude > 0.6f)
                     transform.position = Vector3.Lerp(transform.position, climbingDest, 0.1f);
                 else
                 {
@@ -140,8 +141,8 @@ public class ClaraBehavior : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
-        if (collision.collider.CompareTag("Ground"))
-            onGround = true;
+        //if (collision.collider.CompareTag("Ground"))
+        //    onGround = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -154,15 +155,14 @@ public class ClaraBehavior : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Ground"))
-            onGround = false;
+        //if (collision.collider.CompareTag("Ground"))
+        //    onGround = false;
     }
 
     private bool AbleToClimb()
     {
         Vector2 checkPos;
-        checkPos.x = Mathf.Floor(transform.position.x) + 0.5f;
-        checkPos.y = Mathf.Floor(transform.position.y) + 0.5f;
+        checkPos = new Vector2(transform.position.x, transform.position.y);
         RaycastHit2D hit = Physics2D.Raycast(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1), Vector2.zero);
         if (!hit) return false;
         hit = Physics2D.Raycast(checkPos + Vector2.up * 2, Vector2.zero);
@@ -174,12 +174,16 @@ public class ClaraBehavior : MonoBehaviour
         return true;
     }
 
+    internal State GetState()
+    {
+        return currentState;
+    }
+
     private void OnDrawGizmos()
     {
 
         Vector2 checkPos;
-        checkPos.x = Mathf.Floor(transform.position.x) + 0.5f;
-        checkPos.y = Mathf.Floor(transform.position.y) + 0.5f;
+        checkPos = new Vector2(transform.position.x, transform.position.y);
         Gizmos.color = Color.white;
 
         Gizmos.DrawCube(checkPos + Vector2.up * 2, Vector3.one / 10);

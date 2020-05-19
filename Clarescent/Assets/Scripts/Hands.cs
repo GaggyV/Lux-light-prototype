@@ -20,7 +20,7 @@ public class Hands : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(interactor != null)
+        if (other == interactor)
             interactor.body.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
         interactor = null;
     }
