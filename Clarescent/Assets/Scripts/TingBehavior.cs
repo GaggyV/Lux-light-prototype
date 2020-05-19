@@ -74,7 +74,7 @@ public class TingBehavior : MonoBehaviour
                              if (interactor.IsFreeToMove() == true)
                              {
                                  
-                                 interactor.body.velocity = Vector3.up * levitationStrength /* * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f)*/;
+                                 interactor.body.velocity += Vector3.up * levitationStrength /* * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f)*/;
                              }
                         }
 
