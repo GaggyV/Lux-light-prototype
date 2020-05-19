@@ -37,7 +37,7 @@ public class SoundHandler : MonoBehaviour
         //    walkingLagger = walking;
         //    source.clip = null;
         //    source.loop = false;
-        //}
+        int a = 5;
     }
 
     public void Jump()
