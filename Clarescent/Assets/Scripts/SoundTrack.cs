@@ -10,12 +10,16 @@ public class SoundTrack : MonoBehaviour
     private float timer;
     private float terminateTime;
     private bool timing;
+    private bool fadingOut;
+    private float volume;
     
     void Start()
     {
         source = GetComponent<AudioSource>();
         timing = false;
         timer = 0.0f;
+        volume = source.volume;
+        fadingOut = false;
     }
 
     void Update()
@@ -28,6 +32,18 @@ public class SoundTrack : MonoBehaviour
         {
             timing = false;
             StopLoop();
+        }
+
+        if (fadingOut)
+        {
+            if (source.volume > 0.1f)
+                source.volume *= 0.9f;
+            else
+            {
+                source.Stop();
+                source.volume = volume;
+                fadingOut = false;
+            }
         }
 
     }
@@ -60,6 +76,10 @@ public class SoundTrack : MonoBehaviour
     public void StopPlay()
     {
         source.Stop();
+    }
+    public void FadeOut()
+    {
+        fadingOut = true;
     }
 
     public void ChangeAudioClip(AudioClip clip)

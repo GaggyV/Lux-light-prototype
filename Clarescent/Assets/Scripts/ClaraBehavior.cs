@@ -70,13 +70,13 @@ public class ClaraBehavior : MonoBehaviour
                 {
                     rb.velocity = new Vector2(rb.velocity.x, gravityCoEf * maxJumpSqrt);
                     feet.onGround = false;
-                    //soundHandler.Jump();
+                    soundHandler.Jump();
                 }
                 else if (inputHandler.leftTriggerAnalog.axis >= minInputForJump && feet.onGround)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, gravityCoEf * minJumpSqrt + gravityCoEf * ((maxJumpSqrt - minJumpSqrt) / maxJumpSqrt) * ((inputHandler.leftTriggerAnalog.axis - minInputForJump) / (maxInputForJump - minInputForJump)));
                     feet.onGround = false;
-                    //soundHandler.Jump();
+                    soundHandler.Jump();
                 }
                 if (inputHandler.leftTriggerDigital.enter && inputHandler.leftStick.x_axis == 0f)
                 {
@@ -132,7 +132,7 @@ public class ClaraBehavior : MonoBehaviour
         //soundHandler.walking = inputHandler.leftStick.x_axis != 0f && onGround;
                 if (inputHandler.leftStick.x_axis != 0f && onGround)
                 {
-                    //soundHandler.ClaraWalkSFX();
+                    soundHandler.ClaraWalkSFX();
                 }
 
     }

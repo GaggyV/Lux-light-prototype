@@ -16,10 +16,12 @@ public class TingBehavior : MonoBehaviour
     [SerializeField] private List<TingInteraction> interactors;
     [SerializeField] private TextMesh text;
     [SerializeField] private SoundHandler soundHandler;
-
+    private bool levitating;
+    private bool levitateLagger;
 
     void Start()
     {
+        levitating = levitateLagger = false;
         currentColor = levitationColor;
         //notShiningSprite = 
     }
@@ -28,6 +30,12 @@ public class TingBehavior : MonoBehaviour
     {
         /*if (inputHandler.rightStick.x_axis != 0f || inputHandler.rightStick.y_axis != 0f)
             transform.position += new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;*/
+        if (levitating && !levitateLagger)
+            soundHandler.LevitateSFX();
+        else if (!levitating && levitateLagger)
+            soundHandler.LevitateSFXStop();
+        levitateLagger = levitating;
+        levitating = false;
         if (inputHandler.rightTriggerDigital.enter)
         {
             currentAbility++;
@@ -62,17 +70,13 @@ public class TingBehavior : MonoBehaviour
                     {
                         if(Input.GetKey(KeyCode.Mouse0))
                         {
-                            
+                            levitating = true;
                          if (interactor.IsFreeToMove() == true)
                          {
                              Vector2 direction = transform.position - interactor.transform.position;
                              direction.Normalize(); // value between 0-1
                              direction.x = 0;
                              interactor.body.velocity = direction  * levitationStrength /* * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f)*/;
-                                if(direction.y != 0)
-                                {
-                                    soundHandler.LevitateSFX();
-                                }
                          }
                         }
 

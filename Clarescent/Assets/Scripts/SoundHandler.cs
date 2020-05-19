@@ -9,11 +9,13 @@ public class SoundHandler : MonoBehaviour
     [SerializeField] SoundTrack SFXTrack0;
     [SerializeField] SoundTrack SFXTrack1;
     [SerializeField] SoundTrack LeviTrack;
+    [SerializeField] SoundTrack LeviLoop;
     [SerializeField] SoundTrack ClaraWalk;
+    [SerializeField] SoundTrack ClaraLanding;
+    
 
     public bool walking;
     private bool walkingLagger;
-    public AudioClip walkingClip;
     public AudioClip jumpingClip;
     //AudioSource source;
     void Start()
@@ -54,9 +56,20 @@ public class SoundHandler : MonoBehaviour
     {
         if(LeviTrack.free)
         {
-             LeviTrack.Play();
+            LeviTrack.Play();
         }
 
+        if (LeviLoop.free)
+        {
+            LeviLoop.Loop();
+            LeviLoop.Play();
+        }
+    }
+
+    public void LevitateSFXStop()
+    {
+        LeviLoop.StopLoop();
+        LeviLoop.FadeOut();
     }
 
     public void ClaraWalkSFX()
@@ -73,4 +86,11 @@ public class SoundHandler : MonoBehaviour
     {
         ClaraWalk.StopPlay();
     }
+
+
+    public void CLandingSFX()
+    {
+        ClaraLanding.Play();
+    }
+
 }

@@ -69,7 +69,8 @@ public class InputHandler : MonoBehaviour
             case Controller.Controller:
 
                 leftStick.x_axis = Input.GetAxis("Horizontal");
-
+                leftStick.y_axis = Input.GetAxis("Vertical");
+                //leftTriggerAnalog.axis = Input.GetButtonDown(joystick b;
                 //leftStick.x_axis = Input.GetJoystickNames
 
                 break;

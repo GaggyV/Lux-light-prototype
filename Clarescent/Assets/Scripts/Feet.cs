@@ -5,11 +5,13 @@ using UnityEngine;
 public class Feet : MonoBehaviour
 {
     public bool onGround;
-    
+    [SerializeField] private SoundHandler soundHandler;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //jumpSound.Play();
         if (!collision.gameObject.CompareTag("Clara")) onGround = true;
+        soundHandler.CLandingSFX();
+        
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
