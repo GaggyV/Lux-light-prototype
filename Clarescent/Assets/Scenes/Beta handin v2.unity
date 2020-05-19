@@ -36752,7 +36752,7 @@ PrefabInstance:
         type: 3}
       propertyPath: soundHandler
       value: 
-      objectReference: {fileID: 1894075386}
+      objectReference: {fileID: 0}
     - target: {fileID: 5232856905851894424, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: deathSpeed
@@ -37438,47 +37438,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1894075384 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5232856906108329355, guid: dbc345b1dc5fd064d8235fb1a6182054,
-    type: 3}
-  m_PrefabInstance: {fileID: 1813736542}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1894075385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5232856906108329352, guid: dbc345b1dc5fd064d8235fb1a6182054,
     type: 3}
   m_PrefabInstance: {fileID: 1813736542}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1894075386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894075384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fad010dc7ef64c40858ecafc742c9c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicTrack: {fileID: 0}
-  walkingTrack: {fileID: 0}
-  SFXTrack0: {fileID: 1058611859}
-  SFXTrack1: {fileID: 424858334}
-  LeviTrack: {fileID: 0}
-  LeviLoop: {fileID: 0}
-  ClaraWalk: {fileID: 0}
-  ClaraLanding: {fileID: 0}
-  walking: 0
-  jumpingClip: {fileID: 8300000, guid: ceb29b872f450774d989cf47b62600ea, type: 3}
 --- !u!114 &1894075387 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1894075386, guid: dbc345b1dc5fd064d8235fb1a6182054,
     type: 3}
   m_PrefabInstance: {fileID: 1813736542}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1894075384}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fad010dc7ef64c40858ecafc742c9c9, type: 3}
