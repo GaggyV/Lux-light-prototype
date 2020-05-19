@@ -71,10 +71,10 @@ public class TingBehavior : MonoBehaviour
                         if(Input.GetKey(KeyCode.Mouse0))
                         {
                             levitating = true;
-                             if (interactor.IsFreeToMove() == true)
+                             if (interactor.IsFreeToMove())
                              {
-                                 
-                                 interactor.body.velocity = Vector3.up * levitationStrength /* * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f)*/;
+
+                                interactor.body.velocity = Vector2.up * levitationStrength; /* * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f)*/;
                              }
                         }
 
