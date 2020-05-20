@@ -8,15 +8,27 @@ public class ParallaxScript : MonoBehaviour
     private float length, startpos;
     private GameObject cam;
     public float parallaxEffect;
-    private Transform player;
 
     private bool clone = false;
 
+    [SerializeField] private bool looping = true, fixedPosition;
+
+    private float xOffset = 0;
+
     private void Start()
     {
+
         cam = Camera.main.gameObject;
-        startpos = transform.position.x;
-        player = FindObjectOfType<ClaraBehavior>().transform;
+        if(fixedPosition)
+        {
+            //float temp = (cam.transform.position.x * (1 - parallaxEffect));
+            //float dist = (cam.transform.position.x * parallaxEffect);
+            startpos = transform.position.x;
+            xOffset = transform.position.x; //- cam.transform.position.x;
+            //float newX = player.position.x + xDist / (1.0f + parallaxEffect);
+            //transform.position = new Vector3(newX, transform.position.y, 0f);
+            //startpos = transform.position.x
+        }
 
         var sr = GetComponent<SpriteRenderer>();
 
@@ -45,21 +57,22 @@ public class ParallaxScript : MonoBehaviour
             print(length);
             length += padding;
         }
-        if (clone) return;
+        if (clone || !looping) return;
         var cloneObj = Instantiate(this, transform.position + Vector3.right * length, transform.rotation);
         cloneObj.clone = true;
     }
 
     private void Update()
     {
-        transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
+        //transform.position = new Vector3(cam.transform.position.x, transform.position.y, transform.position.z);
 
-        float temp = (cam.transform.position.x * (1 - parallaxEffect));
-        float dist = (cam.transform.position.x * parallaxEffect);
+        float temp = ((cam.transform.position.x) * (1 - parallaxEffect));
+        float dist = ((cam.transform.position.x - xOffset) * parallaxEffect);
 
-       transform.position = new Vector3(startpos + dist, transform.position.y, transform.position.z);
+        transform.position = new Vector3((startpos) + dist, transform.position.y, transform.position.z);
 
-        //if(temp > startpos + length) startpos += length * 2;
-        //else if (temp < startpos - length) startpos -= length * 2;
+        if (!looping) return;
+        if (temp > startpos + length) startpos += length * 2;
+        else if (temp < startpos - length) startpos -= length * 2;
     }
 }

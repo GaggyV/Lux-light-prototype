@@ -18,15 +18,21 @@ namespace Custom
 
         private void Update()
         {
-            Vector2 forceVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            transform.Translate(forceVector*Time.deltaTime*forceMultiplier);
+           // Vector2 forceVector = new Vector2(Input.GetAxis("LeftStickHorizontal"), Input.GetAxis("LeftStickHorizontal"));
+           // transform.Translate(forceVector*Time.deltaTime*forceMultiplier);
+            if (Input.GetKeyDown(KeyCode.JoystickButton0)) { Debug.Log("JoystickButton0"); }
+            if (Input.GetKeyDown(KeyCode.JoystickButton1)) { Debug.Log("JoystickButton1"); }
+ 
         }
 
         private void FixedUpdate()
         {
-            Vector2 forceVector = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            Debug.Log("yoo");
-            rb.AddForce(forceVector * forceMultiplier);
+           // Vector2 forceVector = new Vector2(Input.GetAxis("LeftStickHorizontal"), Input.GetAxis("LeftStickHorizontal"));
+           // Debug.Log("yoo");
+           // rb.AddForce(forceVector * forceMultiplier);
+            if (Input.GetKeyDown(KeyCode.JoystickButton0)) { Debug.Log("JoystickButton0"); }
+            if (Input.GetKeyDown(KeyCode.JoystickButton1)) { Debug.Log("JoystickButton1"); }
+       
         }
     }
 }

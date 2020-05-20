@@ -8,13 +8,16 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Old scenes/intro.unity
     guid: 7d7a5980a53b33e43ae3f3ff0714a0b9
+  - enabled: 0
+    path: Assets/Scenes/Beta handin.unity
+    guid: 71be4665f952cf1489eacd5af36c16d4
   - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: e523a629773f51b4cb02f2bc39f829f6
   - enabled: 1
-    path: Assets/Scenes/Beta handin.unity
-    guid: 71be4665f952cf1489eacd5af36c16d4
+    path: Assets/Scenes/Beta handin v2.unity
+    guid: d357d8e524d82b44bae3caa4d9fb438b
   - enabled: 1
-    path: Assets/Scenes/END.unity
+    path: Assets/Scenes/End.unity
     guid: 43f6e1388974bd147b30c9eeb24dab69
   m_configObjects: {}
