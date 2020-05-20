@@ -15987,8 +15987,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: 0
   parallaxEffect: 0.15
-  looping: 0
-  fixedPosition: 1
+  looping: 1
+  fixedPosition: 0
 --- !u!1 &218114181
 GameObject:
   m_ObjectHideFlags: 0
@@ -16740,8 +16740,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: 0
   parallaxEffect: 0.15
-  looping: 0
-  fixedPosition: 1
+  looping: 1
+  fixedPosition: 0
 --- !u!1 &284376481
 GameObject:
   m_ObjectHideFlags: 0
@@ -19370,8 +19370,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: 0
   parallaxEffect: 0.15
-  looping: 0
-  fixedPosition: 1
+  looping: 1
+  fixedPosition: 0
 --- !u!1 &408591504
 GameObject:
   m_ObjectHideFlags: 0
@@ -20441,8 +20441,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: 0
   parallaxEffect: 0.15
-  looping: 0
-  fixedPosition: 1
+  looping: 1
+  fixedPosition: 0
 --- !u!1 &464787204
 GameObject:
   m_ObjectHideFlags: 0
@@ -21565,8 +21565,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: 0
   parallaxEffect: 0.1
-  looping: 0
-  fixedPosition: 1
+  looping: 1
+  fixedPosition: 0
 --- !u!1 &555082324
 GameObject:
   m_ObjectHideFlags: 0
@@ -22667,8 +22667,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: 0
   parallaxEffect: 0.15
-  looping: 0
-  fixedPosition: 1
+  looping: 1
+  fixedPosition: 0
 --- !u!1001 &620008476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31637,8 +31637,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: 0
   parallaxEffect: 0.15
-  looping: 0
-  fixedPosition: 1
+  looping: 1
+  fixedPosition: 0
 --- !u!1 &1129173959
 GameObject:
   m_ObjectHideFlags: 0
@@ -32206,8 +32206,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: 0
   parallaxEffect: 0.15
-  looping: 0
-  fixedPosition: 1
+  looping: 1
+  fixedPosition: 0
 --- !u!4 &1180711934 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4475077859745366201, guid: 6d172fd00abfefb479effa81ec1a6239,
@@ -39143,8 +39143,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: 0
   parallaxEffect: 0.15
-  looping: 0
-  fixedPosition: 1
+  looping: 1
+  fixedPosition: 0
 --- !u!1 &1584170412
 GameObject:
   m_ObjectHideFlags: 0
@@ -40312,8 +40312,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: 0
   parallaxEffect: 0.15
-  looping: 0
-  fixedPosition: 1
+  looping: 1
+  fixedPosition: 0
 --- !u!1 &1674530798 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2700477057773854671, guid: 3fc2c62c77ca29e4c8ea9eaa12e30e68,
@@ -40334,8 +40334,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: 0
   parallaxEffect: 0.15
-  looping: 0
-  fixedPosition: 1
+  looping: 1
+  fixedPosition: 0
 --- !u!1001 &1675233441
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -41264,8 +41264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: 0
   parallaxEffect: 0.15
-  looping: 0
-  fixedPosition: 1
+  looping: 1
+  fixedPosition: 0
 --- !u!1001 &1731394565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43045,7 +43045,7 @@ PrefabInstance:
         type: 3}
       propertyPath: soundHandler
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1894075387}
     - target: {fileID: 5232856905851894424, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: deathSpeed
@@ -45207,8 +45207,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: 0
   parallaxEffect: 0.15
-  looping: 0
-  fixedPosition: 1
+  looping: 1
+  fixedPosition: 0
 --- !u!1 &1963797283
 GameObject:
   m_ObjectHideFlags: 0
@@ -46824,8 +46824,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: 0
   parallaxEffect: 0.15
-  looping: 0
-  fixedPosition: 1
+  looping: 1
+  fixedPosition: 0
 --- !u!4 &2054938479 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4475077859745366201, guid: 6d172fd00abfefb479effa81ec1a6239,
@@ -46933,8 +46933,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   padding: 0
   parallaxEffect: 0.15
-  looping: 0
-  fixedPosition: 1
+  looping: 1
+  fixedPosition: 0
 --- !u!1001 &2070261205
 PrefabInstance:
   m_ObjectHideFlags: 0

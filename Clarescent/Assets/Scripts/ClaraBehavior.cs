@@ -71,20 +71,14 @@ public class ClaraBehavior : MonoBehaviour
                     rb.velocity = new Vector2(rb.velocity.x, gravityCoEf * maxJumpSqrt);
                     feet.onGround = false;
                     soundHandler.Jump();
+                    currentState = State.Jumping;
                 }
                 else if (inputHandler.leftTriggerAnalog.axis >= minInputForJump && feet.onGround)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, gravityCoEf * minJumpSqrt + gravityCoEf * ((maxJumpSqrt - minJumpSqrt) / maxJumpSqrt) * ((inputHandler.leftTriggerAnalog.axis - minInputForJump) / (maxInputForJump - minInputForJump)));
                     feet.onGround = false;
                     soundHandler.Jump();
-                }
-                if (AbleToClimb())
-                {
-                    rb.velocity = Vector2.zero;
-                    currentState = State.Climbing;
-                    climbingDest = new Vector3(Mathf.Floor(transform.position.x) + (transform.localScale.x > 0f ? 1.5f : -0.5f),
-                        Mathf.Floor(transform.position.y) + 2.5f);
-                    rb.isKinematic = true;
+                    currentState = State.Jumping;
                 }
                 if (inputHandler.grab.enter)
                 {
@@ -95,6 +89,26 @@ public class ClaraBehavior : MonoBehaviour
                         currentState = State.Grabbing;
                     }
                 }
+                break;
+            case State.Jumping:
+                if (feet.onGround) currentState = State.Walking;
+                if (AbleToClimb())
+                {
+                    rb.velocity = Vector2.zero;
+                    currentState = State.Climbing;
+                    climbingDest = new Vector3(Mathf.Floor(transform.position.x) + (transform.localScale.x > 0f ? 1.5f : -0.5f),
+                        Mathf.Floor(transform.position.y) + 2.5f);
+                    rb.isKinematic = true;
+                }
+                if (inputHandler.leftStick.x_axis != 0f)
+                {
+                    rb.velocity += new Vector2(inputHandler.leftStick.x_axis * horizontalAcceleration * Time.deltaTime, 0f);
+                }
+                if (rb.velocity.x > maximumHorizontalSpeed) rb.velocity = new Vector2(maximumHorizontalSpeed, rb.velocity.y);
+                if (rb.velocity.x < -maximumHorizontalSpeed) rb.velocity = new Vector2(-maximumHorizontalSpeed, rb.velocity.y);
+
+                if (rb.velocity.x > 0.1f && transform.localScale.x < 0 || rb.velocity.x < -0.1f && transform.localScale.x > 0)
+                    transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                 break;
             case State.Climbing:
                 if ((transform.position - climbingDest).magnitude > 0.6f)
