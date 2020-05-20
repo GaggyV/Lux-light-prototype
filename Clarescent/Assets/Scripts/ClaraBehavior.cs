@@ -78,16 +78,13 @@ public class ClaraBehavior : MonoBehaviour
                     feet.onGround = false;
                     soundHandler.Jump();
                 }
-                if (inputHandler.leftTriggerDigital.enter && inputHandler.leftStick.x_axis == 0f)
+                if (AbleToClimb())
                 {
-                    if (AbleToClimb())
-                    {
-                        rb.velocity = Vector2.zero;
-                        currentState = State.Climbing;
-                        climbingDest = new Vector3(Mathf.Floor(transform.position.x) + (transform.localScale.x > 0f ? 1.5f : -0.5f),
-                            Mathf.Floor(transform.position.y) + 2.5f);
-                        rb.isKinematic = true;
-                    }
+                    rb.velocity = Vector2.zero;
+                    currentState = State.Climbing;
+                    climbingDest = new Vector3(Mathf.Floor(transform.position.x) + (transform.localScale.x > 0f ? 1.5f : -0.5f),
+                        Mathf.Floor(transform.position.y) + 2.5f);
+                    rb.isKinematic = true;
                 }
                 if (inputHandler.grab.enter)
                 {
@@ -171,6 +168,8 @@ public class ClaraBehavior : MonoBehaviour
         if (hit) return false;
         hit = Physics2D.Raycast(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1) + Vector2.up * 2, Vector2.zero);
         if (hit) return false;
+        hit = Physics2D.Raycast(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1) + Vector2.up * 2.5f, Vector2.zero);
+        if (hit) return false;
         return true;
     }
 
@@ -190,7 +189,7 @@ public class ClaraBehavior : MonoBehaviour
         Gizmos.DrawCube(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1), Vector3.one / 10);
         Gizmos.DrawCube(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1) + Vector2.up, Vector3.one / 10);
         Gizmos.DrawCube(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1) + Vector2.up * 2, Vector3.one / 10);
-
+        Gizmos.DrawCube(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1) + Vector2.up * 2.5f, Vector3.one / 10);
 
     }
 
