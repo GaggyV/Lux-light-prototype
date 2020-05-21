@@ -13,5 +13,9 @@ public class repawnPlayer : MonoBehaviour
         {
             collision.transform.position = Respawn.position;
         }
+        if(collision.transform.CompareTag("Crate"))
+        {
+            collision.transform.position = Respawn.position; 
+        }
     }
 }
