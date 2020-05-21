@@ -20,7 +20,7 @@ public class mPosition : MonoBehaviour
     {
         mPositiion = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        transform.position = Vector2.Lerp(transform.position, mPositiion, 7f * Time.deltaTime);
+        transform.position = Vector2.Lerp(transform.position, mPositiion, movespeed * Time.deltaTime);
 
         //direction = (mPositiion - transform.position).normalized;
         //rb.velocity = new Vector2(direction.x * movespeed, direction.y * movespeed);
