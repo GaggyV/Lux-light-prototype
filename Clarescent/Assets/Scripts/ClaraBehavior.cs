@@ -175,7 +175,7 @@ public class ClaraBehavior : MonoBehaviour
         Vector2 checkPos;
         checkPos = new Vector2(transform.position.x, transform.position.y);
         RaycastHit2D hit = Physics2D.Raycast(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1), Vector2.zero);
-        if (!hit) return false;
+        if (!hit || hit.collider.CompareTag("Ting")) return false;
         hit = Physics2D.Raycast(checkPos + Vector2.up * 2, Vector2.zero);
         if (hit) return false;
         hit = Physics2D.Raycast(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1) + Vector2.up, Vector2.zero);

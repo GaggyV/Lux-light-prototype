@@ -9,6 +9,7 @@ TagManager:
   - Crate
   - Enemy
   - Clara
+  - Ting
   layers:
   - Default
   - TransparentFX

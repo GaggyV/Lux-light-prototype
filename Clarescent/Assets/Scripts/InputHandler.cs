@@ -31,8 +31,21 @@ public class InputHandler : MonoBehaviour
     public DigitalInput grab;
     public DigitalInput leftTriggerDigital;
     public DigitalInput rightTriggerDigital;
-    public DigitalInput Start;
-        
+
+    private List<Joycon> joycons;
+
+    void Start()
+    {
+        joycons = JoyconManager.Instance.j;
+
+        if (joycons.Count > 0)
+        {
+            Joycon j = joycons[0];
+            j.Recenter();
+        }
+    }
+
+
     void Update()
     {
         switch (currentController)
@@ -81,6 +94,37 @@ public class InputHandler : MonoBehaviour
                 //leftTriggerAnalog.axis = Input.GetButtonDown(joystick b;
                 //leftStick.x_axis = Input.GetJoystickNames
 
+                break;
+            case Controller.Unique:
+
+
+                if (joycons.Count > 0)
+                {
+                    Joycon j = joycons[0];
+
+
+                    Vector3 orientation = j.GetVector().eulerAngles;
+                    rightStick.x_axis = -(orientation.y < 0 ? orientation.y + 180 : orientation.y - 180) / 180;
+                    rightStick.y_axis = (orientation.x > 180 ? orientation.x - 360 : orientation.x) / 180;
+
+                    rightTriggerDigital.enter = j.GetButtonDown(Joycon.Button.SHOULDER_1);
+                    rightTriggerDigital.held = j.GetButton(Joycon.Button.SHOULDER_1);
+                    rightTriggerDigital.exit = j.GetButtonUp(Joycon.Button.SHOULDER_1);
+
+                    rightTriggerAnalog.axis = j.GetButton(Joycon.Button.SHOULDER_2) ? 1f : -1f;
+
+                    j = joycons[1];
+
+                    leftTriggerAnalog.axis = j.GetButton(Joycon.Button.SHOULDER_2) ? 1f : -1f;
+
+                    leftStick.x_axis = j.GetStick()[0];
+                    leftStick.y_axis = j.GetStick()[1];
+
+                    grab.enter = j.GetButtonDown(Joycon.Button.SHOULDER_1);
+                    grab.held = j.GetButton(Joycon.Button.SHOULDER_1);
+                    grab.exit = j.GetButtonUp(Joycon.Button.SHOULDER_1);
+
+                }
                 break;
             default:
                 break;
