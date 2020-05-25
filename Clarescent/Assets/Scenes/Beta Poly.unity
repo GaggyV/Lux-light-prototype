@@ -14849,7 +14849,6 @@ GameObject:
   m_Component:
   - component: {fileID: 36101130}
   - component: {fileID: 36101131}
-  - component: {fileID: 78003318}
   m_Layer: 0
   m_Name: Birchtree_Silhuette_EJ (16)
   m_TagString: Untagged
@@ -20413,27 +20412,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!50 &78003318
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 36101129}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!19719996 &78003319
 TilemapCollider2D:
   m_ObjectHideFlags: 0
