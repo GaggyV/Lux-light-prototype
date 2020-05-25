@@ -38,6 +38,8 @@ public class InputHandler : MonoBehaviour
     {
         joycons = JoyconManager.Instance.j;
 
+        Cursor.lockState = CursorLockMode.Locked;
+
         if (joycons.Count > 0)
         {
             Joycon j = joycons[0];
@@ -56,15 +58,14 @@ public class InputHandler : MonoBehaviour
                 leftStick.y_axis = Input.GetKey(KeyCode.W) ? 1f : 0f;
                 leftStick.y_axis = Input.GetKey(KeyCode.S) ? leftStick.y_axis - 1f : leftStick.y_axis;
     
-                rightStick.x_axis = Input.GetKey(KeyCode.RightArrow) ? 1f : 0f;
-                rightStick.x_axis = Input.GetKey(KeyCode.LeftArrow) ? rightStick.x_axis - 1f : rightStick.x_axis;
-                rightStick.y_axis = Input.GetKey(KeyCode.UpArrow) ? 1f : 0f;
-                rightStick.y_axis = Input.GetKey(KeyCode.DownArrow) ? rightStick.y_axis - 1f : rightStick.y_axis;
+                rightStick.x_axis = Input.GetAxis("Mouse X");
+                rightStick.y_axis = Input.GetAxis("Mouse Y");
+
 
                 leftTriggerAnalog.axis = Input.GetKey(KeyCode.Space) ? 1f : -1f;
 
                 rightTriggerAnalog.axis = Input.GetKey(KeyCode.Mouse0  /*RightShift*/) ? 1f : -1f;
-                Cursor.visible = false; /*remove later on*/
+                //Cursor.visible = false; /*remove later on*/
 
                 leftTriggerDigital.enter = Input.GetKeyDown(KeyCode.LeftControl);
                 leftTriggerDigital.held = Input.GetKey(KeyCode.LeftControl);
