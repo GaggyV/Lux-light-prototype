@@ -31,8 +31,23 @@ public class InputHandler : MonoBehaviour
     public DigitalInput grab;
     public DigitalInput leftTriggerDigital;
     public DigitalInput rightTriggerDigital;
-    public DigitalInput Start;
-        
+
+    private List<Joycon> joycons;
+
+    void Start()
+    {
+        joycons = JoyconManager.Instance.j;
+
+        Cursor.lockState = CursorLockMode.Locked;
+
+        if (joycons.Count > 0)
+        {
+            Joycon j = joycons[0];
+            j.Recenter();
+        }
+    }
+
+
     void Update()
     {
         switch (currentController)
@@ -43,15 +58,14 @@ public class InputHandler : MonoBehaviour
                 leftStick.y_axis = Input.GetKey(KeyCode.W) ? 1f : 0f;
                 leftStick.y_axis = Input.GetKey(KeyCode.S) ? leftStick.y_axis - 1f : leftStick.y_axis;
     
-                rightStick.x_axis = Input.GetKey(KeyCode.RightArrow) ? 1f : 0f;
-                rightStick.x_axis = Input.GetKey(KeyCode.LeftArrow) ? rightStick.x_axis - 1f : rightStick.x_axis;
-                rightStick.y_axis = Input.GetKey(KeyCode.UpArrow) ? 1f : 0f;
-                rightStick.y_axis = Input.GetKey(KeyCode.DownArrow) ? rightStick.y_axis - 1f : rightStick.y_axis;
+                rightStick.x_axis = Input.GetAxis("Mouse X");
+                rightStick.y_axis = Input.GetAxis("Mouse Y");
+
 
                 leftTriggerAnalog.axis = Input.GetKey(KeyCode.Space) ? 1f : -1f;
 
                 rightTriggerAnalog.axis = Input.GetKey(KeyCode.Mouse0  /*RightShift*/) ? 1f : -1f;
-                Cursor.visible = false; /*remove later on*/
+                //Cursor.visible = false; /*remove later on*/
 
                 leftTriggerDigital.enter = Input.GetKeyDown(KeyCode.LeftControl);
                 leftTriggerDigital.held = Input.GetKey(KeyCode.LeftControl);
@@ -81,6 +95,37 @@ public class InputHandler : MonoBehaviour
                 //leftTriggerAnalog.axis = Input.GetButtonDown(joystick b;
                 //leftStick.x_axis = Input.GetJoystickNames
 
+                break;
+            case Controller.Unique:
+
+
+                if (joycons.Count > 0)
+                {
+                    Joycon j = joycons[0];
+
+
+                    Vector3 orientation = j.GetVector().eulerAngles;
+                    rightStick.x_axis = -(orientation.y < 0 ? orientation.y + 180 : orientation.y - 180) / 180;
+                    rightStick.y_axis = (orientation.x > 180 ? orientation.x - 360 : orientation.x) / 180;
+
+                    rightTriggerDigital.enter = j.GetButtonDown(Joycon.Button.SHOULDER_1);
+                    rightTriggerDigital.held = j.GetButton(Joycon.Button.SHOULDER_1);
+                    rightTriggerDigital.exit = j.GetButtonUp(Joycon.Button.SHOULDER_1);
+
+                    rightTriggerAnalog.axis = j.GetButton(Joycon.Button.SHOULDER_2) ? 1f : -1f;
+
+                    j = joycons[1];
+
+                    leftTriggerAnalog.axis = j.GetButton(Joycon.Button.SHOULDER_2) ? 1f : -1f;
+
+                    leftStick.x_axis = j.GetStick()[0];
+                    leftStick.y_axis = j.GetStick()[1];
+
+                    grab.enter = j.GetButtonDown(Joycon.Button.SHOULDER_1);
+                    grab.held = j.GetButton(Joycon.Button.SHOULDER_1);
+                    grab.exit = j.GetButtonUp(Joycon.Button.SHOULDER_1);
+
+                }
                 break;
             default:
                 break;

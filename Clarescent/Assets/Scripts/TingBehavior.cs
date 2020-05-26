@@ -28,8 +28,8 @@ public class TingBehavior : MonoBehaviour
 
     void Update()
     {
-        /*if (inputHandler.rightStick.x_axis != 0f || inputHandler.rightStick.y_axis != 0f)
-            transform.position += new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;*/
+        if (inputHandler.rightStick.x_axis != 0f || inputHandler.rightStick.y_axis != 0f)
+            transform.position += new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;
         if (levitating && !levitateLagger)
         {
             soundHandler.LevitateSFX();
@@ -74,7 +74,7 @@ public class TingBehavior : MonoBehaviour
                 case Ability.levitation:
                     if (interactor.canLevitate)
                     {
-                        if(Input.GetKey(KeyCode.Mouse0))
+                        if(inputHandler.rightTriggerAnalog.axis > 0f)
                         {
                             levitating = true;
                             if (interactor.IsFreeToMove())
