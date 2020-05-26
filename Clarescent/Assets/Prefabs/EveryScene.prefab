@@ -1421,7 +1421,6 @@ GameObject:
   - component: {fileID: 1225827437736667185}
   - component: {fileID: 1225827437736667186}
   - component: {fileID: 1225827437736667187}
-  - component: {fileID: 1225827437736667196}
   - component: {fileID: 1225827437736667197}
   m_Layer: 0
   m_Name: Ting
@@ -1535,19 +1534,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1225827437736667196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1225827437736667191}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0056519f188bd17418de8f39a2df7fe1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movespeed: 100
 --- !u!50 &1225827437736667197
 Rigidbody2D:
   serializedVersion: 4
@@ -2173,7 +2159,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentController: 0
-  jc_ind: 0
 --- !u!1 &5232856906108329355
 GameObject:
   m_ObjectHideFlags: 0
