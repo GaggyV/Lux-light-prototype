@@ -11,6 +11,7 @@ public class repawnPlayer : MonoBehaviour
     {
         if(collision.transform.CompareTag("Clara"))
         {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             collision.transform.position = Respawn.position;
         }
         if(collision.transform.CompareTag("Crate"))
