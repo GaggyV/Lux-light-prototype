@@ -87,10 +87,4 @@ public class SoundTrack : MonoBehaviour
         source.clip = clip;
     }
 
-    public void ChangeVolume(int volume_in)
-    {
-        volume = volume_in / 100f;
-        source.volume = volume;
-    }
-
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SoundHandler : MonoBehaviour
 {
-    [SerializeField] Settings settings;
     [SerializeField] SoundTrack musicTrack;
     [SerializeField] SoundTrack walkingTrack;
     [SerializeField] SoundTrack SFXTrack0;
@@ -28,14 +27,6 @@ public class SoundHandler : MonoBehaviour
     //AudioSource source;
     void Start()
     {
-        musicTrack.ChangeVolume(settings.musicVolume);
-        walkingTrack.ChangeVolume(settings.soundEffectsVolume);
-        SFXTrack0.ChangeVolume(settings.soundEffectsVolume);
-        SFXTrack1.ChangeVolume(settings.soundEffectsVolume);
-        LeviTrack.ChangeVolume(settings.soundEffectsVolume);
-        LeviLoop.ChangeVolume(settings.soundEffectsVolume);
-        ClaraWalk.ChangeVolume(settings.soundEffectsVolume);
-        ClaraLanding.ChangeVolume(settings.soundEffectsVolume);
         //source = GetComponent<AudioSource>();
     }
 
@@ -53,6 +44,7 @@ public class SoundHandler : MonoBehaviour
         //    walkingLagger = walking;
         //    source.clip = null;
         //    source.loop = false;
+        int a = 5;
     }
 
     public void Jump()
