@@ -84,10 +84,10 @@ public class InputHandler : MonoBehaviour
                 break;
             case Controller.Controller:
 
-                leftStick.x_axis = Input.GetAxis("Horizontal");
-                leftTriggerAnalog.axis = Input.GetKeyDown(KeyCode.)
-                //rightStick.x_axis = Input.GetAxis("RightStickHorizontal");
-                //rightStick.y_axis = Input.GetAxis("RightStickVertical");
+                //leftStick.x_axis = Input.GetAxis("Horizontal");
+                //leftTriggerAnalog.axis = Input.GetKeyDown(KeyCode.)
+                ////rightStick.x_axis = Input.GetAxis("RightStickHorizontal");
+                ////rightStick.y_axis = Input.GetAxis("RightStickVertical");
 
 
 
