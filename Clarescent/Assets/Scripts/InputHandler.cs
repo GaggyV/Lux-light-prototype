@@ -82,18 +82,12 @@ public class InputHandler : MonoBehaviour
                 break;
             case Controller.Controller:
 
-                //leftStick.x_axis = Input.GetAxis("LeftStickHorizontal");
+                leftStick.x_axis = Input.GetAxis("Horizontal");
+                leftTriggerAnalog.axis = Input.GetKeyDown(KeyCode.)
                 //rightStick.x_axis = Input.GetAxis("RightStickHorizontal");
                 //rightStick.y_axis = Input.GetAxis("RightStickVertical");
 
-                //leftTriggerAnalog.axis = Input.GetAxis("Abtn");
-                //leftTriggerAnalog.axis = Input.GetKey("Bbtn") ? 1f : -1f;
 
-                if (Input.GetKeyDown(KeyCode.JoystickButton0)) { Debug.Log("JoystickButton0"); }
-                if (Input.GetKeyDown(KeyCode.JoystickButton1)) { Debug.Log("JoystickButton1"); }
-                if (Input.GetKeyDown(KeyCode.JoystickButton2)) { Debug.Log("JoystickButton2"); }
-                //leftTriggerAnalog.axis = Input.GetButtonDown(joystick b;
-                //leftStick.x_axis = Input.GetJoystickNames
 
                 break;
             case Controller.Unique:
