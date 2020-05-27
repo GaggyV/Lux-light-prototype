@@ -98,6 +98,7 @@ public class ClaraBehavior : MonoBehaviour
                 }
                 break;
             case State.Jumping:
+
                 if (feet.onGround) currentState = State.Walking;
                 if (AbleToClimb())
                 {
@@ -180,8 +181,7 @@ public class ClaraBehavior : MonoBehaviour
 
     private bool AbleToClimb()
     {
-        Vector2 checkPos;
-        checkPos = new Vector2(transform.position.x, transform.position.y);
+        Vector2 checkPos = (Vector2)transform.position;
         RaycastHit2D hit = Physics2D.Raycast(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1), Vector2.zero);
         if (!hit || hit.collider.CompareTag("Ting")) return false;
         hit = Physics2D.Raycast(checkPos + Vector2.up * 2, Vector2.zero);

@@ -18,6 +18,11 @@ public class ClaraAnimation : MonoBehaviour
         clara = GetComponent<ClaraBehavior>();
         rB = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
+        soundHandler = FindObjectOfType<SoundHandler>();
+        if(soundHandler == null)
+        {
+            Debug.LogError("There's no FUCKING sound handler, you muppet");
+        }
     }
 
     private void Update()
