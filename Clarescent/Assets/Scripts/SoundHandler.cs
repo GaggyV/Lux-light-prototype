@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SoundHandler : MonoBehaviour
 {
+    [SerializeField] Settings settings;
     [SerializeField] SoundTrack musicTrack;
     [SerializeField] SoundTrack walkingTrack;
     [SerializeField] SoundTrack SFXTrack0;
@@ -12,7 +13,14 @@ public class SoundHandler : MonoBehaviour
     [SerializeField] SoundTrack LeviLoop;
     [SerializeField] SoundTrack ClaraWalk;
     [SerializeField] SoundTrack ClaraLanding;
-    
+    [SerializeField] SoundTrack ClaraGrabbing;
+    [SerializeField] SoundTrack cGrabbingLoop;
+    [SerializeField] SoundTrack cGrabbingStop;
+    [SerializeField] SoundTrack BounceSound;
+    [SerializeField] SoundTrack FawnEating;
+    [SerializeField] SoundTrack FawnStartled;
+    [SerializeField] SoundTrack FawnRunning;
+
 
     public bool walking;
     private bool walkingLagger;
@@ -20,6 +28,14 @@ public class SoundHandler : MonoBehaviour
     //AudioSource source;
     void Start()
     {
+        musicTrack.ChangeVolume(settings.musicVolume);
+        walkingTrack.ChangeVolume(settings.soundEffectsVolume);
+        SFXTrack0.ChangeVolume(settings.soundEffectsVolume);
+        SFXTrack1.ChangeVolume(settings.soundEffectsVolume);
+        LeviTrack.ChangeVolume(settings.soundEffectsVolume);
+        LeviLoop.ChangeVolume(settings.soundEffectsVolume);
+        ClaraWalk.ChangeVolume(settings.soundEffectsVolume);
+        ClaraLanding.ChangeVolume(settings.soundEffectsVolume);
         //source = GetComponent<AudioSource>();
     }
 
@@ -37,7 +53,6 @@ public class SoundHandler : MonoBehaviour
         //    walkingLagger = walking;
         //    source.clip = null;
         //    source.loop = false;
-        int a = 5;
     }
 
     public void Jump()
@@ -54,7 +69,7 @@ public class SoundHandler : MonoBehaviour
 
     public void LevitateSFX()
     {
-        if(LeviTrack.free)
+        if (LeviTrack.free)
         {
             LeviTrack.Play();
         }
@@ -91,6 +106,43 @@ public class SoundHandler : MonoBehaviour
     public void CLandingSFX()
     {
         ClaraLanding.Play();
+    }
+
+    public void CGrabiingSFX()
+    {
+        ClaraGrabbing.Play();
+    }
+
+    public void GrabbingLoopSFX()
+    {
+        cGrabbingLoop.Play();
+    }
+
+    public void GrabStopSFX()
+    {
+        cGrabbingLoop.StopLoop();
+        cGrabbingLoop.StopPlay();
+        cGrabbingStop.Play();
+    }
+
+    public void BouncySound()
+    {
+        BounceSound.Play();
+    }
+
+    public void FawnEatingSFX()
+    {
+        FawnEating.Play();
+    }
+
+    public void FawnRunningSFX()
+    {
+        FawnRunning.Play();
+    }
+
+    public void FawnStartledSFX()
+    {
+        FawnStartled.Play();
     }
 
 }

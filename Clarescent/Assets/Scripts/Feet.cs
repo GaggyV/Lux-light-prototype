@@ -11,6 +11,11 @@ public class Feet : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Clara")) onGround = true;
         soundHandler.CLandingSFX();
+
+        if (collision.gameObject.CompareTag("Shrooms"))
+        {
+            soundHandler.BouncySound();
+        }
         
     }
     private void OnCollisionExit2D(Collision2D collision)

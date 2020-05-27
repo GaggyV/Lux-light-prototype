@@ -28,12 +28,18 @@ public class TingBehavior : MonoBehaviour
 
     void Update()
     {
-        /*if (inputHandler.rightStick.x_axis != 0f || inputHandler.rightStick.y_axis != 0f)
-            transform.position += new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;*/
+        if (inputHandler.rightStick.x_axis != 0f || inputHandler.rightStick.y_axis != 0f)
+            transform.position += new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;
         if (levitating && !levitateLagger)
+        {
             soundHandler.LevitateSFX();
+
+        }
         else if (!levitating && levitateLagger)
+        {
             soundHandler.LevitateSFXStop();
+
+        }
         levitateLagger = levitating;
         levitating = false;
         if (inputHandler.rightTriggerDigital.enter)
@@ -68,14 +74,16 @@ public class TingBehavior : MonoBehaviour
                 case Ability.levitation:
                     if (interactor.canLevitate)
                     {
-                        if(Input.GetKey(KeyCode.Mouse0))
+                        if(inputHandler.rightTriggerAnalog.axis > 0f)
                         {
                             levitating = true;
-                             if (interactor.IsFreeToMove())
-                             {
-
-                                interactor.body.velocity = Vector2.up * levitationStrength; /* * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f)*/;
-                             }
+                            if (interactor.IsFreeToMove())
+                            {
+                                if (Mathf.Abs(transform.position.y - interactor.transform.position.y) < 0.4f)
+                                    interactor.body.velocity = Vector3.zero; /* * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f)*/
+                                else
+                                    interactor.body.velocity = Vector3.up * Mathf.Sign(transform.position.y - interactor.transform.position.y) * levitationStrength;
+                            }
                         }
 
                         //interactor.body.velocity += Vector2.up * levitationStrength * Time.deltaTime * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f);

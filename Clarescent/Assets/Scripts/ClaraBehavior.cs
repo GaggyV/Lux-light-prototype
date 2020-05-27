@@ -35,6 +35,10 @@ public class ClaraBehavior : MonoBehaviour
     private bool onGroundLagger;
     internal enum State { Walking, Climbing, Jumping, Grabbing };
     private State currentState;
+
+    private bool grabbed, grabbing, grabstop; 
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -82,15 +86,19 @@ public class ClaraBehavior : MonoBehaviour
                 }
                 if (inputHandler.grab.enter)
                 {
+                   
                     if (hands.interactor != null)
                     {
                         interactorOffset = hands.interactor.transform.position - hands.transform.position;
                         hands.interactor.body.constraints = RigidbodyConstraints2D.FreezeRotation;
+                        soundHandler.GrabbingLoopSFX();
                         currentState = State.Grabbing;
                     }
+                    
                 }
                 break;
             case State.Jumping:
+
                 if (feet.onGround) currentState = State.Walking;
                 if (AbleToClimb())
                 {
@@ -121,11 +129,15 @@ public class ClaraBehavior : MonoBehaviour
                 break;
             case State.Grabbing:
                 if (hands.interactor == null)
+                {
                     currentState = State.Walking;
+                    soundHandler.GrabStopSFX();
+                }
                 if (!inputHandler.grab.held)
                 {
                     hands.interactor.body.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
                     currentState = State.Walking;
+                    soundHandler.GrabStopSFX();
                 }
                 if (inputHandler.leftStick.x_axis != 0f)
                 {
@@ -172,10 +184,9 @@ public class ClaraBehavior : MonoBehaviour
 
     private bool AbleToClimb()
     {
-        Vector2 checkPos;
-        checkPos = new Vector2(transform.position.x, transform.position.y);
+        Vector2 checkPos = (Vector2)transform.position;
         RaycastHit2D hit = Physics2D.Raycast(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1), Vector2.zero);
-        if (!hit) return false;
+        if (!hit || hit.collider.CompareTag("Ting")) return false;
         hit = Physics2D.Raycast(checkPos + Vector2.up * 2, Vector2.zero);
         if (hit) return false;
         hit = Physics2D.Raycast(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1) + Vector2.up, Vector2.zero);

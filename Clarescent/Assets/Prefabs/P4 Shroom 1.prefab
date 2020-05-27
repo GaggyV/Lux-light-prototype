@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1149745142646264853}
   - component: {fileID: 1149745142646264852}
   - component: {fileID: 1149745142646264855}
+  - component: {fileID: 7738698445874071767}
   m_Layer: 0
   m_Name: P4 Shroom 1
   m_TagString: Untagged
@@ -145,3 +146,15 @@ PolygonCollider2D:
       - {x: 0.17999999, y: -1.01}
       - {x: 0.29, y: -0.91999996}
       - {x: 0.37, y: -0.83}
+--- !u!114 &7738698445874071767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149745142646264854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c929b5c0afecc684ebe8b0e3fa2c023e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
