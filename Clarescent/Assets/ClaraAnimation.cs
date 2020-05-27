@@ -11,6 +11,7 @@ public class ClaraAnimation : MonoBehaviour
     private Rigidbody2D rB;
     private Animator animator;
     private ClaraBehavior clara;
+    private SoundHandler soundHandler;
 
     private void Start()
     {
@@ -25,6 +26,11 @@ public class ClaraAnimation : MonoBehaviour
 
         animator.SetBool("Walking", walking);
         animator.SetBool("Grabbing", clara.GetState() == ClaraBehavior.State.Grabbing);
+        if(clara.GetState() == ClaraBehavior.State.Grabbing)
+        {
+            soundHandler.CGrabiingSFX();
+        }
+
         animator.SetBool("Moonwalking", transform.localScale.x > 0f && rB.velocity.x < -0.3f || transform.localScale.x < 0f && rB.velocity.x > 0.3f);
     }
 }

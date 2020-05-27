@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Clara
   - Ting
+  - Shrooms
   layers:
   - Default
   - TransparentFX

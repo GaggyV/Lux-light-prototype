@@ -12,7 +12,14 @@ public class SoundHandler : MonoBehaviour
     [SerializeField] SoundTrack LeviLoop;
     [SerializeField] SoundTrack ClaraWalk;
     [SerializeField] SoundTrack ClaraLanding;
-    
+    [SerializeField] SoundTrack ClaraGrabbing;
+    [SerializeField] SoundTrack cGrabbingLoop;
+    [SerializeField] SoundTrack cGrabbingStop;
+    [SerializeField] SoundTrack BounceSound;
+    [SerializeField] SoundTrack FawnEating;
+    [SerializeField] SoundTrack FawnStartled;
+    [SerializeField] SoundTrack FawnRunning;
+
 
     public bool walking;
     private bool walkingLagger;
@@ -54,7 +61,7 @@ public class SoundHandler : MonoBehaviour
 
     public void LevitateSFX()
     {
-        if(LeviTrack.free)
+        if (LeviTrack.free)
         {
             LeviTrack.Play();
         }
@@ -91,6 +98,43 @@ public class SoundHandler : MonoBehaviour
     public void CLandingSFX()
     {
         ClaraLanding.Play();
+    }
+
+    public void CGrabiingSFX()
+    {
+        ClaraGrabbing.Play();
+    }
+
+    public void GrabbingLoopSFX()
+    {
+        cGrabbingLoop.Play();
+    }
+
+    public void GrabStopSFX()
+    {
+        cGrabbingLoop.StopLoop();
+        cGrabbingLoop.StopPlay();
+        cGrabbingStop.Play();
+    }
+
+    public void BouncySound()
+    {
+        BounceSound.Play();
+    }
+
+    public void FawnEatingSFX()
+    {
+        FawnEating.Play();
+    }
+
+    public void FawnRunningSFX()
+    {
+        FawnRunning.Play();
+    }
+
+    public void FawnStartledSFX()
+    {
+        FawnStartled.Play();
     }
 
 }

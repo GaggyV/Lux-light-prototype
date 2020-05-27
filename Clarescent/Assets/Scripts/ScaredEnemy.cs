@@ -13,6 +13,7 @@ public class ScaredEnemy : MonoBehaviour
 
     Rigidbody2D rb;
     bool facingLeft = false;
+    [SerializeField] private SoundHandler soundHandler;
 
 
     void Start()
@@ -27,6 +28,7 @@ public class ScaredEnemy : MonoBehaviour
 
         if ((clara.transform.position - transform.position).magnitude < detectionRange)
         {
+            soundHandler.FawnRunningSFX();
             rb.velocity += new Vector2(direction.x, 0);
             if(facingLeft )
             {
@@ -61,13 +63,13 @@ public class ScaredEnemy : MonoBehaviour
         if (collision.gameObject.tag == "Clara")
         {
             Invoke("Death", 0.5f);
-            
         }
     }
 
     void Death()
     {
         Destroy(gameObject);
+        soundHandler.FawnStartledSFX();
     }
        
 }

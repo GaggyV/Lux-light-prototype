@@ -35,6 +35,10 @@ public class ClaraBehavior : MonoBehaviour
     private bool onGroundLagger;
     internal enum State { Walking, Climbing, Jumping, Grabbing };
     private State currentState;
+
+    private bool grabbed, grabbing, grabstop; 
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -82,12 +86,15 @@ public class ClaraBehavior : MonoBehaviour
                 }
                 if (inputHandler.grab.enter)
                 {
+                   
                     if (hands.interactor != null)
                     {
                         interactorOffset = hands.interactor.transform.position - hands.transform.position;
                         hands.interactor.body.constraints = RigidbodyConstraints2D.FreezeRotation;
+                        soundHandler.GrabbingLoopSFX();
                         currentState = State.Grabbing;
                     }
+                    
                 }
                 break;
             case State.Jumping:
@@ -126,6 +133,7 @@ public class ClaraBehavior : MonoBehaviour
                 {
                     hands.interactor.body.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
                     currentState = State.Walking;
+                    soundHandler.GrabStopSFX();
                 }
                 if (inputHandler.leftStick.x_axis != 0f)
                 {

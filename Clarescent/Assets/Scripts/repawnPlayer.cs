@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class repawnPlayer : MonoBehaviour
 {
     [SerializeField] Transform Respawn;
+    
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
