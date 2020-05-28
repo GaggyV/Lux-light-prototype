@@ -13,9 +13,13 @@ public class FawnEnemy : MonoBehaviour
     public float FawnSpeed;
     public float delayTimer;
 
+    private bool doNothing;
+
     private bool runRight;
 
-    [SerializeField] private float startledTime, runningTime;
+    [SerializeField] private float startledTime, runningTime, doNothingTime;
+
+    private float lastDoNothingTime = -999999f;
 
     Rigidbody2D Rb;
 
@@ -39,7 +43,9 @@ public class FawnEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        delayTimer += Time.deltaTime;
+        if (Time.time < lastDoNothingTime + doNothingTime) return;
+
+        
         switch (currentState)
         {
             case FawnState.Eating:
@@ -119,10 +125,21 @@ public class FawnEnemy : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.GetComponent<ClaraBehavior>() != null)
+        {
+            doNothing = true;
+            lastDoNothingTime = Time.time;
+        }
+    }
+
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         for(int i = 0; i < collision.contacts.Length; i++)
         {
+            if (collision.transform.CompareTag("Crate")) return; //bruh
             if (Mathf.Abs(collision.contacts[i].normal.y) < 0.2f)
             {
                 runRight = !runRight;
