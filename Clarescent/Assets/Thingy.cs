@@ -13,7 +13,7 @@ public class Thingy : MonoBehaviour
         UpdateText();
     }
 
-    void UpdateText()
+    public void UpdateText()
     {
         switch(setting.controller)
         {
@@ -28,13 +28,5 @@ public class Thingy : MonoBehaviour
                 break;
         }
     }
-
-    private void OnMouseDown()
-    {
-        print("hello");
-        setting.IterateController();
-        UpdateText();
-    }
-
 
 }
