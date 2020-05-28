@@ -36,8 +36,6 @@ public class ClaraBehavior : MonoBehaviour
     internal enum State { Walking, Climbing, Jumping, Grabbing };
     private State currentState;
 
-    private bool grabbed, grabbing, grabstop; 
-
 
     void Start()
     {
@@ -107,6 +105,7 @@ public class ClaraBehavior : MonoBehaviour
                     climbingDest = new Vector3(Mathf.Floor(transform.position.x) + (transform.localScale.x > 0f ? 1.5f : -0.5f),
                         Mathf.Floor(transform.position.y) + 2.5f);
                     rb.isKinematic = true;
+                    soundHandler.ClaraClimbingSFX();
                 }
                 if (inputHandler.leftStick.x_axis != 0f)
                 {
@@ -126,10 +125,14 @@ public class ClaraBehavior : MonoBehaviour
                     rb.isKinematic = false;
                     currentState = State.Walking;
                 }
+
                 break;
             case State.Grabbing:
                 if (hands.interactor == null)
+                {
                     currentState = State.Walking;
+                    soundHandler.GrabStopSFX();
+                }
                 if (!inputHandler.grab.held)
                 {
                     hands.interactor.body.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
