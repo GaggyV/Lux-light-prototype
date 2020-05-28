@@ -21,7 +21,7 @@ public class Thingy : MonoBehaviour
                 pro.text = "Keyboard\n& Mouse";
                 break;
             case Controller.Controller:
-                pro.text = "PS4/XBOX";
+                pro.text = "Controller";
                 break;
             case Controller.Unique:
                 pro.text = "Joycons";
