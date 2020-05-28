@@ -13,7 +13,7 @@ public class Thingy : MonoBehaviour
         UpdateText();
     }
 
-    void UpdateText()
+    public void UpdateText()
     {
         switch(setting.controller)
         {
@@ -21,20 +21,12 @@ public class Thingy : MonoBehaviour
                 pro.text = "Keyboard\n& Mouse";
                 break;
             case Controller.Controller:
-                pro.text = "Controller";
+                pro.text = "PS4/XBOX";
                 break;
             case Controller.Unique:
                 pro.text = "Joycons";
                 break;
         }
     }
-
-    private void OnMouseDown()
-    {
-        print("hello");
-        setting.IterateController();
-        UpdateText();
-    }
-
 
 }

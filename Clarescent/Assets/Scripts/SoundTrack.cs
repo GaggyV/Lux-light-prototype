@@ -90,7 +90,8 @@ public class SoundTrack : MonoBehaviour
     public void ChangeVolume(int volume_in)
     {
         volume = volume_in / 100f;
-        source.volume = volume;
+        if (source != null)
+            source.volume = volume;
     }
 
 }
