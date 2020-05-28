@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canLevitate: 1
-  canBreak: 1
+  canBreak: 0
   breakSpeed: 111
   canBeScared: 0
   scareSpeed: 0

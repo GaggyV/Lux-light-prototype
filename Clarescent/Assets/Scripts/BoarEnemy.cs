@@ -5,130 +5,137 @@ using UnityEngine;
 
 public class BoarEnemy : MonoBehaviour
 {
-    [SerializeField] float boarSpeed;
-    [SerializeField] float detectionRange;
-    [SerializeField] float patrollingSpeed, chargingSpeed;
+    [SerializeField] SoundHandler soundHandler;
+    public GameObject Clara;
 
-    public GameObject clara;
+public float detection;
+public float FawnSpeed;
 
-    float direction;
-    float pauseTime = 1f;
-    float timewait;
-    Rigidbody2D rb;
+private bool runRight;
 
-    public enum BoarState
+[SerializeField] private float startledTime, runningTime;
+
+Rigidbody2D Rb;
+
+public enum FawnState
+{
+    Eating,
+    Startled,
+    running,
+    Dead
+}
+
+FawnState currentState = FawnState.Eating;
+
+// Start is called before the first frame update
+void Start()
+{
+    Clara = FindObjectOfType<ClaraBehavior>().gameObject;
+    Rb = GetComponent<Rigidbody2D>();
+}
+
+// Update is called once per frame
+void Update()
+{
+    switch (currentState)
     {
-        Charging,
-        patrolling,
-        Dead
+        case FawnState.Eating:
+            EatingState();
+            break;
+        case FawnState.Startled:
+            break;
+        case FawnState.running:
+            RunningState();
+            break;
+        case FawnState.Dead:
+            break;
+        default:
+            break;
+    }
+    UpdateState();
+}
+
+private void UpdateState()
+{
+    switch (currentState)
+    {
+        case FawnState.Eating:
+            if ((Clara.transform.position - transform.position).magnitude < detection)
+            {
+                print("arhhh");
+                Invoke("StartRunning", startledTime);
+                currentState = FawnState.Startled;
+                runRight = Clara.transform.position.x < transform.position.x;
+            }
+            break;
+        default:
+            break;
+    }
+}
+
+private void StartRunning()
+{
+    currentState = FawnState.running;
+    Invoke("StopRunning", runningTime);
+}
+private void StopRunning()
+{
+    currentState = FawnState.Eating;
+}
+
+void EatingState()
+{
+}
+
+void StartledState()
+{
+
+}
+
+void RunningState()
+{
+    if ((Clara.transform.position - transform.position).magnitude < detection)
+    {
+        runRight = Clara.transform.position.x < transform.position.x;
     }
 
-    BoarState currentState = BoarState.patrolling;
+    float multiplier = runRight ? 1f : -1f;
+    transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -multiplier, transform.localScale.y, 1f);
+    Rb.velocity = new Vector2(FawnSpeed * multiplier, Rb.velocity.y);
+}
 
-  
-    void Start()
+void DeadState()
+{
+
+}
+
+
+private void SetRunning()
+{
+
+}
+
+private void OnCollisionStay2D(Collision2D collision)
+{
+    for (int i = 0; i < collision.contacts.Length; i++)
     {
-        rb = GetComponent<Rigidbody2D>(); 
-    }
-
-
-    void Update()
-    {
-        timewait = Time.deltaTime + pauseTime; 
-        //direction = (transform.position + clara.transform.position).normalized * boarSpeed;
-
-        //direction = clara.transform.position.x > transform.position.x ? Vector2.right : -Vector2.right;
-
-        //detectionRange = (clara.transform.position - transform.position).magnitude;
-
-        // Finite State Machines (FSM)
-        switch (currentState)
+        if (Mathf.Abs(collision.contacts[i].normal.y) < 0.2f)
         {
-            case BoarState.patrolling:
-                PatrollingState();
-                break;
-
-            case BoarState.Charging:
-                ChargingState();
-                break;
-
-            case BoarState.Dead:
-                DizzyState();
-                break;
-
-            default:
-                break;
+            runRight = !runRight;
+            break;
         }
     }
-    void IdleState()
-    {
-        if (detectionRange < 2)
-        {
-            currentState = BoarState.Charging;
-        }
-        else
-        {
-            currentState = BoarState.patrolling;
-        }
-    }
-
-    void ChargingState()
-    {
-        rb.velocity -= new Vector2(-direction, 0);
-    }
-
-
-
-    void PatrollingState()
-    {
-        if (IsFaceLeft())
-        {
-            rb.velocity = new Vector2(patrollingSpeed, rb.velocity.y);
-        }
-        else
-        {
-            rb.velocity = new Vector2(-patrollingSpeed, rb.velocity.y);
-        }
-
-        if (patrollingSpeed == 0)
-        {
-            rb.velocity = new Vector2(patrollingSpeed, rb.velocity.y);
-        }
-        else
-        {
-            rb.velocity = new Vector2(-patrollingSpeed, rb.velocity.y);
-        }
-    }
-
-
-    void DizzyState()
-    {
-        //sphere cast
-        rb.velocity = Vector2.zero;
-    }
-
-
-    bool IsFaceLeft()
-    {
-        return transform.localScale.x < 0;
-    }
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-       
 
         if (collision.gameObject.CompareTag("Crate"))
         {
             collision.gameObject.GetComponent<TingInteraction>().broken = true;
-            patrollingSpeed = 0 + timewait;
-           
+
             return;
         }
-        //if(Mathf.Abs(collision.contacts[0].normal.x) > 0.9)
-            //transform.localScale *= new Vector2(-1f, 1f);
+
     }
 
 }
+
 
 

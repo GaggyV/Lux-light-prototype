@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -16518,7 +16518,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 9
-      m_TileSpriteIndex: 6
+      m_TileSpriteIndex: 11
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -16820,9 +16820,8 @@ Tilemap:
   - m_RefCount: 9
     m_Data: {fileID: -7617027392513317487, guid: a772bf4a75ec5ab4aa41ed5f395ebc77,
       type: 3}
-  - m_RefCount: 1
-    m_Data: {fileID: 2834045354269659627, guid: 1db806d8e2d5e344db85dd67c921d477,
-      type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 13
     m_Data: {fileID: 728915093965884524, guid: 28c63aaeb70b7fc4888e5b92aaaa3c66, type: 3}
   - m_RefCount: 12
@@ -16834,8 +16833,9 @@ Tilemap:
   - m_RefCount: 37
     m_Data: {fileID: 8669019521480701044, guid: f1cc3053a6e58d049967f0df916e3aa4,
       type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 2834045354269659627, guid: 1db806d8e2d5e344db85dd67c921d477,
+      type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -7329082296564226060, guid: 1db806d8e2d5e344db85dd67c921d477,
       type: 3}
@@ -18468,18 +18468,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0cecc25ed9852b47a0eea4afd6fb633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boarSpeed: 1
-  detectionRange: 1.6
-  patrollingSpeed: 1
-  chargingSpeed: 0
-  boar: {fileID: 639315694}
-  clara: {fileID: 0}
-  normalWalking: {fileID: 1234044909421100181, guid: f4c76dc34c6f37c4ebe698a97fe3cb52,
-    type: 3}
-  RedExclamationAlert: {fileID: 6949933438111488104, guid: f4c76dc34c6f37c4ebe698a97fe3cb52,
-    type: 3}
-  Charge: {fileID: -2315803945587828993, guid: f4c76dc34c6f37c4ebe698a97fe3cb52, type: 3}
-  Dizzy: {fileID: 2032024598467547159, guid: f4c76dc34c6f37c4ebe698a97fe3cb52, type: 3}
+  soundHandler: {fileID: 0}
+  Clara: {fileID: 0}
+  detection: 0
+  FawnSpeed: 0
+  startledTime: 0
+  runningTime: 0
 --- !u!70 &639315696
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -18735,18 +18729,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0cecc25ed9852b47a0eea4afd6fb633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boarSpeed: 1
-  detectionRange: 1.6
-  patrollingSpeed: 1
-  chargingSpeed: 0
-  boar: {fileID: 791264056}
-  clara: {fileID: 0}
-  normalWalking: {fileID: 1234044909421100181, guid: f4c76dc34c6f37c4ebe698a97fe3cb52,
-    type: 3}
-  RedExclamationAlert: {fileID: 6949933438111488104, guid: f4c76dc34c6f37c4ebe698a97fe3cb52,
-    type: 3}
-  Charge: {fileID: -2315803945587828993, guid: f4c76dc34c6f37c4ebe698a97fe3cb52, type: 3}
-  Dizzy: {fileID: 2032024598467547159, guid: f4c76dc34c6f37c4ebe698a97fe3cb52, type: 3}
+  soundHandler: {fileID: 1137222093}
+  Clara: {fileID: 1320066067}
+  detection: 2
+  FawnSpeed: 2
+  startledTime: 1
+  runningTime: 1
 --- !u!70 &791264058
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -18760,8 +18748,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.59, y: 0.94}
+  m_Offset: {x: 0, y: -0.66}
+  m_Size: {x: 13.75, y: 7.1}
   m_Direction: 1
 --- !u!50 &791264059
 Rigidbody2D:
@@ -18823,8 +18811,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5728831333032209845, guid: f4c76dc34c6f37c4ebe698a97fe3cb52,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3289f168dbaa41049ab4ba0257f65552, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -18843,8 +18830,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791264056}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 58.57997, y: -15.349495, z: 2439.0156}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 58.57997, y: -15.74, z: 2439.0156}
+  m_LocalScale: {x: 0.084686, y: 0.084686, z: 0.084686}
   m_Children: []
   m_Father: {fileID: 1806853051}
   m_RootOrder: 1
@@ -20510,7 +20497,7 @@ PrefabInstance:
     - target: {fileID: 1225827437736667186, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: moveSpeed
-      value: 100
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 1225827437736667187, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
@@ -20651,12 +20638,12 @@ PrefabInstance:
     - target: {fileID: 2422901029183317899, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.98838836
+      value: -0.98838985
       objectReference: {fileID: 0}
     - target: {fileID: 2422901029183317899, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.15194918
+      value: 0.15193938
       objectReference: {fileID: 0}
     - target: {fileID: 3598316090544323583, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
@@ -20726,12 +20713,12 @@ PrefabInstance:
     - target: {fileID: 5074263644117756077, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.64013106
+      value: -0.6401352
       objectReference: {fileID: 0}
     - target: {fileID: 5074263644117756077, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7682658
+      value: 0.7682623
       objectReference: {fileID: 0}
     - target: {fileID: 5232856905851894424, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
@@ -20776,7 +20763,7 @@ PrefabInstance:
     - target: {fileID: 5232856905851894426, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -49.45
+      value: -48.49
       objectReference: {fileID: 0}
     - target: {fileID: 5232856905851894426, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
@@ -20831,12 +20818,12 @@ PrefabInstance:
     - target: {fileID: 6591864461956017843, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.69216883
+      value: 0.6921727
       objectReference: {fileID: 0}
     - target: {fileID: 6591864461956017843, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7217357
+      value: 0.721732
       objectReference: {fileID: 0}
     - target: {fileID: 6591864461956017843, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
@@ -20861,17 +20848,17 @@ PrefabInstance:
     - target: {fileID: 7818675921819405885, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.01730202
+      value: -0.017292095
       objectReference: {fileID: 0}
     - target: {fileID: 7818675921819405885, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99985033
+      value: 0.9998506
       objectReference: {fileID: 0}
     - target: {fileID: 7818675921819405885, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -1.983
+      value: -1.9820001
       objectReference: {fileID: 0}
     - target: {fileID: 8994986625895846887, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
@@ -20901,7 +20888,7 @@ PrefabInstance:
     - target: {fileID: 9017394442556199977, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.3
+      value: 96.14
       objectReference: {fileID: 0}
     - target: {fileID: 9017394442556199977, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
@@ -21398,18 +21385,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0cecc25ed9852b47a0eea4afd6fb633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boarSpeed: 1
-  detectionRange: 1.6
-  patrollingSpeed: 1
-  chargingSpeed: 0
-  boar: {fileID: 2117277340}
-  clara: {fileID: 0}
-  normalWalking: {fileID: 1234044909421100181, guid: f4c76dc34c6f37c4ebe698a97fe3cb52,
-    type: 3}
-  RedExclamationAlert: {fileID: 6949933438111488104, guid: f4c76dc34c6f37c4ebe698a97fe3cb52,
-    type: 3}
-  Charge: {fileID: -2315803945587828993, guid: f4c76dc34c6f37c4ebe698a97fe3cb52, type: 3}
-  Dizzy: {fileID: 2032024598467547159, guid: f4c76dc34c6f37c4ebe698a97fe3cb52, type: 3}
+  soundHandler: {fileID: 0}
+  Clara: {fileID: 0}
+  detection: 0
+  FawnSpeed: 0
+  startledTime: 0
+  runningTime: 0
 --- !u!70 &2117277343
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -21530,18 +21511,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0cecc25ed9852b47a0eea4afd6fb633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boarSpeed: 1
-  detectionRange: 1.6
-  patrollingSpeed: 1
-  chargingSpeed: 0
-  boar: {fileID: 2128964461}
-  clara: {fileID: 0}
-  normalWalking: {fileID: 1234044909421100181, guid: f4c76dc34c6f37c4ebe698a97fe3cb52,
-    type: 3}
-  RedExclamationAlert: {fileID: 6949933438111488104, guid: f4c76dc34c6f37c4ebe698a97fe3cb52,
-    type: 3}
-  Charge: {fileID: -2315803945587828993, guid: f4c76dc34c6f37c4ebe698a97fe3cb52, type: 3}
-  Dizzy: {fileID: 2032024598467547159, guid: f4c76dc34c6f37c4ebe698a97fe3cb52, type: 3}
+  soundHandler: {fileID: 0}
+  Clara: {fileID: 0}
+  detection: 0
+  FawnSpeed: 0
+  startledTime: 0
+  runningTime: 0
 --- !u!70 &2128964463
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

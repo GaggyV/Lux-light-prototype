@@ -17,15 +17,10 @@ public class TingInteraction : MonoBehaviour
     [SerializeField] Sprite restoredSprite, brokenSprite;
     [SerializeField] SpriteRenderer outLine;
 
-    private PolygonCollider2D polyCollider;
-    private BoxCollider2D boxCollider;
     private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
-        polyCollider = GetComponent<PolygonCollider2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
-        boxCollider.enabled = false;
         body = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -38,20 +33,12 @@ public class TingInteraction : MonoBehaviour
             spriteRenderer.sprite = brokenSprite;
             if (outLine != null)
                 outLine.enabled = false;
-            if (boxCollider != null)
-                boxCollider.enabled = true;
-            if (polyCollider != null)
-                polyCollider.enabled = false;
         }
         if (!broken && spriteRenderer.sprite != restoredSprite)
         {
             spriteRenderer.sprite = restoredSprite;
             if (outLine != null)
                 outLine.enabled = true;
-            if (boxCollider != null)
-                boxCollider.enabled = false;
-            if (polyCollider != null)
-                polyCollider.enabled = true;
         }
     }
 
