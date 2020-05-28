@@ -39,6 +39,9 @@ public class SoundHandler : MonoBehaviour
         ClaraLanding.ChangeVolume(settings.soundEffectsVolume);
         ClaraClimbing0.ChangeVolume(settings.soundEffectsVolume);
         ClaraClimbing1.ChangeVolume(settings.soundEffectsVolume);
+        FawnEating.ChangeVolume(settings.soundEffectsVolume);
+        FawnRunning.ChangeVolume(settings.soundEffectsVolume);
+        FawnStartled.ChangeVolume(settings.soundEffectsVolume);
         //source = GetComponent<AudioSource>();
     }
 

@@ -8,7 +8,9 @@ public class Settings : MonoBehaviour
     public Controller controller;
     public int musicVolume;
     public int soundEffectsVolume;
-    [SerializeField] TextAsset saveFile;
+    [SerializeField] RectTransform rectMusic;
+    [SerializeField] RectTransform rectSFX;
+
 
     private Controller controllerLagger;
     private int musicVolumeLagger;
@@ -48,6 +50,11 @@ public class Settings : MonoBehaviour
             soundEffectsVolumeLagger = soundEffectsVolume;
             SaveSettings();
         }
+        if (rectMusic != null && rectSFX != null)
+        {
+            musicVolume = (int)(rectMusic.anchorMax.x * 100);
+            soundEffectsVolume = (int)(rectSFX.anchorMax.x * 100);
+        }
     }
 
     void SaveSettings()
@@ -69,4 +76,30 @@ public class Settings : MonoBehaviour
         writer.WriteLine(soundEffectsVolume);
         writer.Close();
     }
+
+    public void ChangeMusicVolume(float f)
+    {
+        musicVolume = (int)(f * 100);
+    }
+    public void ChangeMusicVolume(int i)
+    {
+        musicVolume = i;
+    }
+    public void ChangeSFXVolume(float f)
+    {
+        soundEffectsVolume = (int)(f * 100);
+    }
+    public void ChangeSFXVolume(int i)
+    {
+        soundEffectsVolume = i;
+    }
+    public void IterateController()
+    {
+        if (controller == Controller.Unique) controller = 0;
+        else controller++;
+    }
+
+    
+
+
 }

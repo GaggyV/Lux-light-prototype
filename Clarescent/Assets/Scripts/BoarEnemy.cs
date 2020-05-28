@@ -2,20 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Timer
-{
-    private bool timedelay;
-    float pauseTime = 1f;
-
-    void Start(float WaitforSec)
-    {
-        WaitforSec = Time.deltaTime + pauseTime;
-    }
-    bool IsDone()
-    {
-        return timedelay;
-    }
-}
 
 public class BoarEnemy : MonoBehaviour
 {
@@ -23,19 +9,12 @@ public class BoarEnemy : MonoBehaviour
     [SerializeField] float detectionRange;
     [SerializeField] float patrollingSpeed, chargingSpeed;
 
-
-    public GameObject boar;
     public GameObject clara;
 
     float direction;
+    float pauseTime = 1f;
+    float timewait;
     Rigidbody2D rb;
-    bool FaceRight;
-
-    public Sprite normalWalking;
-    public Sprite RedExclamationAlert;
-    public Sprite Charge;
-    public Sprite Dizzy;
-
 
     public enum BoarState
     {
@@ -46,44 +25,37 @@ public class BoarEnemy : MonoBehaviour
 
     BoarState currentState = BoarState.patrolling;
 
-    // Start is called before the first frame update
+  
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>(); 
     }
 
-    // Update is called once per frame
+
     void Update()
     {
+        timewait = Time.deltaTime + pauseTime; 
         //direction = (transform.position + clara.transform.position).normalized * boarSpeed;
 
         //direction = clara.transform.position.x > transform.position.x ? Vector2.right : -Vector2.right;
-        //direction *= boarSpeed;
 
         //detectionRange = (clara.transform.position - transform.position).magnitude;
 
         // Finite State Machines (FSM)
         switch (currentState)
         {
+            case BoarState.patrolling:
+                PatrollingState();
+                break;
+
             case BoarState.Charging:
                 ChargingState();
                 break;
 
             case BoarState.Dead:
                 DizzyState();
-                gameObject.GetComponent<SpriteRenderer>().sprite = Dizzy;
                 break;
 
-            case BoarState.patrolling:
-                if (patrollingSpeed == 0)
-                {
-                    currentState = BoarState.Dead;
-                }
-                else
-                {
-                    PatrollingState();
-                }
-                break;
             default:
                 break;
         }
@@ -92,7 +64,6 @@ public class BoarEnemy : MonoBehaviour
     {
         if (detectionRange < 2)
         {
-            boar.gameObject.GetComponent<SpriteRenderer>().sprite = RedExclamationAlert;
             currentState = BoarState.Charging;
         }
         else
@@ -103,19 +74,23 @@ public class BoarEnemy : MonoBehaviour
 
     void ChargingState()
     {
-        Invoke("Charges", 1.0f);
-    }
-
-    void Charges()
-    {
-        boar.gameObject.GetComponent<SpriteRenderer>().sprite = Charge;
         rb.velocity -= new Vector2(-direction, 0);
     }
 
+
+
     void PatrollingState()
     {
-        boar.gameObject.GetComponent<SpriteRenderer>().sprite = normalWalking;
-        if (IsFaceRight())
+        if (IsFaceLeft())
+        {
+            rb.velocity = new Vector2(patrollingSpeed, rb.velocity.y);
+        }
+        else
+        {
+            rb.velocity = new Vector2(-patrollingSpeed, rb.velocity.y);
+        }
+
+        if (patrollingSpeed == 0)
         {
             rb.velocity = new Vector2(patrollingSpeed, rb.velocity.y);
         }
@@ -130,17 +105,12 @@ public class BoarEnemy : MonoBehaviour
     {
         //sphere cast
         rb.velocity = Vector2.zero;
-        //transform.position = new Vector2(0, -20);
     }
 
 
-    bool IsFaceRight()
+    bool IsFaceLeft()
     {
-        return transform.localScale.x > 0;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
+        return transform.localScale.x < 0;
     }
 
 
@@ -151,12 +121,12 @@ public class BoarEnemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Crate"))
         {
             collision.gameObject.GetComponent<TingInteraction>().broken = true;
-            patrollingSpeed = 0;
-            //collision.collider.isTrigger = true;
+            patrollingSpeed = 0 + timewait;
+           
             return;
         }
-        if(Mathf.Abs(collision.contacts[0].normal.x) > 0.9)
-            transform.localScale *= new Vector2(-1f, 1f);
+        //if(Mathf.Abs(collision.contacts[0].normal.x) > 0.9)
+            //transform.localScale *= new Vector2(-1f, 1f);
     }
 
 }
