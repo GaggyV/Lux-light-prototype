@@ -19,8 +19,8 @@ public class ScaredEnemy : MonoBehaviour
     void Start()
     {
         clara = FindObjectOfType<ClaraBehavior>().gameObject;
-        rb = GetComponent<Rigidbody2D>();
         soundHandler = FindObjectOfType<SoundHandler>();
+        rb = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
@@ -30,24 +30,20 @@ public class ScaredEnemy : MonoBehaviour
 
         if ((clara.transform.position - transform.position).magnitude < detectionRange)
         {
-            soundHandler.FawnRunningSFX();
+            if(soundHandler != null)
+                soundHandler.FawnRunningSFX();
             rb.velocity += new Vector2(direction.x, 0);
-            if(facingLeft )
+            if(facingLeft)
             {
-            facingLeft = true;
-            transform.localScale *= new Vector2(-1f, 1f);
+                facingLeft = true;
+                transform.localScale *= new Vector2(-1f, 1f);
             }
-
         }
-
         else
         {
             rb.velocity = new Vector2(rb.velocity.x * 0.8f , rb.velocity.y);
         }
-
     }
-
-   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Ground")
@@ -71,7 +67,8 @@ public class ScaredEnemy : MonoBehaviour
     void Death()
     {
         Destroy(gameObject);
-        soundHandler.FawnStartledSFX();
+        if(soundHandler != null)
+            soundHandler.FawnStartledSFX();
     }
        
 }
