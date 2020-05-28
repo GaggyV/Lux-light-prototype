@@ -20,7 +20,8 @@ public class SoundHandler : MonoBehaviour
     [SerializeField] SoundTrack FawnEating;
     [SerializeField] SoundTrack FawnStartled;
     [SerializeField] SoundTrack FawnRunning;
-
+    [SerializeField] SoundTrack ClaraClimbing0;
+    [SerializeField] SoundTrack ClaraClimbing1;
 
     public bool walking;
     private bool walkingLagger;
@@ -36,6 +37,8 @@ public class SoundHandler : MonoBehaviour
         LeviLoop.ChangeVolume(settings.soundEffectsVolume);
         ClaraWalk.ChangeVolume(settings.soundEffectsVolume);
         ClaraLanding.ChangeVolume(settings.soundEffectsVolume);
+        ClaraClimbing0.ChangeVolume(settings.soundEffectsVolume);
+        ClaraClimbing1.ChangeVolume(settings.soundEffectsVolume);
         //source = GetComponent<AudioSource>();
     }
 
@@ -143,6 +146,19 @@ public class SoundHandler : MonoBehaviour
     public void FawnStartledSFX()
     {
         FawnStartled.Play();
+    }
+
+    public void ClaraClimbingSFX()
+    {
+        switch(Random.Range(0, 2))
+        {
+            case 0:
+                ClaraClimbing0.Play();
+                break;
+            case 1:
+                ClaraClimbing1.Play();
+                break;
+        }
     }
 
 }
