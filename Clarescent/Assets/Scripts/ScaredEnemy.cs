@@ -18,7 +18,9 @@ public class ScaredEnemy : MonoBehaviour
 
     void Start()
     {
+        clara = FindObjectOfType<ClaraBehavior>().gameObject;
         rb = GetComponent<Rigidbody2D>();
+        soundHandler = FindObjectOfType<SoundHandler>();
     }
     void Update()
     {
