@@ -84,11 +84,21 @@ public class InputHandler : MonoBehaviour
                 break;
             case Controller.Controller:
 
-                //leftStick.x_axis = Input.GetAxis("Horizontal");
-                //leftTriggerAnalog.axis = Input.GetKeyDown(KeyCode.)
-                ////rightStick.x_axis = Input.GetAxis("RightStickHorizontal");
-                ////rightStick.y_axis = Input.GetAxis("RightStickVertical");
 
+                leftStick.x_axis = Input.GetAxis("Horizontal");
+                leftTriggerAnalog.axis = Input.GetAxis("XJump");
+
+                rightStick.x_axis = Input.GetAxis("TVertical");
+                rightStick.y_axis = Input.GetAxis("THorizontal"); 
+
+
+
+
+                if (Input.GetAxis("Jump") > 1) { Debug.Log("JoystickButton0"); }
+                if (Input.GetKeyDown(KeyCode.JoystickButton1)) { Debug.Log("JoystickButton1"); }
+                if (Input.GetKeyDown(KeyCode.JoystickButton2)) { Debug.Log("JoystickButton2"); }
+                //rightStick.x_axis = Input.GetAxis("RightStickHorizontal");
+                //rightStick.y_axis = Input.GetAxis("RightStickVertical");
 
 
                 break;
