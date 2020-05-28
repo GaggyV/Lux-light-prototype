@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4101565451621489106}
   - component: {fileID: 4101565451621489107}
   - component: {fileID: 4101565451621489104}
+  - component: {fileID: 6774953689698009160}
   - component: {fileID: 4101565451621489068}
   - component: {fileID: 4101565451621489069}
   - component: {fileID: 4101565451621489071}
@@ -159,6 +160,32 @@ PolygonCollider2D:
       - {x: 0.105, y: -1.095}
       - {x: 0.275, y: -1.0849999}
       - {x: 0.775, y: -1.045}
+--- !u!61 &6774953689698009160
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4101565451621489105}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.058196902, y: -0.39073947}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.45, y: 2.75}
+    newSize: {x: 3.45, y: 2.75}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.622493, y: 0.8914636}
+  m_EdgeRadius: 0
 --- !u!50 &4101565451621489068
 Rigidbody2D:
   serializedVersion: 4
@@ -194,14 +221,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canLevitate: 1
   canBreak: 1
-  breakSpeed: 0
+  breakSpeed: 100
   canBeScared: 0
   scareSpeed: 0
   body: {fileID: 0}
   broken: 0
   scared: 0
   restoredSprite: {fileID: 21300000, guid: c43b7455f00ab5b40a1f48ec7d8ad5b5, type: 3}
-  brokenSprite: {fileID: 21300000, guid: be1c117ea21f7d04aa4188cc457a58e3, type: 3}
+  brokenSprite: {fileID: 21300000, guid: 7e7dc0fb60d1be64b8124f4644f45c60, type: 3}
+  outLine: {fileID: 4101565451789107860}
 --- !u!114 &4101565451621489071
 MonoBehaviour:
   m_ObjectHideFlags: 0

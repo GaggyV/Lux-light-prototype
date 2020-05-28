@@ -54074,6 +54074,14 @@ PrefabInstance:
       propertyPath: BounceSound
       value: 
       objectReference: {fileID: 1113885113}
+    - target: {fileID: 1894075386, guid: dbc345b1dc5fd064d8235fb1a6182054, type: 3}
+      propertyPath: ClaraClimbing0
+      value: 
+      objectReference: {fileID: 89389951}
+    - target: {fileID: 1894075386, guid: dbc345b1dc5fd064d8235fb1a6182054, type: 3}
+      propertyPath: ClaraClimbing1
+      value: 
+      objectReference: {fileID: 836158767}
     - target: {fileID: 351273116592142411, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: m_LocalRotation.z
@@ -54173,7 +54181,7 @@ PrefabInstance:
         type: 3}
       propertyPath: soundHandler
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 350397235}
     - target: {fileID: 5232856905851894424, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: deathSpeed
