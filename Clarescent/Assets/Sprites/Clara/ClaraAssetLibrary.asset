@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf7c34a0dc4e6348bea04faa70406ee, type: 3}
+  m_Name: ClaraAssetLibrary
+  m_EditorClassIdentifier: 
+  m_Labels:
+  - m_Name: Head
+    m_Hash: 130111906
+    m_CategoryList:
+    - m_Name: Old
+      m_Hash: 118526469
+      m_Sprite: {fileID: 0}
+    - m_Name: New
+      m_Hash: 1403912869
+      m_Sprite: {fileID: 0}
+  - m_Name: Body
+    m_Hash: 2073732236
+    m_CategoryList:
+    - m_Name: Old
+      m_Hash: 118526469
+      m_Sprite: {fileID: 21300000, guid: b888c09c7a4948d4e808e4bae9b1921f, type: 3}
+    - m_Name: New
+      m_Hash: 1403912869
+      m_Sprite: {fileID: 21300000, guid: 18efd0e0df861b246859c15f05003d9b, type: 3}
+  - m_Name: Dress
+    m_Hash: 694510331
+    m_CategoryList:
+    - m_Name: Old
+      m_Hash: 118526469
+      m_Sprite: {fileID: 21300000, guid: dc01355574aaf184087cf8469f0c3508, type: 3}
+    - m_Name: New
+      m_Hash: 1403912869
+      m_Sprite: {fileID: 21300000, guid: ec080d3fd48472645830fed9ee5b972c, type: 3}
+  - m_Name: Hair
+    m_Hash: 1019596327
+    m_CategoryList:
+    - m_Name: Old
+      m_Hash: 118526469
+      m_Sprite: {fileID: 21300000, guid: 1d02fe21e44d3dc499a3652598cae51b, type: 3}
+    - m_Name: New
+      m_Hash: 1403912869
+      m_Sprite: {fileID: 21300000, guid: ec7af77add0f5664ba2dbf58ecf833bd, type: 3}
+  - m_Name: FrontArm
+    m_Hash: -1786218737
+    m_CategoryList:
+    - m_Name: Old
+      m_Hash: 118526469
+      m_Sprite: {fileID: 21300000, guid: 510a9878cd2d4584088bae810bebda3d, type: 3}
+    - m_Name: New
+      m_Hash: 1403912869
+      m_Sprite: {fileID: 4997617014565004516, guid: cb71bccb7519ca14c9a6ff14df33257d,
+        type: 3}
+  - m_Name: BackArm
+    m_Hash: -524813528
+    m_CategoryList:
+    - m_Name: Old
+      m_Hash: 118526469
+      m_Sprite: {fileID: 21300000, guid: 437542431cad0fe4fb3c4f4b00da59a3, type: 3}
+    - m_Name: New
+      m_Hash: 1403912869
+      m_Sprite: {fileID: 2043508755717197465, guid: cb71bccb7519ca14c9a6ff14df33257d,
+        type: 3}
+  - m_Name: FrontLeg
+    m_Hash: 2013694420
+    m_CategoryList:
+    - m_Name: Old
+      m_Hash: 118526469
+      m_Sprite: {fileID: 21300000, guid: 7720f77e78ade654a935b5874196d420, type: 3}
+    - m_Name: New
+      m_Hash: 1403912869
+      m_Sprite: {fileID: 21300000, guid: ba828cf19428f7344998867f68935dae, type: 3}
+  - m_Name: BackLeg
+    m_Hash: 221840883
+    m_CategoryList:
+    - m_Name: Old
+      m_Hash: 118526469
+      m_Sprite: {fileID: 21300000, guid: 3bcfda3ef9eeefb44ae2b6153a55993d, type: 3}
+    - m_Name: New
+      m_Hash: 1403912869
+      m_Sprite: {fileID: 21300000, guid: 2bdf2c2aadb3cb04480a2a19d36cd365, type: 3}
