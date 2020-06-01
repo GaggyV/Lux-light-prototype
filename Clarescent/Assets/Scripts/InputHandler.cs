@@ -40,11 +40,12 @@ public class InputHandler : MonoBehaviour
     [SerializeField] Settings settings;
     void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         if (dontRead) return;
         currentController = settings.controller;
         joycons = JoyconManager.Instance.j;
 
-        Cursor.lockState = CursorLockMode.Locked;
 
         if (joycons.Count > 0)
         {
