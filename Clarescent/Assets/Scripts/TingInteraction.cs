@@ -16,11 +16,16 @@ public class TingInteraction : MonoBehaviour
 
     [SerializeField] Sprite restoredSprite, brokenSprite;
     [SerializeField] SpriteRenderer outLine;
+    CapsuleCollider2D bigBox;
+    BoxCollider2D smallBox;
 
     private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
+        bigBox = GetComponent<CapsuleCollider2D>();
+        smallBox = GetComponent<BoxCollider2D>();
+        smallBox.enabled = false;
         body = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -33,12 +38,20 @@ public class TingInteraction : MonoBehaviour
             spriteRenderer.sprite = brokenSprite;
             if (outLine != null)
                 outLine.enabled = false;
+            if (bigBox != null)
+                bigBox.enabled = false;
+            if (smallBox != null)
+                smallBox.enabled = true;
         }
         if (!broken && spriteRenderer.sprite != restoredSprite)
         {
             spriteRenderer.sprite = restoredSprite;
             if (outLine != null)
                 outLine.enabled = true;
+            if (bigBox != null)
+                bigBox.enabled = true;
+            if (smallBox != null)
+                smallBox.enabled = false;
         }
     }
 
