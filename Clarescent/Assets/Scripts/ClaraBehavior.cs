@@ -48,6 +48,18 @@ public class ClaraBehavior : MonoBehaviour
         gravityCoEf = Mathf.Sqrt(Physics2D.gravity.magnitude) * Mathf.Sqrt(2f);
         grid = FindObjectOfType<Grid>();
     }
+
+    public float GetDieSpeed()
+    {
+        return deathSpeed;
+    }
+
+
+    public bool Grounded()
+    {
+        return onGround;
+    }
+
     void Update()
     {
 

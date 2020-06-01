@@ -102,6 +102,7 @@ void RunningState()
     float multiplier = runRight ? 1f : -1f;
     transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * -multiplier, transform.localScale.y, 1f);
     Rb.velocity = new Vector2(FawnSpeed * multiplier, Rb.velocity.y);
+
 }
 
 void DeadState()
@@ -129,7 +130,7 @@ private void OnCollisionStay2D(Collision2D collision)
         if (collision.gameObject.CompareTag("Crate"))
         {
             collision.gameObject.GetComponent<TingInteraction>().broken = true;
-
+            runRight = !runRight;
             return;
         }
 

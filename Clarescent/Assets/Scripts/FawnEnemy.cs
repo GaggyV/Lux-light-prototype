@@ -9,6 +9,8 @@ public class FawnEnemy : MonoBehaviour
     [SerializeField] SoundHandler soundHandler;
     public GameObject Clara;
 
+    private Animator animator;
+
     public float detection;
     public float FawnSpeed;
     public float delayTimer;
@@ -38,6 +40,7 @@ public class FawnEnemy : MonoBehaviour
     {
         Clara = FindObjectOfType<ClaraBehavior>().gameObject;
         Rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -75,6 +78,7 @@ public class FawnEnemy : MonoBehaviour
                     Invoke("StartRunning", startledTime);
                     currentState = FawnState.Startled;
                     runRight = Clara.transform.position.x < transform.position.x;
+                    animator.SetBool("Running", true);
                 }
                 break;
             default:
@@ -90,6 +94,7 @@ public class FawnEnemy : MonoBehaviour
     private void StopRunning()
     {
         currentState = FawnState.Eating;
+        animator.SetBool("Running", false);
     }
 
     void EatingState()
