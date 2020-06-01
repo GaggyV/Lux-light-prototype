@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -39564,6 +39564,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1135243481 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3110519586542628433, guid: ef8ebaa73840ad742aed88b2f6e91bec,
+    type: 3}
+  m_PrefabInstance: {fileID: 1434282282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1135243482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135243481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2996cd5309a52d4eb31d64d49532446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1137898911
 GameObject:
   m_ObjectHideFlags: 0
@@ -52284,7 +52302,7 @@ PrefabInstance:
     - target: {fileID: 5232856905851894426, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -50.7
+      value: -51.6
       objectReference: {fileID: 0}
     - target: {fileID: 5232856905851894426, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
