@@ -23,6 +23,9 @@ public struct AnalogTwoDimensionalInput
 public enum Controller { Keyboard, Controller, Unique }
 public class InputHandler : MonoBehaviour
 {
+
+    [SerializeField] private bool dontRead = false;
+
     [SerializeField] Controller currentController;
     public AnalogTwoDimensionalInput leftStick;
     public AnalogTwoDimensionalInput rightStick;
@@ -37,6 +40,7 @@ public class InputHandler : MonoBehaviour
     [SerializeField] Settings settings;
     void Start()
     {
+        if (dontRead) return;
         currentController = settings.controller;
         joycons = JoyconManager.Instance.j;
 
