@@ -8,7 +8,6 @@ public class FawnEnemy : MonoBehaviour
 {
     [SerializeField] SoundHandler soundHandler;
     public GameObject Clara;
-
     private Animator animator;
 
     public float detection;
@@ -53,6 +52,7 @@ public class FawnEnemy : MonoBehaviour
         {
             case FawnState.Eating:
                 EatingState();
+                soundHandler.FawnEatingSFX();
                 break;
             case FawnState.Startled:
                 break;
@@ -89,10 +89,12 @@ public class FawnEnemy : MonoBehaviour
     private void StartRunning()
     {
         currentState = FawnState.running;
+        soundHandler.FawnRunningSFX();
         Invoke("StopRunning", runningTime);
     }
     private void StopRunning()
     {
+        soundHandler.FawnStartledSFX();
         currentState = FawnState.Eating;
         animator.SetBool("Running", false);
     }
