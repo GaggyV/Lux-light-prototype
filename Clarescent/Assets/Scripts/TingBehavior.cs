@@ -80,9 +80,9 @@ public class TingBehavior : MonoBehaviour
                             if (interactor.IsFreeToMove())
                             {
                                 if (Mathf.Abs(transform.position.y - interactor.transform.position.y) < 0.4f)
-                                    interactor.body.velocity = Vector3.zero; /* * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f)*/
+                                    interactor.body.velocity = new Vector2(interactor.body.velocity.x, 0f); /* * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f)*/
                                 else
-                                    interactor.body.velocity = Vector3.up * Mathf.Sign(transform.position.y - interactor.transform.position.y) * levitationStrength;
+                                    interactor.body.velocity = new Vector2(interactor.body.velocity.x, Mathf.Sign(transform.position.y - interactor.transform.position.y) * levitationStrength);
                             }
                         }
 

@@ -35,7 +35,7 @@ public class ClaraAnimation : MonoBehaviour
         {
             soundHandler.CGrabiingSFX();
         }
-        //animator.SetBool("Climbing", clara.GetState() == ClaraBehavior.State.Climbing); breh
+        animator.SetBool("Climbing", clara.GetState() == ClaraBehavior.State.Climbing);
         animator.SetBool("Falling", rB.velocity.magnitude > clara.GetDieSpeed() && !clara.Grounded());
         animator.SetBool("Moonwalking", transform.localScale.x > 0f && rB.velocity.x < -0.3f || transform.localScale.x < 0f && rB.velocity.x > 0.3f);
     }

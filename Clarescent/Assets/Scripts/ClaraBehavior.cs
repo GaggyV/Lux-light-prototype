@@ -37,6 +37,10 @@ public class ClaraBehavior : MonoBehaviour
     private State currentState;
 
 
+    private bool midAnimation;
+    private Transform gfxTransform;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -47,6 +51,8 @@ public class ClaraBehavior : MonoBehaviour
         maxJumpSqrt = Mathf.Sqrt(maxJumpHeight);
         gravityCoEf = Mathf.Sqrt(Physics2D.gravity.magnitude) * Mathf.Sqrt(2f);
         grid = FindObjectOfType<Grid>();
+
+        gfxTransform = GetComponentInChildren<Animator>().transform;
     }
 
     public float GetDieSpeed()
@@ -62,7 +68,11 @@ public class ClaraBehavior : MonoBehaviour
 
     void Update()
     {
-
+        if(midAnimation)
+        {
+            transform.position = new Vector3(climbingDest.x, transform.position.y, 0f);
+            return;
+        }
         if (dead) return;
         if (feet.onGround && !onGroundLagger && currentVelocity >= deathSpeed)
             dead = true;
@@ -116,7 +126,15 @@ public class ClaraBehavior : MonoBehaviour
                     currentState = State.Climbing;
                     climbingDest = new Vector3(Mathf.Floor(transform.position.x) + (transform.localScale.x > 0f ? 1.5f : -0.5f),
                         Mathf.Floor(transform.position.y) + 2.5f);
-                    rb.isKinematic = true;
+                    StartClimb();
+                    //rb.isKinematic = true;
+
+
+
+
+
+
+
                     soundHandler.ClaraClimbingSFX();
                 }
                 if (inputHandler.leftStick.x_axis != 0f)
@@ -130,13 +148,19 @@ public class ClaraBehavior : MonoBehaviour
                     transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
                 break;
             case State.Climbing:
-                if ((transform.position - climbingDest).magnitude > 0.6f)
-                    transform.position = Vector3.Lerp(transform.position, climbingDest, 0.1f);
-                else
-                {
-                    rb.isKinematic = false;
-                    currentState = State.Walking;
-                }
+                //if ((transform.position - climbingDest).magnitude > 0.6f)
+                //    transform.position = Vector3.Lerp(transform.position, climbingDest, 0.1f);
+                //else
+                //{
+                //    rb.isKinematic = false;
+                //    currentState = State.Walking;
+                //}
+ 
+                transform.position = climbingDest;
+                midAnimation = true;
+
+                //rb.isKinematic = false;
+                //currentState = State.Walking;
 
                 break;
             case State.Grabbing:
@@ -213,6 +237,20 @@ public class ClaraBehavior : MonoBehaviour
     internal State GetState()
     {
         return currentState;
+    }
+
+    public void StartClimb()
+    {
+        transform.position = climbingDest;
+        float multiplier = transform.localScale.x > 0f ? 1f : 1f;
+        gfxTransform.localPosition = new Vector3(-1.5f * multiplier, -3.24f - 2.45f, 0f);
+    }
+
+    public void EndClimb()
+    {
+        gfxTransform.localPosition = new Vector3(0f, -2.45f, 0f);
+        currentState = State.Walking;
+        midAnimation = false;
     }
 
     private void OnDrawGizmos()
