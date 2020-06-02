@@ -13879,7 +13879,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Clara
       value: 
-      objectReference: {fileID: 1976112750}
+      objectReference: {fileID: 0}
     - target: {fileID: 5777522957009216583, guid: c6ace58a9322f9a4e96bee53a31c567c,
         type: 3}
       propertyPath: soundHandler
@@ -21910,7 +21910,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Clara
       value: 
-      objectReference: {fileID: 1976112750}
+      objectReference: {fileID: 0}
     - target: {fileID: 5777522957009216583, guid: c6ace58a9322f9a4e96bee53a31c567c,
         type: 3}
       propertyPath: soundHandler
@@ -52000,6 +52000,14 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.098
       objectReference: {fileID: 0}
+    - target: {fileID: 219559515, guid: dbc345b1dc5fd064d8235fb1a6182054, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 808f81791d82c9049a1f82fd91c76fad, type: 3}
+    - target: {fileID: 219559515, guid: dbc345b1dc5fd064d8235fb1a6182054, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 255137367, guid: dbc345b1dc5fd064d8235fb1a6182054, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -52144,6 +52152,10 @@ PrefabInstance:
       propertyPath: TingWakeUp
       value: 
       objectReference: {fileID: 1314751037}
+    - target: {fileID: 1894075386, guid: dbc345b1dc5fd064d8235fb1a6182054, type: 3}
+      propertyPath: loopingMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: 6401a443607a18548a199cdae52f3f0b, type: 3}
     - target: {fileID: 351273116592142411, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: m_LocalRotation.z

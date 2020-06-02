@@ -6,6 +6,7 @@ public class SoundHandler : MonoBehaviour
 {
     [SerializeField] Settings settings;
     [SerializeField] SoundTrack musicTrack;
+    [SerializeField] AudioClip loopingMusic;
     [SerializeField] SoundTrack walkingTrack;
     [SerializeField] SoundTrack SFXTrack0;
     [SerializeField] SoundTrack SFXTrack1;
@@ -51,18 +52,11 @@ public class SoundHandler : MonoBehaviour
 
     void Update()
     {
-        //if (walking != walkingLagger && walking)
-        //{
-        //    walkingLagger = walking;
-        //    source.clip = walkingClip;
-        //    source.loop = true;
-        //    source.Play();
-        //}
-        //else if (walking != walkingLagger && !walking)
-        //{
-        //    walkingLagger = walking;
-        //    source.clip = null;
-        //    source.loop = false;
+        if (musicTrack.free)
+        {
+            musicTrack.Play(loopingMusic);
+            musicTrack.Loop();
+        }
     }
 
     public void Jump()
