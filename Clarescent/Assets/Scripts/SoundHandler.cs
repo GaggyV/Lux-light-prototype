@@ -22,6 +22,7 @@ public class SoundHandler : MonoBehaviour
     [SerializeField] SoundTrack FawnRunning;
     [SerializeField] SoundTrack ClaraClimbing0;
     [SerializeField] SoundTrack ClaraClimbing1;
+    [SerializeField] SoundTrack TingWakeUp;
 
     public bool walking;
     private bool walkingLagger;
@@ -39,10 +40,12 @@ public class SoundHandler : MonoBehaviour
         ClaraLanding.ChangeVolume(settings.soundEffectsVolume);
         ClaraClimbing0.ChangeVolume(settings.soundEffectsVolume);
         ClaraClimbing1.ChangeVolume(settings.soundEffectsVolume);
-        //FawnEating.ChangeVolume(settings.soundEffectsVolume);
-        //FawnRunning.ChangeVolume(settings.soundEffectsVolume);
-        //FawnStartled.ChangeVolume(settings.soundEffectsVolume);
-        
+        BounceSound.ChangeVolume(settings.soundEffectsVolume);
+        FawnEating.ChangeVolume(settings.soundEffectsVolume);
+        FawnRunning.ChangeVolume(settings.soundEffectsVolume);
+        FawnStartled.ChangeVolume(settings.soundEffectsVolume);
+        TingWakeUp.ChangeVolume(settings.soundEffectsVolume);
+
         //source = GetComponent<AudioSource>();
     }
 
@@ -163,6 +166,11 @@ public class SoundHandler : MonoBehaviour
                 ClaraClimbing1.Play();
                 break;
         }
+    }
+
+    public void TingWakeSFX()
+    {
+        TingWakeUp.Play();
     }
 
 }
