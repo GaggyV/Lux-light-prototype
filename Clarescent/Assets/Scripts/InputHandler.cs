@@ -96,7 +96,7 @@ public class InputHandler : MonoBehaviour
 
 
                 leftStick.x_axis = Input.GetAxis("Horizontal");
-                leftTriggerAnalog.axis = Input.GetAxis("XJump");
+                leftTriggerAnalog.axis = Input.GetAxis("Jump");
 
                 rightStick.x_axis = Input.GetAxis("TVertical");
                 rightStick.y_axis = Input.GetAxis("THorizontal"); 
@@ -104,7 +104,7 @@ public class InputHandler : MonoBehaviour
 
 
 
-                if (Input.GetAxis("Jump") > 1) { Debug.Log("JoystickButton0"); }
+                //if (Input.GetAxis("Jump") > 1) { Debug.Log("JoystickButton0"); }
                 if (Input.GetKeyDown(KeyCode.JoystickButton1)) { Debug.Log("JoystickButton1"); }
                 if (Input.GetKeyDown(KeyCode.JoystickButton2)) { Debug.Log("JoystickButton2"); }
                 //rightStick.x_axis = Input.GetAxis("RightStickHorizontal");
