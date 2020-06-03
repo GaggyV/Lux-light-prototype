@@ -5,6 +5,7 @@ using UnityEngine;
 public class CheckPoints : MonoBehaviour
 {
     private ReSpawner rs;
+    public Sprite CPchecked;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class CheckPoints : MonoBehaviour
         if(collision.CompareTag("Clara"))
         {
             rs.lastCheckpointPos = transform.position;
+            gameObject.GetComponent<SpriteRenderer>().sprite = CPchecked;
         }
     }
 }
