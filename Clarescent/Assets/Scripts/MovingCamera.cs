@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Camera))]
 public class MovingCamera : MonoBehaviour
 {
     public List<Transform> targets;
@@ -10,7 +11,7 @@ public class MovingCamera : MonoBehaviour
     public float smoothness;
     public float minZoom = 40f;
     public float maxZoom = 10f;
-    public float zooming = 50f;
+    public float zoomlimiter = 50f;
     public Camera cam;
 
     void Start()
@@ -33,8 +34,8 @@ public class MovingCamera : MonoBehaviour
 
     void Zoom()
     {
-        float newZoom = Mathf.Lerp(maxZoom, minZoom, GetBtwWidth() / zooming);
-        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, newZoom, Time.deltaTime);
+        float newZoom = Mathf.Lerp(maxZoom, minZoom, GetBtwWidth() / zoomlimiter);
+        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, newZoom, Time.deltaTime);
     }
 
     float GetBtwWidth()
