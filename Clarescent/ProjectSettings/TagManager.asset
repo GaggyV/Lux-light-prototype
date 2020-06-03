@@ -13,6 +13,7 @@ TagManager:
   - Shrooms
   - Sidewalls
   - ReSpawner
+  - PersistentSlide
   layers:
   - Default
   - TransparentFX
