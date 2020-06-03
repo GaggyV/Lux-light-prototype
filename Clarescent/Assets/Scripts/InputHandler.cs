@@ -34,6 +34,7 @@ public class InputHandler : MonoBehaviour
     public DigitalInput grab;
     public DigitalInput leftTriggerDigital;
     public DigitalInput rightTriggerDigital;
+    public DigitalInput PauseButton;
 
     private List<Joycon> joycons;
 
@@ -85,6 +86,10 @@ public class InputHandler : MonoBehaviour
                 grab.enter = Input.GetKeyDown(KeyCode.LeftShift);
                 grab.held = Input.GetKey(KeyCode.LeftShift);
                 grab.exit = Input.GetKeyUp(KeyCode.LeftShift);
+
+                PauseButton.enter = Input.GetKeyDown(KeyCode.Escape);
+                PauseButton.held = Input.GetKey(KeyCode.Escape);
+                PauseButton.exit = Input.GetKeyUp(KeyCode.Escape);
 
                 break;
             case Controller.Controller:
