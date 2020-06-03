@@ -29718,6 +29718,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiObject: {fileID: 171743650}
+  lastUIObject: {fileID: 0}
 --- !u!61 &631747816
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29940,6 +29941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiObject: {fileID: 1768567819}
+  lastUIObject: {fileID: 0}
 --- !u!61 &634183793
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39415,6 +39417,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiObject: {fileID: 53639319}
+  lastUIObject: {fileID: 1805983774}
 --- !u!61 &1036064914
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -39568,6 +39571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiObject: {fileID: 1700663100}
+  lastUIObject: {fileID: 1565313006}
 --- !u!61 &1051329548
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -40823,6 +40827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiObject: {fileID: 1740442002}
+  lastUIObject: {fileID: 0}
 --- !u!61 &1141478295
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -48942,6 +48947,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiObject: {fileID: 535020122}
+  lastUIObject: {fileID: 1036064913}
 --- !u!61 &1565313007
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -50268,6 +50274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiObject: {fileID: 1965324713}
+  lastUIObject: {fileID: 0}
 --- !u!61 &1641791101
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -52873,6 +52880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiObject: {fileID: 2087247624}
+  lastUIObject: {fileID: 0}
 --- !u!61 &1786852009
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -53303,6 +53311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiObject: {fileID: 372160630}
+  lastUIObject: {fileID: 0}
 --- !u!61 &1805983775
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54111,6 +54120,11 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5232856906006260329, guid: dbc345b1dc5fd064d8235fb1a6182054,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5232856906006260331, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -54119,7 +54133,7 @@ PrefabInstance:
     - target: {fileID: 5232856906006260331, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.42
+      value: 0.649
       objectReference: {fileID: 0}
     - target: {fileID: 5232856906072941800, guid: dbc345b1dc5fd064d8235fb1a6182054,
         type: 3}
@@ -54379,6 +54393,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1032717845866141523, guid: dbc345b1dc5fd064d8235fb1a6182054, type: 3}
     - {fileID: 1942195863, guid: dbc345b1dc5fd064d8235fb1a6182054, type: 3}
+    - {fileID: 5232856906006260329, guid: dbc345b1dc5fd064d8235fb1a6182054, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dbc345b1dc5fd064d8235fb1a6182054, type: 3}
 --- !u!20 &1813736543 stripped
 Camera:
