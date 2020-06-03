@@ -19,9 +19,11 @@ public class TingBehavior : MonoBehaviour
     [SerializeField] private SoundHandler soundHandler;
     private bool levitating;
     private bool levitateLagger;
+    SpriteRenderer sr;
 
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
         levitating = levitateLagger = false;
         currentColor = levitationColor;
         //notShiningSprite = 
@@ -29,8 +31,10 @@ public class TingBehavior : MonoBehaviour
 
     void Update()
     {
-        if (inputHandler.rightStick.x_axis != 0f || inputHandler.rightStick.y_axis != 0f)
+        if ((inputHandler.rightStick.x_axis != 0f || inputHandler.rightStick.y_axis != 0f))
             transform.position += new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;
+        if (!sr.isVisible)
+            transform.position -= new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;
         if (levitating && !levitateLagger)
         {
             soundHandler.LevitateSFX();

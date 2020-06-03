@@ -26567,6 +26567,7 @@ GameObject:
   - component: {fileID: 483672430}
   - component: {fileID: 483672429}
   - component: {fileID: 483672428}
+  - component: {fileID: 483672432}
   m_Layer: 0
   m_Name: checkpoint (2)
   m_TagString: Ting
@@ -26677,6 +26678,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &483672432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 483672427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a26bfafdecf8ede4d89c9d24caa1de48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tingToWakeUp: {fileID: 603382050}
+  soundHandler: {fileID: 1894075387}
 --- !u!1 &485017048
 GameObject:
   m_ObjectHideFlags: 0
@@ -43600,6 +43615,7 @@ GameObject:
   - component: {fileID: 1331361152}
   - component: {fileID: 1331361151}
   - component: {fileID: 1331361150}
+  - component: {fileID: 1331361154}
   m_Layer: 0
   m_Name: checkpoint (3)
   m_TagString: Ting
@@ -43710,6 +43726,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1331361154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331361149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a26bfafdecf8ede4d89c9d24caa1de48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tingToWakeUp: {fileID: 603382050}
+  soundHandler: {fileID: 1894075387}
 --- !u!1 &1343701129
 GameObject:
   m_ObjectHideFlags: 0

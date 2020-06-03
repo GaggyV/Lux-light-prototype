@@ -5,8 +5,8 @@ using UnityEngine;
 public class ReSpawner : MonoBehaviour
 {
     private static ReSpawner instance;
-    public Vector2 lastCheckpointPos;
-
+    public Vector3 lastCheckpointPos;
+    public bool hasTing;
 
     void Awake()
     {
@@ -20,5 +20,4 @@ public class ReSpawner : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 }
