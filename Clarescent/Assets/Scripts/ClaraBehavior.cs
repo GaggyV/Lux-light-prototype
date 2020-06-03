@@ -40,6 +40,7 @@ public class ClaraBehavior : MonoBehaviour
     private bool midAnimation;
     private Transform gfxTransform;
 
+    Camera cam;
 
     void Start()
     {
@@ -124,7 +125,7 @@ public class ClaraBehavior : MonoBehaviour
                 {
                     rb.velocity = Vector2.zero;
                     currentState = State.Climbing;
-                    climbingDest = new Vector3(Mathf.Floor(transform.position.x) + (transform.localScale.x > 0f ? 1.5f : -0.5f),
+                    climbingDest = new Vector3(Mathf.Floor(transform.position.x) + (transform.localScale.x > 0f ? 1.3f : -0.3f),
                         Mathf.Floor(transform.position.y) + 2.5f);
                     StartClimb();
                     //rb.isKinematic = true;
@@ -224,13 +225,13 @@ public class ClaraBehavior : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1), Vector2.zero);
         if (!hit || hit.collider.CompareTag("Ting")) return false;
         hit = Physics2D.Raycast(checkPos + Vector2.up * 2, Vector2.zero);
-        if (hit) return false;
+        if (hit && !hit.collider.CompareTag("Ting")) return false;
         hit = Physics2D.Raycast(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1) + Vector2.up, Vector2.zero);
-        if (hit) return false;
+        if (hit && !hit.collider.CompareTag("Ting")) return false;
         hit = Physics2D.Raycast(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1) + Vector2.up * 2, Vector2.zero);
-        if (hit) return false;
+        if (hit && !hit.collider.CompareTag("Ting")) return false;
         hit = Physics2D.Raycast(checkPos + Vector2.right * (transform.localScale.x > 0 ? 1 : -1) + Vector2.up * 2.5f, Vector2.zero);
-        if (hit) return false;
+        if (hit && !hit.collider.CompareTag("Ting")) return false;
         return true;
     }
 
