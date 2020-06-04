@@ -99,7 +99,7 @@ public class CutsceneManager : MonoBehaviour
 
             cutscene.GetChild(i).gameObject.SetActive(false);
         }
-        cutscene.gameObject.SetActive(false);
+        cutscene.gameObject.SetActive(true);
         _level.gameObject.SetActive(true);
         _input.transform.parent = inputParent; //this may or may not be important
         cam.parent = cameraParent;
