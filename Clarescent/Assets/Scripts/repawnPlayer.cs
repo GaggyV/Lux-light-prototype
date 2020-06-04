@@ -17,7 +17,7 @@ public class repawnPlayer : MonoBehaviour
         }
         if(collision.transform.CompareTag("Crate"))
         {
-            collision.transform.position = Respawn.position; 
+            collision.transform.position = Respawn.position;
         }
     }
 }

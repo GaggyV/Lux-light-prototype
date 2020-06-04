@@ -15,7 +15,8 @@ public class Hands : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        interactor = other.GetComponent<ClaraInteractable>();
+        if (interactor == null)
+            interactor = other.GetComponent<ClaraInteractable>();
     }
 
     private void OnTriggerExit2D(Collider2D other)

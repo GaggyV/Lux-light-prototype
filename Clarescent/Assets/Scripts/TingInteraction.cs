@@ -13,6 +13,7 @@ public class TingInteraction : MonoBehaviour
     public bool broken;
     public bool scared;
     private float currentVelocity;
+    private BoxCollider2D collider2D;
 
     [SerializeField] Sprite restoredSprite, brokenSprite;
     [SerializeField] SpriteRenderer outLine;
@@ -28,6 +29,7 @@ public class TingInteraction : MonoBehaviour
         smallBox.enabled = false;
         body = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        collider2D = GetComponent<BoxCollider2D>();
     }
 
     private void Update()
@@ -55,18 +57,15 @@ public class TingInteraction : MonoBehaviour
         }
     }
 
-    private ClaraBehavior clara = null;
 
-    public bool IsFreeToMove()
+    public bool IsFreeToMove(ClaraBehavior clara)
     {
         if (clara == null)
             return true;
 
         if(clara != null)
         {
-            Vector2 delta = clara.transform.position - transform.position;
-            if (delta.y < delta.x)
-                return true;
+            return Mathf.Abs(clara.transform.position.x - transform.position.x) < collider2D.size.x / 2 && clara.transform.position.y < transform.position.y;
         }
 
         return false;
@@ -79,16 +78,11 @@ public class TingInteraction : MonoBehaviour
             broken = true;
             //GetComponent<BoxCollider2D>().isTrigger = true;
         }
-
-
-        if (other.gameObject.GetComponent<ClaraBehavior>() != null)
-            clara = other.gameObject.GetComponent<ClaraBehavior>();
     }   
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (other.gameObject.GetComponent<ClaraBehavior>() != null)
-            clara = null;
+
     }
 
     private void OnDrawGizmos()
@@ -102,11 +96,8 @@ public class TingInteraction : MonoBehaviour
         Gizmos.DrawLine(pos, pos + Vector3.up);
         Gizmos.DrawLine(pos + Vector3.right, pos + Vector3.right + Vector3.up);
 
-        if (clara == null)
-            return;
-
         Gizmos.color = Color.green;
-        Gizmos.DrawLine(transform.position, clara.transform.position);
+
 
         
     }

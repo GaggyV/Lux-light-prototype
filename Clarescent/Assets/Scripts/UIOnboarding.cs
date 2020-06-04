@@ -5,6 +5,7 @@ using UnityEngine;
 public class UIOnboarding : MonoBehaviour
 {
     public GameObject uiObject;
+    public UIOnboarding lastUIObject;
 
     void Start()
     {
@@ -18,6 +19,11 @@ public class UIOnboarding : MonoBehaviour
         {
             uiObject.SetActive(true);
             StartCoroutine("WaitForSec");
+            if (lastUIObject != null)
+            {
+                Destroy(lastUIObject.uiObject);
+                Destroy(lastUIObject.gameObject);
+            }
         }
     }
 
