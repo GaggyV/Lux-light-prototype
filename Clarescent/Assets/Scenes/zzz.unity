@@ -13101,7 +13101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 5000
-  SoundHandler: {fileID: 0}
+  SoundHandler: {fileID: 1791663843}
 --- !u!60 &30664570
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -24807,7 +24807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 5000
-  SoundHandler: {fileID: 0}
+  SoundHandler: {fileID: 1791663843}
 --- !u!60 &374612373
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -26594,7 +26594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 5000
-  SoundHandler: {fileID: 0}
+  SoundHandler: {fileID: 1791663843}
 --- !u!60 &471483018
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -29052,7 +29052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 1500
-  SoundHandler: {fileID: 0}
+  SoundHandler: {fileID: 1791663843}
 --- !u!60 &618023977
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -31448,7 +31448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 5000
-  SoundHandler: {fileID: 0}
+  SoundHandler: {fileID: 1791663843}
 --- !u!60 &695217925
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -51040,7 +51040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 5000
-  SoundHandler: {fileID: 0}
+  SoundHandler: {fileID: 1791663843}
 --- !u!60 &1638460015
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -60963,7 +60963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 5000
-  SoundHandler: {fileID: 0}
+  SoundHandler: {fileID: 1791663843}
 --- !u!60 &2089478700
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -62454,7 +62454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 1500
-  SoundHandler: {fileID: 0}
+  SoundHandler: {fileID: 1791663843}
 --- !u!60 &2118069633
 PolygonCollider2D:
   m_ObjectHideFlags: 0
