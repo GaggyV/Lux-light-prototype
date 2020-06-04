@@ -12,6 +12,8 @@ TagManager:
   - Ting
   - Shrooms
   - Sidewalls
+  - ReSpawner
+  - PersistentSlide
   layers:
   - Default
   - TransparentFX

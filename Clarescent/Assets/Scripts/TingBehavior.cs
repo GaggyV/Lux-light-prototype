@@ -12,15 +12,18 @@ public class TingBehavior : MonoBehaviour
     [SerializeField] Ability currentAbility;
 
     [Header("Don't touch me Victor D:")]
+    [SerializeField] private ClaraBehavior clara;
     [SerializeField] private InputHandler inputHandler;
     [SerializeField] private List<TingInteraction> interactors;
     [SerializeField] private TextMesh text;
     [SerializeField] private SoundHandler soundHandler;
     private bool levitating;
     private bool levitateLagger;
+    SpriteRenderer sr;
 
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
         levitating = levitateLagger = false;
         currentColor = levitationColor;
         //notShiningSprite = 
@@ -28,8 +31,10 @@ public class TingBehavior : MonoBehaviour
 
     void Update()
     {
-        if (inputHandler.rightStick.x_axis != 0f || inputHandler.rightStick.y_axis != 0f)
+        if ((inputHandler.rightStick.x_axis != 0f || inputHandler.rightStick.y_axis != 0f))
             transform.position += new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;
+        if (!sr.isVisible)
+            transform.position -= new Vector3(inputHandler.rightStick.x_axis, inputHandler.rightStick.y_axis, 0f) * moveSpeed * Time.deltaTime;
         if (levitating && !levitateLagger)
         {
             soundHandler.LevitateSFX();
@@ -77,7 +82,7 @@ public class TingBehavior : MonoBehaviour
                         if(inputHandler.rightTriggerAnalog.axis > 0f)
                         {
                             levitating = true;
-                            if (interactor.IsFreeToMove())
+                            if (interactor.IsFreeToMove(clara))
                             {
                                 if (Mathf.Abs(transform.position.y - interactor.transform.position.y) < 0.4f)
                                     interactor.body.velocity = new Vector2(interactor.body.velocity.x, 0f); /* * (inputHandler.rightTriggerAnalog.axis > 0f ? inputHandler.rightTriggerAnalog.axis : 0f)*/
