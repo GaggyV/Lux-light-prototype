@@ -13,21 +13,15 @@ public class CutsceneManager : MonoBehaviour
 
     private static CutsceneManager manager;
 
-    private void Awake()
+    private void Start()
     {
         _input = FindObjectOfType<InputHandler>();
 
         manager = this;
-        //foreach (var t in transform.GetComponentInChildren<Canvas>().transform.GetComponentsInChildren<Transform>())
-        //{
-        //    if (t.GetComponent<Canvas>() != null) continue;
-        //    t.gameObject.SetActive(false);
-        //}
-
-        var canvas = transform.GetComponentInChildren<Canvas>();
-        for (int i = 0; i < canvas.transform.childCount; i++)
+        foreach (var t in transform.GetComponentInChildren<Canvas>().transform.GetComponentsInChildren<Transform>())
         {
-            canvas.transform.GetChild(i).gameObject.SetActive(false);
+            if (t.GetComponent<Canvas>() != null) continue;
+            t.gameObject.SetActive(false);
         }
     }
 
@@ -54,6 +48,7 @@ public class CutsceneManager : MonoBehaviour
 
         Vector3 camPos = cam.position;
 
+
         cam.transform.parent = transform;
         cam.gameObject.SetActive(true);
 
@@ -62,23 +57,8 @@ public class CutsceneManager : MonoBehaviour
 
         _level.gameObject.SetActive(false);
         cutscene.gameObject.SetActive(true);
-        print($"Cutscene triggered with {cutscene.childCount } slides");
         for(int i = 0; i < cutscene.childCount; i++)
         {
-            if (cutscene.GetChild(i).CompareTag("PersistentSlide"))
-            {
-                cutscene.GetChild(i).gameObject.SetActive(true);
-            }
-            else cutscene.GetChild(i).gameObject.SetActive(false);
-        }
-        for (int i = 0; i < cutscene.childCount; i++)
-        {
-            if (cutscene.GetChild(i).CompareTag("PersistentSlide"))
-            {
-                continue;
-            }
-
-
             cutscene.GetChild(i).gameObject.SetActive(true);
             //yield return new WaitForSeconds(_slideTime);
 
@@ -99,7 +79,7 @@ public class CutsceneManager : MonoBehaviour
 
             cutscene.GetChild(i).gameObject.SetActive(false);
         }
-        cutscene.gameObject.SetActive(false);
+        cutscene.gameObject.SetActive(true);
         _level.gameObject.SetActive(true);
         _input.transform.parent = inputParent; //this may or may not be important
         cam.parent = cameraParent;
