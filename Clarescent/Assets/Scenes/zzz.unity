@@ -26898,7 +26898,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 483672427}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.72, y: 8.05, z: 2423.5703}
+  m_LocalPosition: {x: -87.51483, y: 0.013753891, z: 2423.5703}
   m_LocalScale: {x: 0.2875779, y: 0.2875779, z: 0.2875779}
   m_Children: []
   m_Father: {fileID: 1234194208}
@@ -44350,7 +44350,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331361149}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.6, y: 7.81, z: 2423.5703}
+  m_LocalPosition: {x: -57.11483, y: 11.333754, z: 2423.5703}
   m_LocalScale: {x: 0.2875779, y: 0.2875779, z: 0.2875779}
   m_Children: []
   m_Father: {fileID: 1234194208}
@@ -59462,7 +59462,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973543091}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -95.97, y: -10.91, z: 2423.5703}
+  m_LocalPosition: {x: -122.59483, y: -12.986244, z: 2423.5703}
   m_LocalScale: {x: 0.2875779, y: 0.2875779, z: 0.2875779}
   m_Children: []
   m_Father: {fileID: 1234194208}
@@ -60642,7 +60642,6 @@ GameObject:
   - component: {fileID: 2057024602}
   - component: {fileID: 2057024601}
   - component: {fileID: 2057024600}
-  - component: {fileID: 2057024604}
   m_Layer: 0
   m_Name: checkpoint (1)
   m_TagString: Ting
@@ -60748,26 +60747,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2057024599}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -67, y: -0.06, z: 2423.5703}
+  m_LocalPosition: {x: -55.57483, y: -10.076244, z: 2423.5703}
   m_LocalScale: {x: 0.2875779, y: 0.2875779, z: 0.2875779}
   m_Children: []
   m_Father: {fileID: 1234194208}
   m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2057024604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2057024599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a26bfafdecf8ede4d89c9d24caa1de48, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tingToWakeUp: {fileID: 603382050}
-  soundHandler: {fileID: 1894075387}
 --- !u!1 &2058878179
 GameObject:
   m_ObjectHideFlags: 0
